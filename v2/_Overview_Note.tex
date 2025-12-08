@@ -1,0 +1,311 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{PhaseGeometry Phase-Fibre Programme:\\[4pt]
+Registry and Overview Note}
+
+\author{Aleksey Turchanov}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Part of the PhaseGeometry Phase-Fibre programme; archived in the Core Package\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+The PhaseGeometry Phase-Fibre programme develops a conservative five-dimensional
+framework in which weak gravity, classical electromagnetism and phase-based clocks
+are described in a single, geometrically unified language built on standard
+Einstein--Maxwell theory. The key move is to treat phase $\varphi$ as a genuine
+coordinate of state, so that the effective description of physical systems lives in
+$4D + \varphi$ rather than in bare four-dimensional spacetime.
+
+This short registry note plays three roles at once. First, it provides a human-level
+map of the Phase-Fibre line: what the ``phase as fifth dimension'' move means, and
+how it remains conservative at the level of classical GR+Maxwell theory. Second,
+it fixes the naming and versioning conventions for the main Foundations notes and
+related documents, as collected in the Phase-Fibre Core Package v1.0. Third, it
+collects the core Zenodo information in a single citable place, so that readers and
+referees can navigate the Phase-Fibre material as a layered programme rather than
+as isolated preprints.
+\end{abstract}
+
+%======================================================================
+\section{Phase as a fifth coordinate: organising idea}
+%======================================================================
+
+At the everyday level we already work with an implicit ``fifth coordinate''
+all the time: the phase of a process. A wave on the shore, a heartbeat,
+a circadian rhythm, a project timeline, a sleep stage --- in all these
+cases we care not only about \emph{where} and \emph{when} something happens,
+but also about which part of its cycle or trajectory the system is in.
+
+In technical physics this appears in many guises:
+\begin{itemize}
+  \item the phase of a harmonic oscillator or wave,
+        $h(x,t) = A\cos(kx - \omega t + \varphi_0)$;
+  \item phase variables of superconducting condensates and Josephson junctions;
+  \item phase-space coordinates $(x,p)$, configuration spaces $q_i$,
+        order parameters and field configurations $\phi(x)$.
+\end{itemize}
+
+Conceptually, all of these answer a common question:
+\begin{quote}
+In which state or stage of its evolution / cycle is the system?
+\end{quote}
+
+The PhaseGeometry programme takes this seriously and treats phase
+$\varphi$ as a bona fide coordinate of state, on the same footing as the
+four coordinates of spacetime. At the most basic level the effective
+description thus lives in $3D + t + \varphi$.
+
+In the Phase-Fibre line this becomes explicitly geometrical: above each
+spacetime point $x^\mu$ there is a compact $U(1)$ phase fibre with
+coordinate $\varphi \in [0,2\pi)$, and the combined $4D + \varphi$
+structure is encoded in a five-dimensional Kaluza--Klein-type metric.
+The move is deliberately conservative:
+\begin{itemize}
+  \item the underlying gravitational and electromagnetic dynamics are
+        those of standard Einstein--Maxwell theory;
+  \item the ``extra dimension'' is compact and non-propagating: there
+        are no new bulk modes beyond the usual 4D fields, but the phase
+        fibre organises how gravity, electromagnetism and phase clocks
+        appear together.
+\end{itemize}
+
+What changes is the language and bookkeeping, not the fundamental field
+content of classical GR and Maxwell theory. At this stage the Phase-Fibre
+line should be read as a geometric repackaging of known physics plus
+simple Newtonian toy models, rather than as a source of new predictions.
+More ambitious claims (fully relativistic solutions, quantum layers,
+novel observables) are intentionally left for separate work.
+
+%======================================================================
+\section{Layered structure of the Phase-Fibre line}
+%======================================================================
+
+The Phase-Fibre part of the PhaseGeometry programme is organised into a
+set of ``Foundations'' notes plus auxiliary conceptual and registry
+documents. The aim is to keep the technical core compact while providing
+entry points at different levels of detail.
+
+The present Core Package v1.0 collects the main Foundations notes
+(0--IV) and a small set of companion texts under a single Zenodo record
+(\texttt{10.5281/zenodo.17783322}). Below we list the main layers as of
+this version.
+
+%----------------------------------------------------------------------
+\subsection{Foundations layer (technical backbone)}
+%----------------------------------------------------------------------
+
+\begin{itemize}
+  \item \textbf{Foundations 0: Technical Passport.}\\
+        Compact technical summary of the Phase-Fibre framework. Fixes the
+        ontology (spacetime base plus compact phase fibre), the basic
+        Kaluza--Klein metric with a $U(1)$ fibre, and the minimal
+        assumptions that keep the construction conservative. Provides a
+        quick reference for notation and for the status of the framework
+        relative to standard GR+EM.
+
+  \item \textbf{Foundations I: Conceptual Framework.}\\
+        Human-friendly conceptual picture of phase as a fifth coordinate:
+        phase fibre over spacetime, weak gravity, phase-based clocks,
+        qualitative links to superconductivity and Josephson effects.
+        The emphasis is on intuitive cartoons and physical interpretation
+        rather than on detailed derivations.
+
+  \item \textbf{Foundations II: Field Equations and Phase-Clock Configurations.}\\
+        Technical 5D/4D backbone. Starting from a five-dimensional metric
+        with a compact $U(1)$ fibre, this note derives the 4D
+        Einstein--Maxwell action by dimensional reduction. On top of
+        this it introduces a minimal worldline action for a phase clock
+        --- a timelike trajectory with an internal phase variable on the
+        fibre --- and works out simple configurations (gravitational
+        redshift between clocks at different heights, Sagnac-type phase
+        shifts in rotating frames). All of this remains within classical
+        GR and Maxwell theory.
+
+  \item \textbf{Foundations III: Newtonian Halo Analogues from Phase Fields.}\\
+        Newtonian phase-field sector. A single static scalar phase field
+        $\phi(\mathbf{x})$ with effective energy density
+        $\rho_{\rm eff} \propto |\nabla\phi|^2$ is used to generate
+        halo-like gravitational potentials. Extended phase textures with
+        an intermediate region where $d\phi/dr \propto 1/r$ lead to
+        $\rho_{\rm eff}(r) \propto 1/r^2$, $M(r) \propto r$ and
+        approximately flat circular-velocity curves $v_c(r) \simeq
+        \mathrm{const}$. These are explicitly presented as classical,
+        static toy models within Newtonian gravity, not as a complete
+        theory of dark matter.
+
+  \item \textbf{Foundations IV: Newtonian Black-Hole Analogues from Phase-Fibre Defects.}\\
+        Phase-fibre bubble and black-hole analogues. A localised defect
+        of the phase fibre --- a ``phase bubble'' --- is constructed so
+        that its gradient energy generates a thin shell of effective
+        mass. In the Newtonian limit the resulting potential reproduces
+        a standard $1/r$ profile at large distances and approaches a
+        black-hole-like regime when the bubble radius becomes comparable
+        to its Schwarzschild radius. The exterior field is that of a
+        point mass, while the interior is regular, so the construction
+        serves as a transparent example of an exotic compact object
+        built from phase structure in a fully classical setting.
+\end{itemize}
+
+%----------------------------------------------------------------------
+\subsection{Phenomenology and applications}
+%----------------------------------------------------------------------
+
+Beyond the foundational layer, several notes develop phenomenology and
+device-level applications, reusing the same $4D + \varphi$ bookkeeping
+with emphasis on observable quantities (potentials, rotation curves,
+clock rates) rather than on new fundamental fields. Examples include:
+\begin{itemize}
+  \item Newtonian phase-field phenomenology for cosmological backgrounds
+        and the age of the Universe, built as an analogue layer to the
+        PhaseGeometry Z$_2$ unified dark sector;
+  \item Josephson and superconducting devices viewed as macroscopic
+        phase clocks, including proposals for thick SNS weak links with
+        local magnetic phase control and SQUID-type configurations,
+        where the phase-fibre language serves as a compact bookkeeping
+        tool for weak gravity and rotation effects.
+\end{itemize}
+
+These phenomenological texts are organised so that they can be read
+either as stand-alone applications or as extensions of Foundations~II--IV.
+
+%----------------------------------------------------------------------
+\subsection{Conceptual and human-level notes}
+%----------------------------------------------------------------------
+
+In parallel, a set of conceptual notes and essays provide a bridge
+between the technical Phase-Fibre material and broader physical or
+philosophical questions:
+
+\begin{itemize}
+  \item \textbf{Phase as the Fifth Dimension: from 4D to $4D + \varphi$ without mysticism.}\\
+        Popular-level essay explaining the idea of phase as a coordinate
+        of state, using everyday examples (sea waves, day--night cycles,
+        heartbeats, project phases). The message is that we effectively
+        live in $3D + t + \varphi$ already; the Phase-Fibre framework
+        simply makes this explicit in a geometric way. A condensed,
+        updated version is archived in the same Core Package.
+
+  \item \textbf{Foundations IV-B: Conceptual roadmap and phenomenological remarks.}\\
+        Companion note to the technical Foundations~IV, summarising the
+        black-hole analogue construction in non-technical language,
+        clarifying what is and is not claimed, and positioning the work
+        relative to other exotic compact object and analogue-gravity
+        models.
+\end{itemize}
+
+These documents do not introduce new equations; they clarify language,
+motivation and scope.
+
+%======================================================================
+\section{Role of this registry note}
+%======================================================================
+
+This short note is not meant to introduce new physics. Its rôle is
+organisational and linguistic. Concretely, it serves three practical
+purposes:
+
+\begin{enumerate}
+  \item \textbf{Human-level map.} To provide a concise, non-technical
+        overview of the Phase-Fibre line: what the ``phase as fifth
+        dimension'' move means, how it stays conservative at the level
+        of Einstein--Maxwell theory, and how the different Foundations
+        notes fit together conceptually.
+
+  \item \textbf{Naming and versioning.} To fix stable names for the
+        Foundations notes and related documents (technical vs.\ conceptual,
+        Newtonian vs.\ 5D action), so that citations and references
+        remain consistent across future work. The present text belongs
+        to the Phase-Fibre Core Package v1.0, archived under a common
+        Zenodo record.
+
+  \item \textbf{Zenodo registry.} To record the Core Package DOI and
+        the internal structure of the series in a citable way, allowing
+        readers and referees to navigate the Phase-Fibre material as a
+        unified but layered programme rather than as isolated preprints.
+\end{enumerate}
+
+In that sense this document is a ``registry and overview'' layer sitting
+above the technical work: it explains the logic of the $4D + \varphi$
+language and how the different pieces of the programme are meant to be
+read and used.
+
+%======================================================================
+\section{How to cite the programme}
+%======================================================================
+
+For most purposes there are two levels of citation:
+\begin{itemize}
+  \item the Core Package record on Zenodo, which collects the Phase-Fibre
+        Foundations notes and related material under a single umbrella;
+  \item individual Foundations notes and companion texts, when a
+        specific construction is used.
+\end{itemize}
+
+A generic reference to the programme can use the Core Package record:
+\begin{quote}
+A.~Turchanov, \emph{PhaseGeometry Phase-Fibre Core Package v1.0:\\
+Foundations 0--IV and companion notes}, Zenodo (2025),\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{quote}
+
+When a specific construction is used (e.g.\ Newtonian halo analogues or
+black-hole analogues), the corresponding Foundations note should be
+cited explicitly with its own title and version tag, as given in the
+Core Package description. This registry note will be updated when new
+core items are added to the series or when the package structure
+changes.
+
+%======================================================================
+\section{Outlook}
+%======================================================================
+
+The Phase-Fibre line is deliberately modest in its assumptions: no new
+fundamental bulk fields beyond Einstein--Maxwell, no changes to the
+classical equations of motion, and --- at this stage --- no claims of
+new observational signatures beyond standard weak-gravity and Newtonian
+phenomenology. The novelty lies in treating phase as a genuine coordinate
+of state and in using a compact fibre to organise how gravity,
+electromagnetism and phase clocks interact in weak-field regimes.
+
+From here, natural directions include:
+\begin{itemize}
+  \item refining the Newtonian phase-field sector and its cosmological
+        and galactic phenomenology, with careful comparison to existing
+        scalar-halo and exotic-compact-object literature;
+  \item exploring precision phase-clock experiments (Josephson, optical,
+        atomic) in weak gravitational and rotating backgrounds within
+        the Phase-Fibre language;
+  \item developing further black-hole and horizon analogues tied to
+        phase structures in coherent media, and connecting them to the
+        broader PhaseGeometry Z$_2$ programme where decoherence and
+        branching are treated explicitly;
+  \item formulating fully relativistic Phase-Fibre solutions and, in
+        separate work, adding genuinely quantum layers on top of the
+        classical geometry.
+\end{itemize}
+
+The registry note you are reading is intended as a stable entry point:
+a compact ``map and index'' for the Phase-Fibre programme as it grows,
+and a conservative baseline against which more ambitious extensions can
+be judged.
+
+\end{document}

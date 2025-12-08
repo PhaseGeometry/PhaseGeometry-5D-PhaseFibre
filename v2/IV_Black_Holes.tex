@@ -1,0 +1,749 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\title{PhaseGeometry Phase-Fibre Foundations IV:\\[4pt]
+Newtonian black-hole analogues from phase-fibre defects}
+
+\author{Aleksey Turchanov}
+
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Part of the PhaseGeometry Phase-Fibre programme; archived in the Core Package\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+%======================================================================
+\begin{abstract}
+%======================================================================
+
+We explore phase-fibre defects in a simple five-dimensional PhaseGeometry
+setup and show how they generate black-hole-like gravitational fields in
+the four-dimensional Newtonian limit. Starting from a 5D metric with a
+compact phase fibre, we derive an effective phase-field description in 4D
+where the energy density is sourced by gradients of a scalar phase field,
+$\rho_{\rm eff} \propto |\nabla\varphi|^2$. We then construct localised,
+radially symmetric ``phase bubbles'' and compute their effective mass
+and Newtonian potential. Far away from the defect the potential approaches
+the standard $-GM/r$ form, while the phase-gradient energy is concentrated
+in a thin shell surrounding a ``hole'' in the phase fibre. In this picture
+a black hole is not introduced as a fundamental singular object, but
+appears as a localised defect of a phase fibre: its boundary carries
+tension and the integrated phase energy plays the rôle of mass in the
+Newtonian gravitational field.
+
+The present note is part of the PhaseGeometry Phase-Fibre Foundations
+programme. Foundations~0 (Technical Passport) fixes the 5D metric and
+notation; Foundations~I (Conceptual Framework) presents the intuitive
+picture of a compact phase fibre over 4D spacetime and its relation to
+gravity, electromagnetism and phase clocks; Foundations~II provides the
+technical derivation of the Einstein--Maxwell sector and simple clock
+configurations; Foundations~III derives halo-like rotation curves from
+extended phase textures. Here we show that the same minimal phase-field
+setup also supports deep, compact defects whose exterior field is
+indistinguishable from that of a point mass down to radii close to the
+nominal Schwarzschild scale. In this sense the construction provides a
+simple, fully transparent toy example of a ``black-hole analogue'' built
+from a phase field within the unified Phase-Fibre language.
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+%======================================================================
+\section{Introduction}
+%======================================================================
+
+In conventional general relativity, a static black hole is described as a
+region of spacetime bounded by an event horizon, with the exterior geometry
+determined by a few macroscopic parameters. Many effective and analogue
+models rephrase this textbook picture: black holes as bubbles of alternative
+vacuum, gravastars with tension-supported shells, or defects in condensed
+matter and optical media. In all these cases an underlying field or medium
+is responsible for mimicking the gravitational behaviour of a black hole.
+
+PhaseGeometry offers a different starting point. In the Phase-Fibre view,
+gravity is organised by \emph{phase degrees of freedom} living over a
+four-dimensional base spacetime. In the simplest Newtonian phase-field
+limit of the PhaseGeometry programme (developed in the companion
+Foundations~III note on Newtonian halo analogues), the gravitational
+potential is sourced by gradients of a scalar phase field
+$\varphi(\mathbf{x})$ through an effective energy density
+$\rho_{\rm eff} \propto |\nabla\varphi|^2$. Extended phase textures with
+$\rho_{\rm eff}(r)\propto 1/r^2$ naturally lead to halo-like rotation
+curves with flat intermediate regions.
+
+From this perspective it is natural to ask:
+
+\medskip
+\emph{What happens when the phase structure itself develops a localised
+defect? Can a defect of a phase fibre behave gravitationally like a black
+hole, already at the Newtonian level?}
+\medskip
+
+This note answers the question in a deliberately modest and transparent
+setting. We introduce a five-dimensional phase-fibre ansatz in which ordinary
+spacetime is a 4D base manifold and above each point there is a compact U(1)
+phase fibre. We then construct a localised phase-fibre defect --- a
+\emph{phase bubble} --- whose gradients generate a thin shell of phase
+energy. In the Newtonian limit this shell produces a standard $1/r$
+potential at large distances. A black-hole-like regime is approached when
+the bubble radius becomes comparable to its Schwarzschild radius,
+$r_s = 2GM_{\rm eff}/c^2$.
+
+From a broader perspective, the present note sits at the intersection of
+several existing ideas. On the one hand, there is a large literature on
+compact objects supported by scalar or more exotic fields --- from boson
+stars and scalar-field stars to gravastar-like and other ``exotic compact
+objects'' (ECOs).\footnote{For reviews see e.g.\
+F.~E.~Schunck and E.~W.~Mielke, Class.\ Quant.\ Grav.\ \textbf{20}, R301 (2003);
+V.~Cardoso and P.~Pani, Living Rev.\ Relativ.\ \textbf{22}, 4 (2019).}
+On the other hand, phenomenological dark-matter halo models often use simple
+radial density profiles (isothermal, NFW, Burkert) to reproduce flat rotation
+curves.\footnote{For standard halo profiles see e.g.\
+J.~F.~Navarro, C.~S.~Frenk and S.~D.~M.~White, Astrophys.\ J.\ \textbf{462}, 563 (1996);
+A.~Burkert, Astrophys.\ J.\ Lett.\ \textbf{447}, L25 (1995).}
+The construction developed here is more modest and more minimal: we work
+entirely in the Newtonian limit of general relativity, with a single
+static phase field whose gradient energy plays the rôle of an effective
+mass density. Nevertheless, this minimal setup already supports both
+halo-like rotation curves (as in Foundations~III) and deep, compact defects
+whose external field is indistinguishable from that of a Schwarzschild
+mass down to radii close to the nominal horizon. In that sense the present
+work can be viewed as a simple, fully transparent example of an exotic
+compact object built from a phase field, but formulated in a language
+tailored to the Phase-Fibre programme.
+
+Within the Phase-Fibre line of the PhaseGeometry programme this note
+sits above the core Foundations~0/I/II level. The accompanying
+\emph{Foundations~0: Technical Passport} fixes the ontology and notation
+of the five-dimensional phase-fibre framework in a compact, equation-driven
+form. \emph{Foundations~I: Conceptual Framework} emphasises the physical
+picture, intuitive cartoons and links to superconducting / Josephson systems.
+\emph{Foundations~II: Field equations and phase clocks} develops the explicit
+5D/4D action, derives the Einstein--Maxwell sector by dimensional reduction,
+and works out simple redshift and Sagnac-type configurations for phase clocks.
+\emph{Foundations~III: Newtonian halo analogues} shows how extended phase
+textures reproduce halo-like rotation curves. The present Foundations~IV
+extends this chain to black-hole analogues: we keep the same Newtonian
+phase-field language, but focus on deep, compact defects.
+
+The structure of the paper is as follows. In
+Sec.~\ref{sec:phase_fibre_setup} we recall the phase-fibre setup and its
+Newtonian phase-field limit. Section~\ref{sec:phase_bubble} constructs
+a spherically symmetric phase bubble and computes its effective mass.
+In Sec.~\ref{sec:bh_regime} we analyse the conditions under which the
+resulting potential is practically indistinguishable from that of a point
+mass down to radii close to $r_s$, and we discuss the corresponding
+Newtonian redshift. Section~\ref{sec:visualisation_embedding} embeds the
+construction into the full Phase-Fibre picture and uses simple contour
+plots to visualise the configuration. Sec.~\ref{sec:discussion} closes
+with a discussion of the advantages, limitations and relation to existing
+work, and outlines directions for further development.
+
+\subsection*{How to read this note}
+
+This note is meant to be read as a conceptual story with a minimal amount
+of formalism. The technical ingredients are deliberately simple and are
+used only to support the physical picture. The key points to keep in mind
+are:
+
+\begin{itemize}
+  \item In the Newtonian phase-fibre language the effective mass density
+        is not put in by hand but built from a real phase field,
+        $\rho_{\rm eff} \propto |\nabla\varphi|^2$. Phase gradients carry
+        tension and gravitate.
+  \item A ``black hole'' in this picture is represented as a \emph{phase
+        cavity}: a hole in the phase fibre surrounded by a thin shell of
+        phase-gradient tension. The integrated phase energy of this shell
+        plays the rôle of the mass $M_{\rm eff}$.
+  \item Outside the shell the Newtonian potential is indistinguishable
+        from that of a point mass, $\Phi(r) \simeq -GM_{\rm eff}/r$.
+        What changes is the internal structure: the centre is regular and
+        the source is extended rather than singular.
+  \item A simple tanh-bubble profile for $\varphi(r)$ already captures
+        the whole cartoon: a hole in the phase fibre, a ring of
+        phase-gradient energy, and the resulting $1/r$ potential. This
+        is the minimal bridge between the Phase-Fibre language and
+        familiar black-hole intuition, and it prepares the ground for
+        fully relativistic, horizon-bearing configurations in later work.
+\end{itemize}
+
+%======================================================================
+\section{Phase-fibre setup and Newtonian phase-field limit}
+\label{sec:phase_fibre_setup}
+%======================================================================
+
+In this section we briefly recall the phase-fibre construction and the
+Newtonian phase-field limit that we will use throughout. The goal is not
+to re-derive the results of Foundations~0--II, but to fix notation and
+provide a minimal self-contained background.
+
+%----------------------------------------------------------------------
+\subsection{Five-dimensional phase-fibre metric}
+%----------------------------------------------------------------------
+
+We consider a five-dimensional manifold $\mathcal{M}_5$ which is a U(1)
+fibre bundle over four-dimensional spacetime $\mathcal{M}_4$. Local
+coordinates on $\mathcal{M}_5$ are written as
+\begin{equation}
+  X^A = (x^\mu,\phi), \qquad \mu = 0,1,2,3,
+\end{equation}
+where $\phi$ is a periodic coordinate on the internal circle $S^1$.
+
+The phase-fibre metric is taken in the Kaluza--Klein form
+\begin{equation}
+  ds_5^2
+  = G_{AB} dX^A dX^B
+  = g_{\mu\nu}(x)\,dx^\mu dx^\nu
+    + R^2\bigl(d\phi + kA_\mu(x)\,dx^\mu\bigr)^2.
+  \label{eq:5d_metric_PF_IV}
+\end{equation}
+Here $g_{\mu\nu}(x)$ is the four-dimensional spacetime metric and
+$A_\mu(x)$ is a four-dimensional U(1) gauge field. The constants $R$
+and $k$ set the scale of the fibre radius and the coupling of the fibre
+coordinate to $A_\mu$; their combination is fixed in Foundations~0 by
+matching to the four-dimensional Newton constant and electromagnetic
+coupling.
+
+Assuming that $g_{\mu\nu}$ and $A_\mu$ are independent of $\phi$, the
+five-dimensional Einstein--Hilbert action reduces to the standard
+Einstein--Maxwell action in four dimensions. In the present note we
+work in the Newtonian limit of this setup, focusing on static, weak
+gravitational fields sourced by an effective energy density associated
+with phase gradients.
+
+%----------------------------------------------------------------------
+\subsection{Effective phase-field energy density}
+%----------------------------------------------------------------------
+
+In the Newtonian phase-field limit the central object is a scalar phase
+field $\varphi(\mathbf{x})$ on three-dimensional space. The simplest
+effective energy density associated with gradients of $\varphi$ is
+\begin{equation}
+  \rho_{\rm eff}(\mathbf{x})
+  = \frac{\kappa}{c^2}\,|\nabla\varphi(\mathbf{x})|^2,
+  \label{eq:rho_eff_def}
+\end{equation}
+where $\kappa$ is a phenomenological stiffness parameter. The factor
+$1/c^2$ ensures that $\rho_{\rm eff}$ has the dimensions of mass density.
+
+The total effective mass contained in a static configuration is
+\begin{equation}
+  M_{\rm eff}
+  = \int d^3x\,\rho_{\rm eff}(\mathbf{x})
+  = \frac{\kappa}{c^2}
+    \int d^3x\,|\nabla\varphi(\mathbf{x})|^2.
+  \label{eq:Meff_def}
+\end{equation}
+The Newtonian gravitational potential $\Phi(\mathbf{x})$ then satisfies
+the usual Poisson equation
+\begin{equation}
+  \nabla^2\Phi(\mathbf{x})
+  = 4\pi G \rho_{\rm eff}(\mathbf{x}).
+  \label{eq:Poisson_rho_eff}
+\end{equation}
+At large distances from a localised configuration one recovers
+\begin{equation}
+  \Phi(r) \simeq -\frac{GM_{\rm eff}}{r}.
+\end{equation}
+
+This effective description can be viewed as the Newtonian shadow of
+the full 5D phase-fibre setup: the phase field is a remnant of the
+fibre coordinate, and the stiffness $\kappa$ encodes the relevant
+combination of 5D parameters. For the purposes of this note we take
+Eq.~\eqref{eq:rho_eff_def} as a phenomenological starting point.
+
+%======================================================================
+\section{Spherically symmetric phase-fibre bubbles}
+\label{sec:phase_bubble}
+%======================================================================
+
+We now construct a minimal spherically symmetric phase defect and compute
+its effective mass and potential. The picture is that of a ``bubble'' of
+alternative phase: the phase field takes one asymptotic value inside the
+bubble and another outside, with a smooth transition across a thin shell.
+
+%----------------------------------------------------------------------
+\subsection{Smooth phase profile}
+%----------------------------------------------------------------------
+
+For simplicity we consider a purely radial phase profile $\varphi(r)$
+interpolating between two constants,
+\begin{equation}
+  \varphi(r \to 0) \to \varphi_{\rm in},
+  \qquad
+  \varphi(r \to \infty) \to \varphi_{\rm out}.
+\end{equation}
+A convenient smooth profile centred at radius $R$ with thickness
+$\Delta$ is
+\begin{equation}
+  \varphi(r)
+  = \varphi_{\rm in}
+    + \frac{\Delta\varphi}{2}
+      \left[
+        1 + \tanh\!\left(\frac{r - R}{\Delta}\right)
+      \right],
+  \qquad
+  \Delta\varphi \equiv \varphi_{\rm out} - \varphi_{\rm in}.
+  \label{eq:phi_profile}
+\end{equation}
+Its radial derivative is
+\begin{equation}
+  \varphi'(r)
+  = \frac{d\varphi}{dr}
+  = \frac{\Delta\varphi}{2\Delta}\,
+    \operatorname{sech}^2\!\left(\frac{r - R}{\Delta}\right).
+  \label{eq:phi_prime_profile}
+\end{equation}
+The gradient is sharply localised in a shell of width $\sim\Delta$
+around $r=R$; inside and outside the bubble the phase is nearly constant
+and the gradient energy is negligible.
+
+Substituting~\eqref{eq:phi_prime_profile} into
+Eq.~\eqref{eq:rho_eff_def}, the effective energy density becomes
+\begin{equation}
+  \rho_{\rm eff}(r)
+  = \frac{\kappa}{c^2}
+    \left[\varphi'(r)\right]^2
+  = \frac{\kappa}{c^2}
+    \left(\frac{\Delta\varphi}{2\Delta}\right)^2
+    \operatorname{sech}^4\!\left(\frac{r - R}{\Delta}\right).
+  \label{eq:rho_eff_shell}
+\end{equation}
+This is a thin shell of phase energy wrapped around a nearly phase-flat
+interior.
+
+%----------------------------------------------------------------------
+\subsection{Effective mass in the thin-shell limit}
+%----------------------------------------------------------------------
+
+The total effective mass of the phase bubble is
+\begin{equation}
+  M_{\rm eff}
+  = 4\pi \int_0^\infty
+      \rho_{\rm eff}(r)\,r^2\,dr.
+  \label{eq:Meff_shell_def}
+\end{equation}
+In the thin-shell regime $\Delta \ll R$ we may approximate $r^2 \simeq R^2$
+inside the narrow transition region and change variables to
+$u = (r - R)/\Delta$. Using~\eqref{eq:rho_eff_shell} and
+$dr = \Delta\,du$, we obtain
+\begin{align}
+  M_{\rm eff}
+  &\simeq 4\pi R^2
+    \frac{\kappa}{c^2}
+    \left(\frac{\Delta\varphi}{2\Delta}\right)^2
+    \Delta
+    \int_{-\infty}^{+\infty}
+      \operatorname{sech}^4 u\,du
+  \nonumber\\[4pt]
+  &= 4\pi R^2
+     \frac{\kappa}{c^2}
+     \left(\frac{\Delta\varphi}{2\Delta}\right)^2
+     \Delta \cdot \frac{4}{3},
+  \label{eq:Meff_shell_calc}
+\end{align}
+where we have used the standard integral
+\begin{equation}
+  \int_{-\infty}^{+\infty} \operatorname{sech}^4 u\,du
+  = \frac{4}{3}.
+\end{equation}
+Thus
+\begin{equation}
+  M_{\rm eff}
+  \simeq \frac{4\pi}{3}\,
+         \frac{\kappa}{c^2}\,
+         R^2\,\frac{(\Delta\varphi)^2}{\Delta}.
+  \label{eq:Meff_shell_result}
+\end{equation}
+
+Several points are worth noting:
+\begin{itemize}
+  \item $M_{\rm eff}$ scales with the surface area $4\pi R^2$ of the bubble,
+        as expected for a thin shell.
+  \item The dependence on $\Delta$ is $M_{\rm eff} \propto 1/\Delta$:
+        thinner shells store more gradient energy for a fixed jump
+        $\Delta\varphi$.
+  \item The combination $\kappa(\Delta\varphi)^2/\Delta$ plays the rôle
+        of a surface tension scale for the phase bubble.
+\end{itemize}
+In particular, for given $\kappa$ and $\Delta\varphi$, one can adjust
+$\Delta$ and $R$ to obtain a desired effective mass $M_{\rm eff}$.
+
+%======================================================================
+\section{Black-hole-like regime in the Newtonian picture}
+\label{sec:bh_regime}
+%======================================================================
+
+We now ask under what conditions the phase bubble constructed above behaves,
+for external observers, like a Newtonian point mass that is ``almost'' a
+black hole. Since we remain in the Newtonian framework, there is no true
+event horizon; instead, we look for a regime where the potential is
+indistinguishable from $-GM_{\rm eff}/r$ down to radii comparable to the
+Schwarzschild radius associated with $M_{\rm eff}$.
+
+%----------------------------------------------------------------------
+\subsection{Exterior potential and matching scale}
+%----------------------------------------------------------------------
+
+Let us denote the Schwarzschild radius associated with $M_{\rm eff}$ by
+\begin{equation}
+  r_s = \frac{2GM_{\rm eff}}{c^2}.
+  \label{eq:rs_def}
+\end{equation}
+Outside the shell ($r \gg R + \Delta$) the potential is
+\begin{equation}
+  \Phi(r) \simeq -\frac{GM_{\rm eff}}{r},
+  \qquad
+  r \gtrsim R + \Delta.
+\end{equation}
+A black-hole-like regime is approached when the bubble radius $R$ is
+only mildly larger than $r_s$,
+\begin{equation}
+  R \sim \mathcal{O}(1)\,r_s.
+\end{equation}
+In that case the potential near the shell is deep,
+\begin{equation}
+  |\Phi(R)| \simeq \frac{GM_{\rm eff}}{R}
+  \sim \frac{c^2}{2},
+\end{equation}
+and the local escape velocity,
+\begin{equation}
+  v_{\rm esc}(R)
+  = \sqrt{\frac{2GM_{\rm eff}}{R}},
+\end{equation}
+approaches $c$ from below. For an external observer restricted to
+radii $r \gtrsim R$ the configuration behaves like a compact mass
+very close to the black-hole threshold.
+
+%----------------------------------------------------------------------
+\subsection{Newtonian redshift of phase clocks}
+%----------------------------------------------------------------------
+
+Although true horizons and full relativistic redshift lie beyond the
+Newtonian approximation, we can already see how a strong redshift of
+phase clocks arises in this regime. In the weak-field limit the metric
+component $g_{00}$ is
+\begin{equation}
+  g_{00}(\mathbf{x})
+  \simeq 1 + \frac{2\Phi(\mathbf{x})}{c^2},
+\end{equation}
+and a phase clock at rest at radius $r$ ticks with coordinate-time
+frequency
+\begin{equation}
+  f(r)
+  \propto \sqrt{g_{00}(r)}
+  \simeq 1 + \frac{\Phi(r)}{c^2}.
+\end{equation}
+For two identical clocks at radii $r_1$ and $r_2$ the fractional
+frequency shift is
+\begin{equation}
+  \frac{\Delta f}{f}
+  \simeq \frac{\Phi(r_2) - \Phi(r_1)}{c^2}.
+\end{equation}
+If $r_1$ lies close to $R \sim r_s$ while $r_2$ is far away, the
+difference $\Phi(r_2) - \Phi(r_1)$ can approach $-\mathcal{O}(c^2)$,
+leading to a large redshift factor. In this sense, even at the Newtonian
+level, the phase bubble realises a strongly redshifted region, consistent
+with its interpretation as a black-hole analogue.
+
+%======================================================================
+\section{Visualisation and embedding into the Phase-Fibre programme}
+\label{sec:visualisation_embedding}
+%======================================================================
+
+So far we have treated the phase bubble as a purely Newtonian phase
+configuration. In this section we briefly discuss how it embeds into
+the full Phase-Fibre picture and how it can be visualised.
+
+%----------------------------------------------------------------------
+\subsection{Contour plots: phase, energy density and potential}
+%----------------------------------------------------------------------
+
+A particularly simple way to visualise the configuration is to plot
+contours of the phase field $\varphi(r)$, the effective density
+$\rho_{\rm eff}(r)$ and the Newtonian potential $\Phi(r)$ in a
+meridional $(r,\theta)$ plane. In such plots:
+\begin{itemize}
+  \item the phase $\varphi$ is nearly uniform inside and outside
+        the bubble, with a sharp transition at $r \simeq R$;
+  \item the effective density $\rho_{\rm eff}$ is concentrated in a
+        thin shell around $r = R$, representing the phase tension;
+  \item the potential $\Phi$ is shallow at large radii and becomes
+        deep near the shell, approaching the familiar $-GM_{\rm eff}/r$
+        profile.
+\end{itemize}
+
+\begin{figure}[t]
+  \centering
+
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{5D_IV_1.png}
+    \caption{Phase field lines around a circular cavity.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{5D_IV_2.png}
+    \caption{Field lines and circular equipotentials.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{5D_IV_3.png}
+    \caption{Ring of phase-gradient energy $|\nabla\varphi|^2$.}
+  \end{subfigure}
+
+  \caption{Phase cavity in the Newtonian phase-field model.
+  \textbf{Left:} schematic phase cavity in the $(x,y)$ plane. The central
+  white disk is a circular defect where the phase fibre is removed, while the
+  teal solid and dashed curves show orthogonal phase coordinates that solve
+  the Laplace equation in the exterior region. \textbf{Middle:} the same
+  phase field lines together with circular equipotentials (orange) representing
+  a spherically symmetric Newtonian potential sourced by the cavity.
+  \textbf{Right:} radial ring of phase-gradient energy
+  $|\nabla\varphi|^2 \propto \mathrm{sech}^4[(r-R)/\Delta]$ generated by a
+  tanh-bubble profile $\varphi(r)=\varphi_0\tanh[(r-R)/\Delta]$, localizing
+  the effective mass in a thin shell around $r\simeq R$. Together, these
+  panels summarize our cartoon: a hole in the phase fibre, a ring of phase
+  tension, and the resulting $1/r$ potential.}
+  \label{fig:phase_bubble_contours}
+\end{figure}
+
+%----------------------------------------------------------------------
+\subsection{Embedding into the 5D Phase-Fibre language}
+%----------------------------------------------------------------------
+
+From the full Phase-Fibre viewpoint, the scalar field $\varphi$ in the
+Newtonian limit is a low-energy remnant of the compact fibre coordinate
+$\phi$ in the 5D metric~\eqref{eq:5d_metric_PF_IV}. A phase bubble
+corresponds to a configuration where the ``preferred'' phase along the
+fibre changes from $\varphi_{\rm in}$ to $\varphi_{\rm out}$ across
+a shell, and the fibre itself may shrink or deform in the core region.
+The effective density~\eqref{eq:rho_eff_def} then encodes the stiffness
+or tension associated with gradients along the fibre.
+
+This interpretation ties the present construction back to the earlier
+Foundations notes:
+\begin{itemize}
+  \item Foundations~0 and~I fix the 5D metric and the conceptual picture
+        of a compact phase fibre over spacetime.
+  \item Foundations~II shows how phase clocks move along the fibre and
+        how their frequencies are affected by $g_{00}$ and $A_\mu$.
+  \item Foundations~III demonstrates that extended phase textures can
+        reproduce halo-like rotation curves.
+  \item The present Foundations~IV shows that localised phase defects
+        generate black-hole-like Newtonian potentials, completing the
+        minimal diagram
+        \[
+          \text{phase fibre} \;\Rightarrow\;
+          \text{phase field} \;\Rightarrow\;
+          \{\text{haloes, black-hole analogues}\}.
+        \]
+\end{itemize}
+Taken together, these notes provide a unified geometric language in
+which weak gravity, dark-matter-like haloes and black-hole-like sources
+are different manifestations of the same underlying phase structure.
+
+%======================================================================
+\section{Discussion and outlook}
+\label{sec:discussion}
+%======================================================================
+
+In this note we have shown that a very simple phase-field setup in the
+Phase-Fibre framework already supports configurations that behave, for
+external observers, like Newtonian black-hole analogues. A single static
+phase profile $\varphi(r)$, together with the effective density
+\eqref{eq:rho_eff_def} and the Poisson equation \eqref{eq:Poisson_rho_eff},
+is sufficient to construct a phase bubble whose exterior potential is
+$-GM_{\rm eff}/r$ and whose core is regular.
+
+%----------------------------------------------------------------------
+\subsection{Take-home message}
+%----------------------------------------------------------------------
+
+The key points can be summarised as follows:
+\begin{itemize}
+  \item A smooth phase-bubble profile
+        \eqref{eq:phi_profile}--\eqref{eq:rho_eff_shell}
+        generates a thin shell of phase-gradient energy around radius $R$.
+  \item In the thin-shell limit the effective mass is given by
+        Eq.~\eqref{eq:Meff_shell_result}, scaling with the surface area
+        $4\pi R^2$ and inversely with the shell thickness $\Delta$.
+  \item For $R$ only slightly larger than the Schwarzschild radius
+        $r_s = 2GM_{\rm eff}/c^2$ the bubble behaves as a compact mass
+        whose escape velocity approaches $c$ near the shell and whose
+        potential produces strong Newtonian redshifts.
+  \item From the Phase-Fibre viewpoint, the configuration is simply a
+        localised defect of the phase fibre whose boundary carries
+        tension; the integrated phase energy plays the role of mass.
+\end{itemize}
+
+In the broader PhaseGeometry programme, this provides a concrete example
+of how the same phase degrees of freedom that govern haloes in
+Foundations~III can also generate black-hole-like sources, all within a
+single geometric language based on phase fibres.
+
+%----------------------------------------------------------------------
+\subsection{What we do not claim}
+%----------------------------------------------------------------------
+
+It is equally important to state explicitly what we \emph{do not} claim:
+
+\begin{itemize}
+  \item We do not claim to have constructed a new fundamental theory of
+        black holes. The present model is a classical, Newtonian toy
+        construction built on top of standard gravity.
+  \item We do not introduce exotic matter or modify general relativity.
+        The only new ingredient is an effective phase field whose
+        gradient energy sources the usual Poisson equation.
+  \item We do not model horizons, Hawking radiation or genuinely quantum
+        aspects of black-hole physics. The analysis remains in the
+        weak-field, Newtonian regime, even when the potential is taken
+        to be deep.
+  \item We do not claim specific new observational signatures that would
+        distinguish these phase bubbles from standard compact objects.
+        The construction is intended as a proof-of-principle within the
+        PhaseGeometry paradigm, not as a fully realistic model of
+        astrophysical black holes.
+\end{itemize}
+
+Within these boundaries, the phase-bubble setup provides a clean and
+controllable playground for phase-based black-hole analogues.
+
+%----------------------------------------------------------------------
+\subsection{Relation to existing work}
+\label{subsec:relation_existing}
+%----------------------------------------------------------------------
+
+It is useful to place the present construction within the broader
+landscape of compact-object and halo models. Conceptually, the closest
+relatives are scalar-field compact objects (such as boson stars) and
+more general exotic compact objects (ECOs), where the gravitational
+field is sourced not by ordinary matter but by non-trivial field
+configurations. In many such models the exterior spacetime can be very
+close to Schwarzschild, while the interior structure differs
+dramatically from a black hole, sometimes avoiding an event horizon
+entirely.
+
+The approach taken here is deliberately more conservative and more
+minimal. We stay in the Newtonian limit of general relativity, work
+with a static phase field whose gradient energy defines an effective
+mass density, and use only standard Poisson gravity. Within this simple
+framework we find that:
+(i) extended phase defects can reproduce halo-like circular-velocity
+profiles with a constant-density core, a flat intermediate region and
+a Keplerian fall-off (as shown in Foundations~III); and
+(ii) sufficiently deep and compact defects behave, for external observers,
+like point masses with an effective Schwarzschild radius
+$r_s = 2GM_{\rm eff}/c^2$, leading to strong redshifts and escape
+velocities approaching the speed of light.
+
+In that sense the present note provides a fully transparent toy example
+of an exotic compact object built from a phase field: the exterior
+potential is exactly the Newtonian $-GM_{\rm eff}/r$, while the internal
+structure is encoded in the phase texture and its gradient energy. At
+the same time, the link to the Phase-Fibre programme keeps the
+construction anchored in a unified geometric language where
+$g_{\mu\nu}$, $A_\mu$ and the phase fibre are treated on the same
+footing. Readers familiar with standard halo profiles and scalar compact
+objects may view this work as a minimal phase-field analogue, tailored
+to a Newtonian regime and to the needs of the PhaseGeometry series
+rather than to full-fledged model building in relativistic astrophysics.
+
+%----------------------------------------------------------------------
+\subsection{Future directions}
+%----------------------------------------------------------------------
+
+Several natural extensions suggest themselves:
+\begin{itemize}
+  \item Derive the phase profile $\varphi(r)$ and the corresponding
+        fibre geometry from a concrete 5D action, rather than treating
+        them phenomenologically.
+  \item Go beyond the Newtonian approximation and study the backreaction
+        of phase-fibre defects on the full 4D metric, including the
+        possible formation of horizons and quasi-static relativistic
+        solutions.
+  \item Investigate time-dependent phase bubbles, mergers and
+        oscillations as toy models for gravitational collapse and
+        ringdown in the phase-fibre language.
+  \item Explore multi-defect configurations and phase-fibre lattices as
+        possible analogues of multi-black-hole systems and
+        dark-matter-like structures in a unified phase-field setting.
+\end{itemize}
+
+Overall, the present construction should be read as a classical,
+Newtonian toy model rather than as a proposal for a new theory of black
+holes. We stay entirely within standard gravity, work with static phase
+profiles in the weak-field limit, and use them to generate effective
+mass shells whose exterior potential mimics that of a point mass.
+Horizons, Hawking radiation and genuinely quantum aspects of black-hole
+physics lie outside the scope of this note. Any future claims about new
+observational signatures or fully relativistic Phase-Fibre black holes
+would require a separate, explicitly relativistic and quantum layer,
+built on top of the conservative framework developed here.
+
+
+%======================================================================
+\section*{Acknowledgements}
+%======================================================================
+
+This work is part of the ongoing PhaseGeometry programme exploring
+phase variables and higher-dimensional fibres as carriers of
+gravitational phenomena.
+
+%======================================================================
+\begin{thebibliography}{99}
+%======================================================================
+
+\bibitem{PhaseFibreSeries}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Fibre series: overview and core framework},
+\newblock Zenodo series record (2025),
+DOI:\,\texttt{10.5281/zenodo.17736918}.
+
+\bibitem{SchunckMielke}
+F.~E.~Schunck and E.~W.~Mielke,
+\newblock ``General relativistic boson stars'',
+\newblock Class.\ Quant.\ Grav.\ \textbf{20}, R301 (2003).
+
+\bibitem{CardosoPani}
+V.~Cardoso and P.~Pani,
+\newblock ``Testing the nature of dark compact objects: a status report'',
+\newblock Living Rev.\ Relativ.\ \textbf{22}, 4 (2019).
+
+\bibitem{NFW}
+J.~F.~Navarro, C.~S.~Frenk and S.~D.~M.~White,
+\newblock ``The Structure of Cold Dark Matter Halos'',
+\newblock Astrophys.\ J.\ \textbf{462}, 563 (1996).
+
+\bibitem{Burkert}
+A.~Burkert,
+\newblock ``The Structure of Dark Matter Halos in Dwarf Galaxies'',
+\newblock Astrophys.\ J.\ Lett.\ \textbf{447}, L25 (1995).
+
+\end{thebibliography}
+
+\end{document}

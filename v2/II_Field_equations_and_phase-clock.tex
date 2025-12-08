@@ -1,0 +1,1046 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\numberwithin{equation}{section}
+
+\title{PhaseGeometry Phase-Fibre Foundations II:\\[4pt]
+Action, field equations and phase-clock configurations}
+
+\author{Aleksey Turchanov}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Part of the PhaseGeometry Phase-Fibre programme; archived in the Core Package\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+
+
+\begin{abstract}
+We formulate a minimal phase-fibre framework in which classical gravity, electromagnetism and phase-based clocks are described within a single geometric setting built on standard general relativity and Maxwell theory. The construction starts from a five-dimensional Kaluza--Klein metric with a compact U(1) fibre coordinate $\phi$, so that phase is promoted to a \emph{genuine fifth coordinate} on the same mathematical footing as space and time. The five-dimensional Einstein--Hilbert action reduces to the usual four-dimensional Einstein--Maxwell action when the fields are independent of the fibre coordinate, and no new propagating degrees of freedom are introduced.
+
+On top of this background we introduce a simple worldline action for a phase clock: a timelike test trajectory $x^\mu(\tau)$ with an internal phase variable $\phi(\tau)$ living on the fibre. The covariant phase rate $D\phi/D\tau = d\phi/d\tau + kA_\mu u^\mu$ is constrained to a constant reference frequency $\omega_0$ in proper time. This provides a compact description of phase clocks such as Josephson oscillators in a given background metric $g_{\mu\nu}$ and gauge field $A_\mu$.
+
+We work out explicitly two benchmark configurations. In a static weak gravitational field with two identical clocks at different heights, we recover the standard gravitational redshift $\Delta f/f \simeq \Delta\Phi/c^2$ directly from the phase-clock condition and the relation between proper and coordinate time. In a simple rotating-ring configuration, we show how a Sagnac-type phase shift $\Delta\phi \sim (\omega_0/c^2)\,\Omega A$ arises for a phase signal propagating around the loop, where $\Omega$ is the angular velocity and $A$ the area of the ring. These examples illustrate that the phase-fibre picture is mathematically well-posed and reproduces standard weak-gravity clock physics in a compact geometric form while remaining entirely within classical four-dimensional GR and Maxwell theory.
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+\vspace{1em}
+%======================================================================
+\section{Introduction and scope}
+%======================================================================
+
+This paper is the second part of the PhaseGeometry Phase-Fibre programme.
+It is intended as a \emph{technical companion} to the conceptual note
+Ref.~\cite{PhaseFibreI}, where the main ideas of the phase-fibre picture
+were presented in a deliberately lightweight and intuitive form: a compact
+phase fibre attached to each point of four-dimensional spacetime, a
+Kaluza--Klein metric that encodes both gravity and electromagnetism, and
+an interpretation of macroscopic phase-based clocks as worldlines that
+advance uniformly along the fibre.
+
+Within the Phase-Fibre line of the PhaseGeometry programme this paper
+sits just above the core ``passport'' level. The accompanying
+\emph{Foundations 0: Technical Passport} fixes the ontology and notation
+of the five-dimensional phase-fibre framework in a compact,
+equation-driven form, while \emph{Foundations I: Conceptual Framework}
+emphasises the physical picture, intuitive cartoons and links to
+superconducting / Josephson systems. The present Part~II uses the same
+conventions as Foundations~0 and~I, but focuses on the explicit action,
+field equations and worked examples for phase clocks in given
+backgrounds.
+
+In the present work we keep strictly to classical field theory and adopt
+a conservative technical goal. We \emph{do not} modify general relativity
+or Maxwell theory, nor do we introduce additional dynamical fields
+beyond those already present in the four-dimensional Einstein--Maxwell
+system. Instead, we take the phase-fibre ansatz seriously at the level
+of the action and field equations, and we show in detail that it
+reproduces standard weak-gravity clock physics in a compact geometric
+language.
+
+The key ingredients can be summarised as follows. Four-dimensional
+spacetime $(\mathcal{M}_4,g_{\mu\nu})$ is taken as in standard general
+relativity. Above each spacetime point hangs a compact U(1) fibre with
+coordinate $\phi\in[0,2\pi)$, representing an internal phase. On the
+resulting five-dimensional bundle $\mathcal{M}_5$ one introduces a
+Kaluza--Klein metric
+\begin{equation}
+  ds_5^2
+  = g_{\mu\nu}(x)\,dx^\mu dx^\nu
+    + R^2\bigl(d\phi + kA_\mu(x)\,dx^\mu\bigr)^2,
+\end{equation}
+so that the electromagnetic potential $A_\mu$ appears as the connection
+on the phase fibre, and the metric component $g_{00}$ controls the
+relative rate between proper and coordinate time. Phase-based clocks
+(superconducting condensates, Josephson oscillators, and other coherent
+systems) are then described as objects whose internal phase winds
+uniformly along the fibre with respect to proper time.
+
+In the Newtonian limit, a separate phase-field note
+(PhaseGeometry Series Part~III, Ref.~\cite{PhaseFieldIII})
+showed that a static scalar field $\varphi(\mathbf{x})$ with gradient
+energy density $\rho_{\rm eff}\propto|\nabla\varphi|^2$ can source a
+Newtonian potential $\Phi(\mathbf{x})$ via the usual Poisson equation,
+and that this potential immediately feeds into the gravitational
+redshift of phase clocks through $g_{00}\simeq 1+2\Phi/c^2$.
+In that context the emphasis was on a phenomenological low-energy
+``phase floor'' for weak gravity.
+
+The emphasis in the present paper is different. Here we aim to:
+\begin{itemize}
+  \item formulate the phase-fibre ansatz at the level of an explicit
+        five-dimensional action and derive the corresponding
+        four-dimensional Einstein--Maxwell theory by dimensional
+        reduction;
+  \item introduce a minimal worldline action for a phase clock --- a
+        timelike trajectory with an internal phase degree of freedom
+        on the fibre --- and obtain its phase evolution in a given
+        background $(g_{\mu\nu},A_\mu)$;
+  \item work out two simple clock configurations where the standard
+        weak-gravity results (gravitational redshift and Sagnac-type
+        phase shifts) appear naturally in the phase-fibre description.
+\end{itemize}
+
+Throughout we impose three conservative constraints:
+\begin{enumerate}
+  \item We work entirely within standard four-dimensional general
+        relativity and classical Maxwell theory. The five-dimensional
+        phase-fibre metric is used as a geometric parametrisation that
+        reproduces the Einstein--Maxwell action; no extra five-dimensional
+        modes or non-standard couplings are introduced.
+  \item The phase clocks are treated as test systems on a given
+        background. Their contribution to the stress--energy tensor
+        and current is assumed negligible, so that the background
+        geometry and electromagnetic field obey the usual
+        Einstein--Maxwell equations with other matter sources.
+  \item All results are derived in regimes where standard approximations
+        are valid: weak gravitational fields for the redshift example,
+        and small angular velocities for the rotating-ring configuration.
+\end{enumerate}
+
+The structure of the paper is as follows.
+In Sec.~\ref{sec:phase_fibre_action} we introduce the five-dimensional
+phase-fibre metric and derive the four-dimensional Einstein--Maxwell
+action and field equations by dimensional reduction. In
+Sec.~\ref{sec:phase_clocks_worldlines} we define a simple worldline
+action for a phase clock and derive the corresponding phase evolution
+equation in a given background. Section~\ref{sec:configA} applies this
+framework to a static weak-field configuration with two identical clocks
+at different heights and reproduces the standard gravitational redshift
+formula. In Sec.~\ref{sec:configB} we consider a simple rotating-ring
+setup and show how a Sagnac-type phase shift arises for a phase signal
+propagating around the loop. We conclude in Sec.~\ref{sec:discussion}
+with a brief outlook, including the advantages and potential
+applications of the phase-fibre language and its connection to more
+detailed device-level configurations discussed elsewhere.
+
+%======================================================================
+\section{Phase-fibre framework and effective action}
+\label{sec:phase_fibre_action}
+%======================================================================
+
+In this section we formulate the phase-fibre ansatz at the level of the
+action and derive the corresponding four-dimensional Einstein--Maxwell
+theory by dimensional reduction. We work purely in classical general
+relativity and classical electromagnetism.
+
+%----------------------------------------------------------------------
+\subsection{Five-dimensional phase-fibre metric}
+%----------------------------------------------------------------------
+
+We consider a five-dimensional manifold $\mathcal{M}_5$ which is a U(1)
+fibre bundle over four-dimensional spacetime $\mathcal{M}_4$. Local
+coordinates on $\mathcal{M}_5$ are written as
+\begin{equation}
+  X^A = (x^\mu,\phi), \qquad \mu = 0,1,2,3,
+\end{equation}
+where $\phi$ is a periodic coordinate on the internal circle $S^1$.
+
+The phase-fibre metric is taken in the Kaluza--Klein form
+\begin{equation}
+  ds_5^2
+  = G_{AB} dX^A dX^B
+  = g_{\mu\nu}(x)\,dx^\mu dx^\nu
+    + R^2\bigl(d\phi + kA_\mu(x)\,dx^\mu\bigr)^2.
+  \label{eq:5d_metric_PF}
+\end{equation}
+Here $g_{\mu\nu}(x)$ is the four-dimensional spacetime metric and
+$A_\mu(x)$ is a four-dimensional U(1) gauge field. The constants $R$
+and $k$ set the scale of the fibre radius and the coupling of the fibre
+coordinate to $A_\mu$; their combination will be fixed below by matching
+to the standard electromagnetic action.
+
+The one-form
+\begin{equation}
+  \mathcal{A} \equiv d\phi + k A_\mu(x)\,dx^\mu
+\end{equation}
+plays the role of a U(1) connection on the fibre. Under a local shift
+of the fibre coordinate
+\begin{equation}
+  \phi(x) \to \phi(x) + \chi(x)
+\end{equation}
+the metric~\eqref{eq:5d_metric_PF} remains invariant provided
+\begin{equation}
+  A_\mu(x) \to A_\mu(x) - \frac{1}{k}\,\partial_\mu\chi(x).
+\end{equation}
+Thus the usual U(1) gauge symmetry is implemented geometrically as a
+coordinate transformation along the phase fibre.
+
+We impose the standard Kaluza--Klein assumption that $g_{\mu\nu}$ and
+$A_\mu$ are independent of the fibre coordinate $\phi$, so that all
+fields depend only on $x^\mu$.
+
+%----------------------------------------------------------------------
+\subsection{Five-dimensional Einstein--Hilbert action}
+%----------------------------------------------------------------------
+
+The purely gravitational sector in five dimensions is described by the
+Einstein--Hilbert action
+\begin{equation}
+  S_5
+  = \frac{1}{16\pi G_5}
+    \int_{\mathcal{M}_5} d^5X\,\sqrt{-G}\,R_5,
+  \label{eq:5D_EH_action}
+\end{equation}
+where $G \equiv \det G_{AB}$ and $R_5$ is the Ricci scalar constructed
+from the metric~\eqref{eq:5d_metric_PF}.
+
+For the metric ansatz~\eqref{eq:5d_metric_PF} one finds the standard
+Kaluza--Klein decomposition
+\begin{equation}
+  R_5 = R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu}F^{\mu\nu},
+  \qquad
+  \sqrt{-G} = R\sqrt{-g},
+  \label{eq:R5_decomposition}
+\end{equation}
+where $R_4$ is the Ricci scalar of the four-dimensional metric
+$g_{\mu\nu}$, $g \equiv \det g_{\mu\nu}$, and
+\begin{equation}
+  F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu
+\end{equation}
+is the Maxwell field strength.
+
+Substituting~\eqref{eq:R5_decomposition} into~\eqref{eq:5D_EH_action}
+and integrating over the circle of circumference $2\pi$ yields
+\begin{equation}
+  S_5
+  = \frac{2\pi R}{16\pi G_5}
+    \int d^4x\,\sqrt{-g}\,
+    \left[
+      R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu}F^{\mu\nu}
+    \right].
+  \label{eq:5D_action_reduced}
+\end{equation}
+
+%----------------------------------------------------------------------
+\subsection{Dimensional reduction to Einstein--Maxwell}
+%----------------------------------------------------------------------
+
+We define the four-dimensional Newton constant by
+\begin{equation}
+  \frac{1}{16\pi G_4}
+  \equiv
+  \frac{2\pi R}{16\pi G_5},
+  \label{eq:G4_definition}
+\end{equation}
+so that the Einstein--Hilbert term becomes
+\begin{equation}
+  S_{\text{EH,4D}}
+  = \frac{1}{16\pi G_4}
+    \int d^4x\,\sqrt{-g}\,R_4.
+\end{equation}
+To bring the Maxwell term into the standard form
+\begin{equation}
+  S_{\text{EM}}
+  = -\frac{1}{4\mu_0}\int d^4x\,\sqrt{-g}\,F_{\mu\nu}F^{\mu\nu},
+\end{equation}
+we require
+\begin{equation}
+  \frac{2\pi R}{16\pi G_5}\,\frac{1}{4}(kR)^2
+  = \frac{1}{4\mu_0}.
+\end{equation}
+Using~\eqref{eq:G4_definition} this can be written as
+\begin{equation}
+  \frac{1}{16\pi G_4}\,(kR)^2
+  = \frac{1}{\mu_0},
+\end{equation}
+or equivalently
+\begin{equation}
+  (kR)^2 = \frac{16\pi G_4}{\mu_0}.
+  \label{eq:kR_matching}
+\end{equation}
+In practice, $G_4$ and $\mu_0$ are fixed by experiment, and
+Eq.~\eqref{eq:kR_matching} constrains only the combination $kR$. We do
+not attempt to determine $k$ and $R$ separately.
+
+With these identifications the effective four-dimensional gravitational
+and electromagnetic action becomes
+\begin{equation}
+  S_{\text{grav+EM}}
+  = \frac{1}{16\pi G_4}\int d^4x\,\sqrt{-g}\,R_4
+    - \frac{1}{4\mu_0}\int d^4x\,\sqrt{-g}\,F_{\mu\nu}F^{\mu\nu}.
+  \label{eq:Einstein_Maxwell_action}
+\end{equation}
+Thus the phase-fibre metric~\eqref{eq:5d_metric_PF} reproduces the
+standard Einstein--Maxwell theory in four dimensions. The fibre
+construction is an equivalent geometric formulation, without changing
+the classical field equations for $g_{\mu\nu}$ and $A_\mu$.
+
+%----------------------------------------------------------------------
+\subsection{Field equations and sources}
+%----------------------------------------------------------------------
+
+Varying~\eqref{eq:Einstein_Maxwell_action} with respect to the metric
+$g_{\mu\nu}$ gives
+\begin{equation}
+  \delta S_{\text{grav+EM}}
+  = \frac{1}{16\pi G_4}
+    \int d^4x\,\sqrt{-g}\,
+      (G_{\mu\nu} - 8\pi G_4 T^{\text{EM}}_{\mu\nu})
+      \,\delta g^{\mu\nu},
+\end{equation}
+where
+\begin{equation}
+  G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R_4
+\end{equation}
+is the Einstein tensor and $T^{\text{EM}}_{\mu\nu}$ is the electromagnetic
+stress--energy tensor
+\begin{equation}
+  T^{\text{EM}}_{\mu\nu}
+  = \frac{1}{\mu_0}
+    \left(
+      F_{\mu\alpha}F_\nu{}^\alpha
+      - \frac{1}{4}g_{\mu\nu}F_{\alpha\beta}F^{\alpha\beta}
+    \right).
+\end{equation}
+In the presence of additional matter fields with stress--energy tensor
+$T^{\text{mat}}_{\mu\nu}$ the Einstein equations are
+\begin{equation}
+  G_{\mu\nu}
+  = 8\pi G_4
+    \left(
+      T^{\text{EM}}_{\mu\nu} + T^{\text{mat}}_{\mu\nu}
+    \right).
+  \label{eq:Einstein_eqs}
+\end{equation}
+
+Variation with respect to $A_\mu$ yields the inhomogeneous Maxwell
+equations. Writing the matter contribution to the total action as
+$S_{\text{mat}}[g_{\mu\nu},A_\mu,\dots]$, we define the electric
+four-current by
+\begin{equation}
+  J^\mu(x)
+  \equiv \frac{1}{\sqrt{-g}}
+  \frac{\delta S_{\text{mat}}}{\delta A_\mu(x)}.
+  \label{eq:J_def}
+\end{equation}
+Then variation of~\eqref{eq:Einstein_Maxwell_action} plus $S_{\text{mat}}$
+gives
+\begin{equation}
+  \nabla_\mu F^{\mu\nu} = \mu_0 J^\nu,
+  \label{eq:Maxwell_eqs}
+\end{equation}
+with $\nabla_\mu$ the covariant derivative compatible with $g_{\mu\nu}$.
+
+Equations~\eqref{eq:Einstein_eqs} and~\eqref{eq:Maxwell_eqs} are the
+standard Einstein--Maxwell field equations. In what follows we treat
+phase clocks as test systems: their contribution to $T^{\text{mat}}_{\mu\nu}$
+and $J^\mu$ is assumed small enough that the background metric and
+electromagnetic field can be taken as given solutions of
+Eqs.~\eqref{eq:Einstein_eqs}--\eqref{eq:Maxwell_eqs}.
+
+%======================================================================
+\section{Phase clocks as test worldlines}
+\label{sec:phase_clocks_worldlines}
+%======================================================================
+
+We now introduce a minimal model for a phase-based clock as a test
+worldline with an internal phase coordinate on the fibre. The goal is
+to obtain a clean evolution equation for the phase in a given background
+$(g_{\mu\nu},A_\mu)$ and to connect it to the phase-fibre picture.
+
+%----------------------------------------------------------------------
+\subsection{Worldline and proper time}
+%----------------------------------------------------------------------
+
+A point-like clock follows a timelike worldline $x^\mu(\lambda)$ in
+spacetime. For a given metric $g_{\mu\nu}$ the line element is
+\begin{equation}
+  ds^2 = g_{\mu\nu}\,dx^\mu dx^\nu.
+\end{equation}
+We restrict attention to timelike worldlines with $ds^2 > 0$ and define
+the proper time $\tau$ along the worldline by
+\begin{equation}
+  d\tau = \frac{1}{c}\sqrt{ds^2}
+        = \frac{1}{c}\sqrt{g_{\mu\nu}u^\mu u^\nu}\,d\lambda,
+\end{equation}
+where
+\begin{equation}
+  u^\mu \equiv \frac{dx^\mu}{d\lambda}
+\end{equation}
+is the tangent vector. We fix the parametrisation by choosing
+$\lambda = \tau$, so that
+\begin{equation}
+  u^\mu \equiv \frac{dx^\mu}{d\tau},
+  \qquad
+  g_{\mu\nu}u^\mu u^\nu = c^2.
+  \label{eq:normalisation_u}
+\end{equation}
+
+%----------------------------------------------------------------------
+\subsection{Phase variable and clock action}
+%----------------------------------------------------------------------
+
+We assign to the clock an internal phase variable $\phi(\tau)$ which
+lives on the same U(1) fibre as the geometric coordinate in
+Eq.~\eqref{eq:5d_metric_PF}. Along the worldline the natural
+gauge-covariant phase rate is
+\begin{equation}
+  \frac{D\phi}{D\tau}
+  \equiv \frac{d\phi}{d\tau} + k A_\mu u^\mu,
+  \label{eq:covariant_phase_rate}
+\end{equation}
+which is the pullback of the fibre covariant derivative
+$D_\mu\phi = \partial_\mu\phi + kA_\mu$.
+
+We model the clock by the following worldline action:
+\begin{equation}
+  S_{\text{clock}}
+  = -m c^2 \int d\tau
+    -\frac{I}{2}\int d\tau\,
+      \biggl(
+        \frac{D\phi}{D\tau} - \omega_0
+      \biggr)^2.
+  \label{eq:S_clock_def}
+\end{equation}
+Here:
+\begin{itemize}
+  \item $m$ is the rest mass (assumed small enough that the clock can
+        be treated as a test body);
+  \item $I$ is an effective ``moment of inertia'' in phase space that
+        controls how strongly the clock is constrained to run at the
+        reference angular frequency $\omega_0$;
+  \item $\omega_0$ is a constant frequency parameter, representing the
+        intrinsic phase rate of the clock in proper time.
+\end{itemize}
+
+The first term in~\eqref{eq:S_clock_def} is the usual proper-time
+action of a free point particle. The second term penalises deviations
+of the covariant phase rate $D\phi/D\tau$ from $\omega_0$. In the
+formal limit $I\to\infty$ the phase constraint is enforced exactly,
+\begin{equation}
+  \frac{D\phi}{D\tau} = \omega_0,
+  \label{eq:clock_constraint}
+\end{equation}
+and the clock runs at a fixed phase rate along its worldline.
+
+Since we work in the test-clock limit, we neglect the contribution of
+$S_{\text{clock}}$ to the background field equations and treat
+$g_{\mu\nu}$ and $A_\mu$ as prescribed.
+
+%----------------------------------------------------------------------
+\subsection{Variation with respect to the phase}
+%----------------------------------------------------------------------
+
+Varying the action~\eqref{eq:S_clock_def} with respect to $\phi(\tau)$,
+keeping $x^\mu(\tau)$ fixed, gives
+\begin{equation}
+  \delta S_{\text{clock}}
+  = -I\int d\tau\,
+    \biggl(
+      \frac{D\phi}{D\tau} - \omega_0
+    \biggr)
+    \delta\!\left(
+      \frac{D\phi}{D\tau}
+    \right).
+\end{equation}
+Since
+\begin{equation}
+  \delta\!\left(\frac{D\phi}{D\tau}\right)
+  = \frac{d}{d\tau}\delta\phi,
+\end{equation}
+integrating by parts (and assuming fixed endpoints $\delta\phi=0$) we
+obtain
+\begin{equation}
+  \delta S_{\text{clock}}
+  = I\int d\tau\,
+    \frac{d}{d\tau}
+    \biggl(
+      \frac{D\phi}{D\tau} - \omega_0
+    \biggr)\delta\phi.
+\end{equation}
+Requiring $\delta S_{\text{clock}}=0$ for arbitrary $\delta\phi$ yields
+the phase evolution equation
+\begin{equation}
+  \frac{d}{d\tau}
+  \biggl(
+    \frac{D\phi}{D\tau} - \omega_0
+  \biggr) = 0.
+\end{equation}
+The general solution is
+\begin{equation}
+  \frac{D\phi}{D\tau}
+  = \omega_0 + C,
+\end{equation}
+where $C$ is a constant along the worldline. Choosing initial
+conditions such that $D\phi/D\tau = \omega_0$ at some reference
+proper time fixes $C=0$, so that
+\begin{equation}
+  \frac{D\phi}{D\tau}
+  = \omega_0,
+  \label{eq:clock_condition_final}
+\end{equation}
+which is the phase-clock condition used in the concept note.
+
+Equivalently, in terms of $d\phi/d\tau$,
+Eq.~\eqref{eq:covariant_phase_rate} and
+\eqref{eq:clock_condition_final} imply
+\begin{equation}
+  \frac{d\phi}{d\tau}
+  = \omega_0 - kA_\mu u^\mu.
+  \label{eq:dphi_dtau_explicit}
+\end{equation}
+In the absence of electromagnetic fields (or in a gauge where
+$A_\mu u^\mu=0$), the phase increases at a constant rate
+$d\phi/d\tau=\omega_0$ along the worldline.
+
+%----------------------------------------------------------------------
+\subsection{Worldline trajectory and test limit}
+%----------------------------------------------------------------------
+
+Variation of~\eqref{eq:S_clock_def} with respect to $x^\mu(\tau)$
+generally yields a modified equation of motion containing the usual
+geodesic term, a Lorentz-force term proportional to $F_{\mu\nu}$, and
+additional contributions from the phase sector proportional to $I$.
+In the strict test-clock limit we assume that:
+\begin{itemize}
+  \item the clock mass $m$ is sufficiently small not to perturb the
+        background metric;
+  \item the phase inertia $I$ is small enough that the phase constraint
+        does not significantly affect the trajectory $x^\mu(\tau)$.
+\end{itemize}
+Under these assumptions the clock follows a prescribed timelike
+trajectory in the given background $(g_{\mu\nu},A_\mu)$, and we use
+Eq.~\eqref{eq:dphi_dtau_explicit} to compute its phase evolution.
+
+In the applications below we specialise further to static metrics and
+worldlines of clocks at rest in the chosen coordinates. In that case
+$u^i=0$ and $u^0 = dt/d\tau$ is determined by $g_{00}$, so
+Eq.~\eqref{eq:dphi_dtau_explicit} reduces to the simple phase-clock
+relation
+\begin{equation}
+  \frac{d\phi}{d\tau} = \omega_0,
+\end{equation}
+and the gravitational redshift enters only through the relation
+between $\tau$ and the coordinate time $t$.
+
+%======================================================================
+\section{Configuration A: static weak-field phase clock at two heights}
+\label{sec:configA}
+%======================================================================
+
+We now apply the phase-clock framework to a simple configuration:
+two identical clocks located at different heights in a static weak
+gravitational field. The goal is to derive the standard gravitational
+redshift
+\begin{equation}
+  \frac{\Delta f}{f}
+  \simeq \frac{\Delta\Phi}{c^2},
+  \label{eq:grav_redshift_standard}
+\end{equation}
+with $\Phi$ the Newtonian potential, directly from the phase-clock
+condition~\eqref{eq:clock_condition_final} and the relation between
+proper and coordinate time in the given metric.
+
+%----------------------------------------------------------------------
+\subsection{Weak-field metric and proper time}
+%----------------------------------------------------------------------
+
+In the Newtonian weak-field regime the metric can be written as
+\begin{equation}
+  ds^2
+  = g_{00}(\mathbf{x})\,c^2 dt^2
+    - \delta_{ij}\,dx^i dx^j,
+  \qquad
+  g_{00}(\mathbf{x}) \simeq 1 + \frac{2\Phi(\mathbf{x})}{c^2},
+  \label{eq:weak_metric_again}
+\end{equation}
+where $\Phi(\mathbf{x})$ is the Newtonian gravitational potential and
+$|\Phi|/c^2 \ll 1$.
+
+Consider a clock at rest at a fixed spatial position $\mathbf{x}$ in
+these coordinates. Along its worldline $dx^i=0$ and the line element
+reduces to
+\begin{equation}
+  ds^2 = g_{00}(\mathbf{x})\,c^2 dt^2.
+\end{equation}
+The proper time increment is therefore
+\begin{equation}
+  d\tau
+  = \frac{1}{c}\sqrt{ds^2}
+  = \sqrt{g_{00}(\mathbf{x})}\,dt
+  \simeq \left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right) dt,
+  \label{eq:tau_vs_t_weak}
+\end{equation}
+where we expanded $\sqrt{1+\epsilon} \simeq 1 + \epsilon/2$ with
+$\epsilon = 2\Phi/c^2$.
+
+%----------------------------------------------------------------------
+\subsection{Phase evolution and observed frequency}
+%----------------------------------------------------------------------
+
+For a phase clock the covariant phase rate along the worldline obeys
+Eq.~\eqref{eq:clock_condition_final},
+\begin{equation}
+  \frac{D\phi}{D\tau} = \omega_0.
+\end{equation}
+For a static configuration with $u^i=0$ and $A_\mu u^\mu = 0$ (or in a
+gauge where this holds) the covariant derivative reduces to an ordinary
+proper-time derivative,
+\begin{equation}
+  \frac{d\phi}{d\tau} = \omega_0.
+\end{equation}
+Using~\eqref{eq:tau_vs_t_weak}, the phase rate with respect to
+coordinate time $t$ is
+\begin{equation}
+  \frac{d\phi}{dt}
+  = \frac{d\phi}{d\tau}\,\frac{d\tau}{dt}
+  = \omega_0 \sqrt{g_{00}(\mathbf{x})}
+  \simeq \omega_0\left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right).
+  \label{eq:dphi_dt_coord}
+\end{equation}
+We define the coordinate-time frequency of the clock as
+\begin{equation}
+  f(\mathbf{x})
+  \equiv \frac{1}{2\pi}\frac{d\phi}{dt}
+  = \frac{\omega_0}{2\pi}\sqrt{g_{00}(\mathbf{x})}.
+  \label{eq:f_coord_def_configA}
+\end{equation}
+
+%----------------------------------------------------------------------
+\subsection{Frequency ratio between two heights}
+%----------------------------------------------------------------------
+
+Now consider two identical clocks at positions $\mathbf{x}_1$ and
+$\mathbf{x}_2$, with corresponding potentials
+\(\Phi_1 = \Phi(\mathbf{x}_1)\) and \(\Phi_2 = \Phi(\mathbf{x}_2)\).
+Their frequencies are
+\begin{equation}
+  f_1
+  = \frac{\omega_0}{2\pi}\sqrt{g_{00}(\mathbf{x}_1)},
+  \qquad
+  f_2
+  = \frac{\omega_0}{2\pi}\sqrt{g_{00}(\mathbf{x}_2)}.
+\end{equation}
+The ratio is
+\begin{equation}
+  \frac{f_2}{f_1}
+  = \sqrt{\frac{g_{00}(\mathbf{x}_2)}{g_{00}(\mathbf{x}_1)}}.
+\end{equation}
+Using~\eqref{eq:weak_metric_again} and expanding to first order,
+\begin{equation}
+  g_{00}(\mathbf{x}_a)
+  \simeq 1 + \frac{2\Phi_a}{c^2},
+  \qquad a=1,2,
+\end{equation}
+so that
+\begin{equation}
+  \sqrt{g_{00}(\mathbf{x}_a)}
+  \simeq 1 + \frac{\Phi_a}{c^2}.
+\end{equation}
+Hence
+\begin{equation}
+  \frac{f_2}{f_1}
+  \simeq
+  \frac{1 + \Phi_2/c^2}{1 + \Phi_1/c^2}
+  \simeq 1 + \frac{\Phi_2 - \Phi_1}{c^2},
+\end{equation}
+and the relative frequency shift is
+\begin{equation}
+  \frac{\Delta f}{f}
+  \equiv \frac{f_2 - f_1}{f_1}
+  \simeq \frac{\Phi_2 - \Phi_1}{c^2}
+  = \frac{\Delta\Phi}{c^2},
+\end{equation}
+which is Eq.~\eqref{eq:grav_redshift_standard}. For an approximately
+uniform field $\Phi(z)\simeq gz$ this reduces to the familiar form
+\begin{equation}
+  \frac{\Delta f}{f}
+  \simeq \frac{g(z_2 - z_1)}{c^2}.
+\end{equation}
+
+The key point is that the internal clock parameter $\omega_0$ cancels
+in the ratio: the gravitational field affects only the relation between
+proper and coordinate time via $g_{00}$, while the intrinsic phase rate
+in proper time remains fixed.
+
+%----------------------------------------------------------------------
+\subsection{Relation to Josephson phase clocks}
+%----------------------------------------------------------------------
+
+In superconducting systems the macroscopic phase of the condensate plays
+the role of $\phi$, and the combination
+\begin{equation}
+  \partial_\mu\theta - qA_\mu
+\end{equation}
+appearing in London and Ginzburg--Landau theory can be identified with
+the fibre covariant derivative $D_\mu\phi$ for suitable units. In a
+Josephson junction the ac effect realises a phase clock with
+\begin{equation}
+  \frac{d\phi}{dt_{\text{proper}}}
+  = \frac{2e}{\hbar}V,
+\end{equation}
+so that in flat spacetime the clock frequency is $f_J = (2e/h)V$.
+Within the phase-fibre picture, such a device is simply a particular
+realisation of the abstract phase clock considered above.
+
+As long as the junction can be treated as a coherent phase oscillator
+and the weak-field approximation holds, the gravitational redshift
+derived in this section applies directly: for two identical Josephson
+clocks operating at the same local bias but located at different
+potentials $\Phi_1$ and $\Phi_2$,
+\begin{equation}
+  \frac{\Delta f_J}{f_J}
+  \simeq \frac{\Delta\Phi}{c^2}.
+\end{equation}
+The phase-fibre formalism does not change this prediction; it provides
+a compact geometric way to see how gravity (via $g_{00}$) and
+electromagnetism (via $A_\mu$) enter jointly into the phase evolution
+of such clocks.
+
+%======================================================================
+\section{Configuration B: rotating phase-clock loop (Sagnac-type)}
+\label{sec:configB}
+%======================================================================
+
+As a second benchmark we consider a simple rotating-ring configuration
+and show how a Sagnac-type phase shift arises in the phase-clock
+language. For definiteness we work with a circular loop of radius $R$
+in the $z=0$ plane, rotating slowly with angular velocity $\Omega$
+about the $z$-axis.
+
+%----------------------------------------------------------------------
+\subsection{Metric in a rotating frame}
+%----------------------------------------------------------------------
+
+We start from flat spacetime in cylindrical coordinates
+$(t_{\rm lab}, r, \varphi_{\rm lab}, z)$:
+\begin{equation}
+  ds^2 = c^2 dt_{\rm lab}^2 - dr^2 - r^2 d\varphi_{\rm lab}^2 - dz^2.
+\end{equation}
+We now move to a frame rotating with angular velocity $\Omega$ about
+the $z$-axis. Let $(t,\varphi)$ denote the rotating coordinates and
+$(t_{\rm lab},\varphi_{\rm lab})$ the inertial lab coordinates. We define
+\begin{equation}
+  t_{\rm lab} = t, 
+  \qquad
+  \varphi_{\rm lab} = \varphi + \Omega t.
+\end{equation}
+Differentiating, we obtain
+\begin{equation}
+  d\varphi_{\rm lab} = d\varphi + \Omega\,dt.
+\end{equation}
+Substituting into the line element and expressing everything in terms
+of $(t,r,\varphi,z)$, we find
+\begin{equation}
+  ds^2
+  = (c^2 - \Omega^2 r^2)\,dt^2
+    + 2\Omega r^2\,d\varphi\,dt
+    - dr^2 - r^2 d\varphi^2 - dz^2.
+  \label{eq:rotating_metric}
+\end{equation}
+
+%----------------------------------------------------------------------
+\subsection{Null phase signal around the loop}
+%----------------------------------------------------------------------
+
+To extract a Sagnac-type phase shift we consider a phase signal
+propagating around the ring at $r=R$, $z=0$ in both directions. For
+simplicity we model the signal as moving at the speed of light along the
+ring, so that its worldline segments satisfy $ds^2 = 0$ with $dr=dz=0$.
+From~\eqref{eq:rotating_metric} this gives
+\begin{equation}
+  (c^2 - \Omega^2 R^2) dt^2
+  + 2\Omega R^2 d\varphi\,dt
+  - R^2 d\varphi^2 = 0.
+\end{equation}
+Writing $d\varphi/dt = \omega$, we obtain a quadratic equation
+\begin{equation}
+  (c^2 - \Omega^2 R^2)
+  + 2\Omega R^2 \omega
+  - R^2 \omega^2 = 0.
+\end{equation}
+Multiplying by $-1$,
+\begin{equation}
+  R^2 \omega^2
+  - 2\Omega R^2 \omega
+  - (c^2 - \Omega^2 R^2) = 0,
+\end{equation}
+whose solutions are
+\begin{equation}
+  \omega_\pm
+  = \Omega \pm \frac{c}{R}.
+\end{equation}
+These correspond to co-rotating ($+$) and counter-rotating ($-$) null
+signals around the ring in the rotating coordinates.
+
+The coordinate times required to complete one full revolution
+$\Delta\varphi = 2\pi$ are
+\begin{equation}
+  t_\pm
+  = \int_0^{2\pi} \frac{d\varphi}{\omega_\pm}
+  = \frac{2\pi}{\Omega \pm c/R}.
+\end{equation}
+For small angular velocities $\Omega R \ll c$ we can expand to first
+order in $\epsilon \equiv \Omega R / c \ll 1$:
+\begin{equation}
+  t_+ \simeq \frac{2\pi R}{c}\,(1 - \epsilon),
+  \qquad
+  t_- \simeq \frac{2\pi R}{c}\,(1 + \epsilon).
+\end{equation}
+The difference between the co- and counter-rotating travel times is
+then
+\begin{equation}
+  \Delta t
+  \equiv t_- - t_+
+  \simeq \frac{4\pi R}{c}\,\epsilon
+  = \frac{4\pi R}{c}\,\frac{\Omega R}{c}
+  = \frac{4\Omega A}{c^2},
+\end{equation}
+where $A=\pi R^2$ is the area enclosed by the ring. This is the familiar
+Sagnac time delay for a circular loop.
+
+In the weak-rotation regime the proper time difference measured by a
+clock comoving with the ring is equal to $\Delta t$ up to corrections
+of higher order in $(\Omega R/c)^2$, so we identify $\Delta\tau\simeq
+\Delta t$ for our purposes.
+
+%----------------------------------------------------------------------
+\subsection{Phase-clock interpretation}
+%----------------------------------------------------------------------
+
+Within the phase-clock framework, we can interpret the ring as carrying
+a phase degree of freedom that propagates along the loop with a fixed
+frequency $\omega_0$ in proper time. For example, one may imagine a
+phase signal launched from a reference point on the ring and allowed
+to propagate once around the loop in both directions, after which
+it is compared to a local reference clock.
+
+If the intrinsic phase frequency in proper time is $\omega_0$, then the
+phase accumulated along each path is approximately
+\begin{equation}
+  \phi_\pm
+  \simeq \omega_0 \tau_\pm,
+\end{equation}
+where $\tau_\pm$ are the proper times along the co- and
+counter-rotating paths. In the weak-rotation limit we may set
+$\tau_\pm \simeq t_\pm$, so that the phase difference between the two
+signals is
+\begin{equation}
+  \Delta\phi
+  \equiv \phi_- - \phi_+
+  \simeq \omega_0 (t_- - t_+)
+  \simeq \omega_0 \frac{4\Omega A}{c^2}.
+\end{equation}
+This is a Sagnac-type phase shift proportional to the angular velocity
+$\Omega$, the area $A$ enclosed by the ring, and the proper-time phase
+frequency $\omega_0$.
+
+The result is independent of the detailed microscopic realisation of
+the phase signal. It applies equally to electromagnetic waves, matter
+waves or superconducting phase modes, provided that a well-defined
+phase with frequency $\omega_0$ in proper time can be associated with
+the propagation around the ring. The phase-fibre language encapsulates
+the effect as a consequence of the non-trivial $g_{0\varphi}$ component
+in the rotating metric~\eqref{eq:rotating_metric}, i.e.\ as a holonomy
+associated with the off-diagonal structure of the spacetime metric.
+
+%======================================================================
+\section{Discussion and outlook}
+\label{sec:discussion}
+%======================================================================
+
+In this note we have provided a technical backend for the phase-fibre
+picture developed in the companion concept paper. Starting from a
+five-dimensional Kaluza--Klein metric with a compact phase fibre we
+derived the standard four-dimensional Einstein--Maxwell action by
+dimensional reduction. We then introduced a minimal worldline action
+for a phase clock, in which the covariant phase rate along the fibre is
+constrained to a fixed reference frequency in proper time. This yields a
+clean evolution equation for the phase in a given background
+$(g_{\mu\nu},A_\mu)$.
+
+Two simple configurations were worked out explicitly. In a static
+weak-field metric with two identical clocks at different heights we
+recovered the standard gravitational redshift formula
+$\Delta f/f \simeq \Delta\Phi/c^2$ directly from the phase-clock
+condition and the relation between proper and coordinate time. In a
+rotating-ring setup we derived a Sagnac-type phase shift
+$\Delta\phi \simeq (\omega_0/c^2)\,4\Omega A$ for a phase signal
+propagating once around the loop in both directions. Both results are
+well-known in their respective contexts; the role of the phase-fibre
+picture here is not to change the physics but to present it in a unified
+geometric language in which gravity, electromagnetism and phase clocks
+are treated on the same footing.
+
+%----------------------------------------------------------------------
+\subsection{Advantages and potential applications}
+%----------------------------------------------------------------------
+
+Although the present construction does not attempt to provide a
+unified fundamental field theory, it does offer a non-trivial step
+towards a unified \emph{description} of several phenomena that are
+usually treated separately. From a practical point of view, the
+phase-fibre language has several advantages:
+
+\begin{itemize}
+  \item \textbf{Bookkeeping for phase-based clocks in gravity and rotation.}
+        For theorists working with Josephson junctions, SQUIDs or other
+        phase-coherent devices in weak gravitational or rotating
+        environments, the framework provides a compact bookkeeping tool:
+        it makes explicit where $g_{00}$ enters (proper vs.\ coordinate
+        time), where $A_\mu$ enters (electromagnetic coupling along
+        the fibre), and how an effective phase inertia $I$ appears in
+        the worldline description of the clock.
+  \item \textbf{Natural interface to analogue gravity.}
+        The construction fits naturally with analogue-gravity scenarios
+        in superconductors and other coherent media. Phase textures,
+        effective potentials and clock redshifts can all be described
+        in the same geometric language, making it easier to compare
+        different analogue models of gravitational effects.
+  \item \textbf{Unified view of gravitational and Aharonov--Bohm-type phases.}
+        Gravitational redshift, electromagnetic Aharonov--Bohm phases
+        and rotation-induced (Sagnac) phase shifts all appear as
+        manifestations of parallel transport along the phase fibre in
+        a given background metric and gauge field. This provides a
+        unified way of organising phase effects in superconducting
+        loops and interferometric setups.
+  \item \textbf{Potential reference for future precision experiments.}
+        If future experiments attempt to measure gravitational redshifts
+        or rotation-induced shifts directly at Josephson frequencies
+        or in other macroscopic phase clocks, a technically explicit
+        phase-fibre formulation can serve as a convenient reference:
+        the action, field equations and clock configurations are all
+        written in a single, conservative framework based on standard
+        GR and Maxwell theory.
+\end{itemize}
+
+In this sense the phase-fibre framework is more than a change of
+notation: it provides a coherent geometric language that connects
+weak-field gravity, classical electromagnetism and macroscopic phase
+dynamics in systems that are often studied by different communities.
+This does not replace the underlying microscopic theories (BCS,
+Ginzburg--Landau, RCSJ, etc.), but it helps to align their effective
+descriptions when gravitational and rotational effects are relevant.
+
+%----------------------------------------------------------------------
+\subsection{Further directions}
+%----------------------------------------------------------------------
+
+Several natural extensions suggest themselves:
+\begin{itemize}
+  \item A more systematic treatment of the Newtonian phase-field sector
+        described in the PhaseGeometry Part~III note, embedding the
+        static scalar field $\varphi(\mathbf{x})$ and its effective
+        energy density into the present framework as a low-energy
+        limit for weak gravitational fields and slow clocks.
+  \item Device-level configurations, such as thick SNS weak links with
+        local magnetic phase control and SQUID-type rings, where the
+        phase-fibre picture can be used as a bookkeeping tool for
+        gravitational and rotational contributions to phase evolution
+        on top of the standard RCSJ and Ginzburg--Landau analysis.
+  \item Possible generalisations beyond the test-clock limit, where
+        ensembles of phase clocks contribute non-trivially to the
+        stress--energy tensor and current, and back-react on the
+        geometry and electromagnetic field.
+\end{itemize}
+
+All of these directions remain well within classical four-dimensional
+GR and Maxwell theory. The phase-fibre construction is best viewed as
+a compact geometric language for organising weak-gravity, electromagnetic
+and phase-clock effects, rather than as a proposal for modifying
+general relativity or the Standard Model. In this sense the present
+note closes the technical side of the phase-fibre construction at the
+level of actions, field equations and simple clock configurations, and
+provides a base for future work on concrete superconducting and
+Josephson devices in weak gravitational and rotational fields.
+
+\\ \\Finally, it is worth stating explicitly the conservative scope of the
+present work. Throughout this note we remain strictly within standard
+classical general relativity and Maxwell theory, in weak-field and
+test-clock regimes. The phase-fibre construction does not introduce new
+dynamical laws; it repackages known gravitational, electromagnetic and
+phase-clock effects in a unified geometric language. No genuinely new
+predictions are claimed at this stage. Possible extensions towards a
+quantum layer for phase degrees of freedom, and towards regimes where
+phase clocks back-react on the geometry, are deliberately left for
+future work and for separate, more microscopic notes in the broader
+PhaseGeometry programme.
+
+
+%======================================================================
+\section*{Acknowledgements}
+%======================================================================
+
+The author thanks the PhaseGeometry project for providing a consistent
+context across the different notes, and acknowledges helpful discussions
+with colleagues on the interpretation of phase-based clocks in weak
+gravitational fields.
+
+%======================================================================
+\begin{thebibliography}{99}
+%======================================================================
+
+\bibitem{PhaseFibreSeries}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Fibre series: overview and core framework},
+\newblock Zenodo series record (2025),
+DOI:\,\texttt{10.5281/zenodo.17736918}.
+
+\bibitem{PhaseFibreI}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Fibre Foundations I: Conceptual Framework},
+\newblock Zenodo preprint (2025).
+
+\bibitem{PhaseFieldIII}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Field Newtonian sector: phase textures and weak gravity},
+\newblock Zenodo preprint (2025).
+
+\bibitem{Carroll}
+S.~M.~Carroll,
+\newblock \emph{Spacetime and Geometry: An Introduction to General Relativity},
+\newblock Addison--Wesley (2004).
+
+\bibitem{Jackson}
+J.~D.~Jackson,
+\newblock \emph{Classical Electrodynamics}, 3rd ed.,
+\newblock Wiley (1998).
+
+\bibitem{Tinkham}
+M.~Tinkham,
+\newblock \emph{Introduction to Superconductivity}, 2nd ed.,
+\newblock McGraw--Hill (1996).
+
+\end{thebibliography}
+
+\end{document}

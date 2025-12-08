@@ -1,0 +1,692 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\numberwithin{equation}{section}
+
+\title{PhaseGeometry Phase-Fibre Foundations I:\\[4pt]
+Phase as a genuine fifth coordinate:\\[2pt]
+A 5D phase-fibre description of gravity, electromagnetism and phase clocks\\[4pt]
+Conceptual Framework}
+
+\author{Aleksey Turchanov}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Part of the PhaseGeometry Phase-Fibre programme; archived in the Core Package\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+We introduce a deliberately conservative five-dimensional framework in which
+phase is promoted to a \emph{genuine fifth coordinate} on the same footing as
+space and time. Ordinary four-dimensional spacetime of general relativity is
+extended by a compact internal U(1) phase coordinate $\phi$, forming a circle
+fibre over each spacetime point. In this $(x^\mu,\phi)$ description the world
+is naturally viewed as $3D + t + \phi$: three spatial coordinates answer
+``where'', time answers ``when'', and the phase coordinate $\phi$ answers
+``in which stage of the process'' a system currently is. Throughout, phase is
+treated as a fully introduced fifth dimension with its own 5D metric structure,
+rather than as an auxiliary scalar field living on $M_4$.
+
+On this five-dimensional bundle we adopt a standard Kaluza--Klein ansatz: the
+electromagnetic potential $A_\mu$ arises as the connection along the phase
+fibre, while the metric component $g_{00}$ controls the rate of macroscopic
+clocks, including superconducting/Josephson phase clocks. In the Newtonian
+limit the gravitational potential $\Phi(\mathbf{x})$ is fully encoded in
+$g_{00}$ and can be sourced by a simple static phase configuration
+$\varphi(\mathbf{x})$. The corresponding effective mass density is
+proportional to $|\nabla\varphi|^2$, in close analogy with London and
+Ginzburg--Landau descriptions of superconductors. This yields a transparent
+geometric interpretation of weak gravity and gravitational redshift in terms
+of ``phase texture'' in the additional dimension.
+
+Dynamically, the framework remains strictly within standard classical physics:
+weak-field general relativity, Maxwell electrodynamics and effective
+superconductivity/Josephson theory. The five-dimensional phase-fibre geometry
+does not introduce new fields or interactions and does not modify Einstein's
+equations or the Standard Model; it provides an equivalent but more unified
+geometric language in which gravity, electromagnetism and phase-based clocks
+are described by the same $(x^\mu,\phi)$ structure. The central conceptual
+move is therefore not to change the laws, but to make the ubiquitous phase
+variable explicit as a fifth coordinate and to use this 5D picture as the
+organising backbone for the PhaseGeometry Phase-Fibre series.
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+\vspace{1em}
+%======================================================================
+\section{Introduction and scope}
+%======================================================================
+
+Weak gravity, electromagnetism and precision clocks are three pillars of
+modern physics that coexist in many practical experiments but are usually
+discussed in quite different languages. In weak gravitational fields the
+metric is close to Minkowski, and to leading order the only component
+that ordinary clocks ``feel'' is
+\begin{equation}
+  g_{00}(\mathbf{x}) \simeq 1 + \frac{2\Phi(\mathbf{x})}{c^2},
+\end{equation}
+where $\Phi(\mathbf{x})$ is the Newtonian gravitational potential. This
+component controls gravitational time dilation and redshift.
+Electromagnetism lives its own life, governed by the gauge potential
+$A_\mu$ and the field tensor $F_{\mu\nu}$, while the most accurate
+clocks available today --- atomic fountains, optical lattice clocks,
+Josephson oscillators --- are in essence phase devices: we measure the
+rate of growth of some macroscopic phase $\theta(t)$ rather than the
+ticking of a mechanical pointer.
+
+This is particularly evident in superconductivity. A Josephson junction
+realises the ac Josephson relation
+\begin{equation}
+  f_J = \frac{2e}{h}\,V,
+\end{equation}
+with relative accuracy at the level of $10^{-19}$--$10^{-20}$, and
+responds simultaneously to voltage, electromagnetic fields and
+gravitational potential. One and the same device can function as a
+high-precision clock, a detector of weak gravity (through gravitational
+redshift) and a macroscopic superconducting phase element.
+
+The central proposal of this note is that the phase variable underlying
+such devices should be treated not merely as an auxiliary label, but as a
+\emph{genuine fifth coordinate} of the physical description. Concretely,
+we attach to each spacetime point $x^\mu$ a compact phase circle
+parameterised by $\phi \sim \phi + 2\pi$, forming a five-dimensional
+bundle with topology $\mathcal{M}_4 \times S^1$. In this $3D + t + \phi$
+view the usual spacetime coordinates say where and when an event occurs,
+while the phase coordinate $\phi$ encodes where the system sits along its
+internal cycle. We call the resulting geometric picture
+\emph{phase-fibre geometry}. In this picture phase is a fully introduced
+fifth dimension with its own 5D metric, on the same mathematical footing
+as the usual spacetime coordinates.
+
+On this bundle we introduce a Kaluza--Klein metric in which the
+electromagnetic potential $A_\mu$ enters as the connection on the phase
+fibre, while the base metric $g_{\mu\nu}$ carries the usual gravitational
+information. Phase clocks are then described as objects that move
+uniformly along the fibre with respect to their proper time $\tau$, and
+gravitational redshift appears as a simple consequence of the relation
+between $\tau$ and coordinate time $t$. In the Newtonian sector the same
+phase framework reproduces a phase-field description where static phase
+textures source weak gravitational potentials.
+
+This note is intentionally conservative. We do not introduce new fields
+or interactions; we do not modify Einstein's equations; we do not claim
+to derive superconductivity from geometry. Instead, we take standard
+ingredients from general relativity, Maxwell theory and effective
+superconductivity, and reorganise them in a way that makes the interplay
+between $g_{00}$, $A_\mu$ and phase-based clocks particularly transparent.
+The five-dimensional geometry is used as a \emph{repackaging} of known
+physics in which the role of phase is made explicit as a fifth coordinate,
+rather than as a hidden variable inside complex amplitudes and boundary
+conditions.
+
+Within the Phase-Fibre line of the PhaseGeometry programme this paper
+occupies a conceptual ``middle layer''. The accompanying
+\emph{Foundations 0: Technical Passport} fixes the core ontology and
+notation of the five-dimensional phase-fibre framework in a compact,
+equation-driven form, while \emph{Foundations II: Field Equations and
+Phase-Clock Configurations} develops the explicit action, field
+equations and concrete examples. The present note uses the same
+conventions as Foundations~0, but keeps the emphasis on physical
+interpretation, intuitive cartoons and links to superconducting /
+Josephson systems rather than on formal derivations.
+
+This note is part of the broader \emph{PhaseGeometry} series. The
+Newtonian phase-field sector, where static phase configurations generate
+weak gravitational potentials and clock redshifts, is developed in a
+separate companion work (PhaseGeometry Part~III, Ref.~\cite{TurchanovPhaseFieldPartIII}).
+The present paper is deliberately conceptual and phenomenological: a more
+technical companion, ``Phase-Fibre Geometry~II'', derives the 5D/4D
+field equations from an explicit action and works out concrete
+phase-clock configurations (two-height redshift, rotating loops, and
+simple Josephson/SQUID-based scenarios).
+
+In what follows we adopt the following notation consistently:
+$\theta$ denotes the condensate phase of superconducting matter,
+$\phi$ is the compact fibre coordinate on the U(1) phase circle in the
+5D construction, and $\varphi(\mathbf{x})$ is the real Newtonian phase
+field used in the static, weak-field analysis of Part~III.
+
+The structure of the paper is as follows. In
+Sec.~\ref{sec:standard_ingredients} we collect the standard weak-field
+GR, Maxwell and phase-clock ingredients. Section~\ref{sec:5d_ansatz}
+introduces the five-dimensional phase-fibre ansatz and recalls the
+reduction to the Einstein--Maxwell action. In
+Sec.~\ref{sec:phase_clocks_pf} we show how coherent matter and
+phase-based clocks fit into this language and how gravitational
+redshift appears. Sec.~\ref{sec:phase_field_newtonian} summarises the
+Newtonian phase-field sector and its embedding into the phase-fibre
+picture. Sec.~\ref{sec:scenarios} discusses simple illustrative
+scenarios, and Sec.~\ref{sec:discussion} closes with a brief discussion
+and outlook.
+
+%======================================================================
+\section{Standard ingredients: weak-field GR, Maxwell and phase clocks}
+\label{sec:standard_ingredients}
+%======================================================================
+
+In this section we briefly recall the standard building blocks that we
+will reorganise in the phase-fibre picture: weak-field general
+relativity, Maxwell electrodynamics and phase-based clock dynamics in
+superconductors. We do not attempt to be exhaustive; for detailed
+background see e.g.\ Refs.~\cite{Carroll,Wald,Jackson,Tinkham}.
+
+%----------------------------------------------------------------------
+\subsection{Weak-field GR and $g_{00}$}
+%----------------------------------------------------------------------
+
+In the weak-field, slow-motion regime around a static mass distribution
+the spacetime metric can be written as
+\begin{equation}
+  ds^2 = g_{\mu\nu} dx^\mu dx^\nu
+  = g_{00}(\mathbf{x})\,c^2 dt^2 - g_{ij}(\mathbf{x})\,dx^i dx^j,
+\end{equation}
+with
+\begin{equation}
+  g_{00}(\mathbf{x}) \simeq 1 + \frac{2\Phi(\mathbf{x})}{c^2},
+  \qquad
+  g_{ij}(\mathbf{x}) \simeq \delta_{ij}
+\end{equation}
+and $\Phi(\mathbf{x})$ the Newtonian potential satisfying the Poisson
+equation
+\begin{equation}
+  \nabla^2 \Phi(\mathbf{x}) = 4\pi G \rho(\mathbf{x}).
+\end{equation}
+For a worldline $x^\mu(\tau)$ of a slowly moving clock the proper time
+increment is
+\begin{equation}
+  d\tau = \sqrt{g_{00}(\mathbf{x})}\,dt
+  \simeq \left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right) dt,
+\end{equation}
+so that the rate of the clock with respect to coordinate time $t$
+depends on $g_{00}(\mathbf{x})$ and hence on $\Phi(\mathbf{x})$.
+The gravitational redshift between two heights $z_1$ and $z_2$ in a
+uniform field $g$ with $\Phi(z) \simeq gz$ is
+\begin{equation}
+  \frac{\Delta f}{f}
+  \equiv \frac{f(z_2) - f(z_1)}{f(z_1)}
+  \simeq \frac{\Phi(z_2) - \Phi(z_1)}{c^2}
+  \simeq \frac{g(z_2 - z_1)}{c^2}.
+\end{equation}
+
+%----------------------------------------------------------------------
+\subsection{Maxwell electrodynamics}
+%----------------------------------------------------------------------
+
+Classical electromagnetism in curved spacetime is described by the
+field tensor $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$
+and the Maxwell action
+\begin{equation}
+  S_{\rm EM}
+  = -\frac{1}{4\mu_0}
+    \int d^4x\,\sqrt{-g}\,F_{\mu\nu} F^{\mu\nu}.
+\end{equation}
+The Einstein--Hilbert action with a cosmological constant neglected is
+\begin{equation}
+  S_{\rm EH}
+  = \frac{1}{16\pi G}
+    \int d^4x\,\sqrt{-g}\,R_4,
+\end{equation}
+and their sum gives the standard Einstein--Maxwell theory.
+
+Gauge transformations act as
+\begin{equation}
+  A_\mu(x) \mapsto A_\mu(x) - \partial_\mu \chi(x),
+\end{equation}
+leaving $F_{\mu\nu}$ invariant. In the phase-fibre picture these
+transformations will be reinterpreted as coordinate changes along the
+fibre.
+
+%----------------------------------------------------------------------
+\subsection{Superconducting phase and Josephson clocks}
+%----------------------------------------------------------------------
+
+In effective superconductivity the condensate is described by a complex
+field
+\begin{equation}
+  \Psi(\mathbf{x},t) = |\Psi(\mathbf{x},t)|\,e^{i\theta(\mathbf{x},t)},
+\end{equation}
+with the phase $\theta$ minimally coupled to the electromagnetic
+potential. In the simplest Ginzburg--Landau/London-like description the
+relevant combination is
+\begin{equation}
+  \partial_\mu\theta - q A_\mu,
+\end{equation}
+with $q=2e/\hbar$ for Cooper pairs. Supercurrents and Meissner screening
+are encoded in this gauge-covariant derivative.
+
+A Josephson junction between two superconductors with phases
+$\theta_1$ and $\theta_2$ supports the relations
+\begin{align}
+  I_s &= I_c \sin\Delta\theta,
+  \\
+  \frac{d}{dt}\Delta\theta &= \frac{2e}{\hbar} V,
+\end{align}
+where $\Delta\theta = \theta_2 - \theta_1$ is the phase difference and
+$V$ is the voltage across the junction. The ac Josephson relation for
+the oscillation frequency is
+\begin{equation}
+  f_J = \frac{1}{2\pi}\frac{d}{dt}\Delta\theta
+  = \frac{2e}{h}V.
+\end{equation}
+In this sense a Josephson junction is a phase clock: its observable
+frequency directly measures the time derivative of a phase.
+
+%======================================================================
+\section{5D phase-fibre ansatz and reduction to Einstein--Maxwell}
+\label{sec:5d_ansatz}
+%======================================================================
+
+We now extend the four-dimensional spacetime $(\mathcal{M}_4,g_{\mu\nu})$
+by a compact U(1) phase circle $S^1$ with coordinate
+$\phi \sim \phi + 2\pi$, forming a five-dimensional manifold
+$\mathcal{M}_5 \simeq \mathcal{M}_4 \times S^1$. On this manifold we
+introduce the Kaluza--Klein metric
+\begin{equation}
+  ds_5^2 = G_{AB}\,dX^A dX^B
+  = g_{\mu\nu}(x)\,dx^\mu dx^\nu
+    + R^2\bigl(d\phi + kA_\mu(x)\,dx^\mu\bigr)^2,
+  \label{eq:5d_metric_pf}
+\end{equation}
+where $R$ is the radius of the fibre and $k$ is a constant that sets the
+normalisation of the electromagnetic potential. The indices $A,B$ run
+over the five coordinates $(x^\mu,\phi)$.
+
+Under a shift of the fibre coordinate
+\begin{equation}
+  \phi \mapsto \phi' = \phi + \chi(x),
+\end{equation}
+the one-form $d\phi + kA_\mu dx^\mu$ transforms as
+\begin{equation}
+  d\phi' + k A'_\mu dx^\mu
+  = d\phi + d\chi + kA'_\mu dx^\mu.
+\end{equation}
+Requiring that the metric $ds_5^2$ remains invariant implies the gauge
+transformation
+\begin{equation}
+  A_\mu \mapsto A_\mu' = A_\mu - \frac{1}{k}\,\partial_\mu\chi(x).
+\end{equation}
+Thus the usual U(1) gauge transformations arise as coordinate changes
+along the phase fibre.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\textwidth]{5D_1.png}
+  \caption{Phase-fibre picture: four-dimensional spacetime
+  $(\mathcal{M}_4,g_{\mu\nu})$ as the base manifold, with a compact
+  U(1) phase circle attached at each point. The electromagnetic
+  potential $A_\mu(x)$ plays the role of a connection on this phase
+  fibre, entering the five-dimensional metric as in
+  Eq.~\eqref{eq:5d_metric_pf}.}
+  \label{fig:phase_fibre_cartoon}
+\end{figure}
+
+If we start from the five-dimensional Einstein--Hilbert action
+\begin{equation}
+  S_5
+  = \frac{1}{16\pi G_5}
+    \int d^5X\,\sqrt{-G}\,R_5,
+\end{equation}
+insert the ansatz \eqref{eq:5d_metric_pf}, and assume that all fields
+are independent of $\phi$, the five-dimensional Ricci scalar reduces to
+\begin{equation}
+  R_5 = R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu}F^{\mu\nu},
+\end{equation}
+up to total derivatives. Integrating over the fibre coordinate $\phi$
+then yields
+\begin{equation}
+  S_5 = \frac{2\pi R}{16\pi G_5}
+    \int d^4x\,\sqrt{-g}\,
+    \left(R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu}F^{\mu\nu}\right).
+\end{equation}
+Identifying
+\begin{equation}
+  \frac{1}{16\pi G} = \frac{2\pi R}{16\pi G_5},
+  \qquad
+  \frac{1}{4\mu_0} = \frac{2\pi R}{16\pi G_5}\,\frac{1}{4}(kR)^2,
+\end{equation}
+we recover the standard four-dimensional Einstein--Maxwell action.
+Thus, at the level of the action, the five-dimensional phase-fibre
+ansatz reproduces Einstein--Maxwell with no new dynamical content. Its
+value lies in the geometric interpretation of $A_\mu$ as a connection
+on the phase fibre and in the natural placement of phase clocks in this
+geometry, with phase promoted to an explicit fifth coordinate.
+
+%======================================================================
+\section{Coherent matter and phase clocks in phase-fibre geometry}
+\label{sec:phase_clocks_pf}
+%======================================================================
+
+We now show how coherent matter and phase-based clocks can be described
+in the phase-fibre picture. The key idea is to identify the condensate
+phase $\theta$ with the fibre coordinate $\phi$ in a unitary gauge and
+to interpret the usual combination $\partial_\mu\theta - qA_\mu$ as
+coming from parallel transport along the fibre.
+
+%----------------------------------------------------------------------
+\subsection{Phase covariant derivative from 5D connection}
+%----------------------------------------------------------------------
+
+Consider a worldline $X^A(\lambda) = (x^\mu(\lambda),\phi(\lambda))$
+in the five-dimensional spacetime with metric \eqref{eq:5d_metric_pf}.
+The tangent vector is
+\begin{equation}
+  \dot{X}^A = (\dot{x}^\mu,\dot{\phi}),
+\end{equation}
+and the line element along the trajectory reads
+\begin{equation}
+  ds_5^2
+  = g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu\,d\lambda^2
+    + R^2\bigl(\dot{\phi} + kA_\mu\dot{x}^\mu\bigr)^2 d\lambda^2.
+\end{equation}
+For a massive particle the action proportional to the proper length
+is
+\begin{equation}
+  S_{\rm worldline}
+  = -m \int d\lambda\,
+    \sqrt{g_{\mu\nu}\dot{x}^\mu \dot{x}^\nu
+          + R^2\bigl(\dot{\phi} + kA_\mu\dot{x}^\mu\bigr)^2}.
+\end{equation}
+In the non-relativistic limit and in a unitary gauge where we identify
+$\theta \equiv \phi$, the combination
+\begin{equation}
+  D_\mu\phi \equiv \partial_\mu\phi + kA_\mu
+\end{equation}
+is directly analogous to the Ginzburg--Landau/London combination
+$\partial_\mu\theta - qA_\mu$, with $q = -k$ (in appropriate units).
+The five-dimensional geometric structure therefore reproduces the
+phase covariant derivative of superconductivity as the projection
+of parallel transport along the fibre.
+
+%----------------------------------------------------------------------
+\subsection{Proper time, phase rate and gravitational redshift}
+%----------------------------------------------------------------------
+
+To describe phase clocks we adopt a simple phenomenological rule:
+an ideal phase clock is an object that advances uniformly along the
+fibre with respect to its proper time $\tau$,
+\begin{equation}
+  \frac{d\phi}{d\tau} = \omega_0 = \text{const}.
+\end{equation}
+In a static spacetime with metric
+\begin{equation}
+  ds^2 = g_{00}(\mathbf{x})\,c^2 dt^2 - g_{ij}\,dx^i dx^j,
+\end{equation}
+and for a clock at rest in the chosen coordinate system, we have
+\begin{equation}
+  d\tau = \sqrt{g_{00}(\mathbf{x})}\,dt.
+\end{equation}
+The observable frequency of the clock with respect to coordinate
+time is
+\begin{equation}
+  \frac{d\phi}{dt}
+  = \frac{d\phi}{d\tau}\,\frac{d\tau}{dt}
+  = \omega_0 \sqrt{g_{00}(\mathbf{x})}
+  \simeq \omega_0\left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right).
+\end{equation}
+Thus the gravitational redshift is immediately
+\begin{equation}
+  \frac{\Delta f}{f}
+  = \frac{\Delta\omega}{\omega_0}
+  \simeq \frac{\Delta\Phi}{c^2},
+\end{equation}
+in agreement with the standard weak-field result. In this language
+the internal angular rate $\omega_0$ is universal and independent of
+gravity, while gravity merely changes the ``gear ratio'' between
+proper and coordinate time.
+
+%======================================================================
+\section{Phase-field Newtonian sector and its embedding}
+\label{sec:phase_field_newtonian}
+%======================================================================
+
+The phase-field Newtonian sector developed in Part~III of the
+PhaseGeometry series provides a purely static, non-relativistic
+playground in which gravity and phase clocks are controlled by a real
+scalar phase field $\varphi(\mathbf{x})$ in three-dimensional space.
+Here we briefly summarise its structure and explain how it fits into
+the phase-fibre picture.
+
+%----------------------------------------------------------------------
+\subsection{Static phase field and effective mass density}
+%----------------------------------------------------------------------
+
+In the Newtonian phase-field model we consider a real scalar field
+$\varphi(\mathbf{x})$ with an energy density dominated by its spatial
+gradients,
+\begin{equation}
+  \rho_{\rm eff}(\mathbf{x})
+  = \frac{\kappa}{c^2}\,|\nabla\varphi(\mathbf{x})|^2,
+\end{equation}
+where $\kappa$ is a phenomenological parameter with dimensions chosen
+so that $\rho_{\rm eff}$ has the units of mass density. The effective
+mass contained in a localised phase texture is
+\begin{equation}
+  M_{\rm eff}
+  = \frac{\kappa}{c^2}
+    \int d^3x\,|\nabla\varphi(\mathbf{x})|^2.
+\end{equation}
+The Newtonian potential then satisfies the Poisson equation
+\begin{equation}
+  \nabla^2\Phi(\mathbf{x}) = 4\pi G \rho_{\rm eff}(\mathbf{x}),
+\end{equation}
+so that at large distances from a localised defect one recovers
+\begin{equation}
+  \Phi(r) \simeq - \frac{GM_{\rm eff}}{r}.
+\end{equation}
+This construction gives a simple way to relate phase textures to weak
+gravitational wells.
+
+%----------------------------------------------------------------------
+\subsection{Phase clocks in the Newtonian limit}
+%----------------------------------------------------------------------
+
+Once the potential $\Phi(\mathbf{x})$ has been determined from
+$\varphi(\mathbf{x})$ via the Poisson equation, the weak-field metric
+component $g_{00}(\mathbf{x}) \simeq 1 + 2\Phi(\mathbf{x})/c^2$ follows.
+Substituting this into the phase-clock relation
+\begin{equation}
+  \frac{d\phi}{dt}
+  \simeq \omega_0\left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right),
+\end{equation}
+we see that the same phase texture $\varphi(\mathbf{x})$ that creates
+a gravitational potential well also slows down the rate of all
+phase-based clocks in that region. In this sense the Newtonian
+phase-field sector provides a useful ``ground floor'' for the
+phase-fibre picture: slow particles, weak fields and static phase
+textures can all be described consistently in terms of a single
+scalar field $\varphi(\mathbf{x})$.
+
+%======================================================================
+\section{Illustrative scenarios for phase clocks}
+\label{sec:scenarios}
+%======================================================================
+
+We now briefly discuss two simple scenarios where the phase-fibre
+language makes standard results particularly transparent.
+
+%----------------------------------------------------------------------
+\subsection{Gravitational redshift of phase clocks at two heights}
+%----------------------------------------------------------------------
+
+Consider two identical phase clocks (for example, Josephson junctions)
+located at heights $z_1$ and $z_2$ in a weak, static gravitational
+field with potential $\Phi(z) \simeq gz$. Each clock advances along the
+phase fibre at a universal rate $d\phi/d\tau = \omega_0$ with respect
+to its proper time. The observable frequencies with respect to
+coordinate time are
+\begin{equation}
+  f_1 = \frac{1}{2\pi}\frac{d\phi}{dt}\bigg|_{z_1},
+  \qquad
+  f_2 = \frac{1}{2\pi}\frac{d\phi}{dt}\bigg|_{z_2}.
+\end{equation}
+Using $d\tau = \sqrt{g_{00}(z)}\,dt$ with
+$g_{00}(z) \simeq 1 + 2\Phi(z)/c^2$ we obtain
+\begin{equation}
+  \frac{\Delta f}{f}
+  \equiv \frac{f_2 - f_1}{f_1}
+  \simeq \frac{\Phi(z_2) - \Phi(z_1)}{c^2}
+  = \frac{\Delta\Phi}{c^2},
+  \label{eq:grav_redshift_clock}
+\end{equation}
+the standard expression for gravitational redshift.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{5D_2.png}
+  \caption{Phase clocks at two different gravitational potentials.
+  Two identical clocks, located at heights $z_1$ and $z_2$ with
+  $\Phi_1 = \Phi(z_1)$ and $\Phi_2 = \Phi(z_2)$, run at slightly
+  different coordinate-time frequencies $f_1$ and $f_2$.
+  In the phase-fibre language, imposing a fixed proper-time phase rate
+  along the fibre leads directly to the standard gravitational redshift
+  $\Delta f/f \simeq \Delta\Phi/c^2$, Eq.~\eqref{eq:grav_redshift_clock}.}
+  \label{fig:phase_clocks_two_heights}
+\end{figure}
+
+The phase-fibre interpretation here is simple: the internal phase
+angle $\phi$ advances uniformly per unit proper time, while gravity
+changes the mapping between proper time and coordinate time at each
+height. No new physics is introduced, but the geometric picture
+helps to keep track of how $g_{00}$ enters the observable frequency.
+
+%----------------------------------------------------------------------
+\subsection{Rotating loops and Sagnac-like phases}
+%----------------------------------------------------------------------
+
+A second class of scenarios involves rotating loops and Sagnac-like
+phase shifts. Consider a closed superconducting loop or SQUID ring
+rotating with angular velocity $\boldsymbol{\Omega}$. The phase
+accumulated along a closed path in the presence of rotation and
+electromagnetic potentials can be written in terms of line integrals
+of the phase covariant derivative. In the phase-fibre picture this
+phase is simply the holonomy of the fibre connection around the loop,
+with contributions from both $A_\mu$ and the effective gravitomagnetic
+terms in the metric (in a fully relativistic treatment). In the
+non-relativistic limit this reproduces the familiar Sagnac-like
+expression for phase shifts proportional to $\boldsymbol{\Omega}\cdot\mathbf{A}$,
+where $\mathbf{A}$ is the area vector enclosed by the loop. We do not
+develop this in detail here; it is included only to illustrate that the
+phase-fibre framework naturally accommodates both gravitational and
+Aharonov--Bohm-type phases in a unified geometric language.
+
+%======================================================================
+\section{Discussion and outlook}
+\label{sec:discussion}
+%======================================================================
+
+In this note we have presented a conservative five-dimensional
+phase-fibre framework in which weak gravity, classical electromagnetism
+and phase-based clocks are described in a single geometric picture with
+phase as an explicit fifth coordinate. Starting from a standard
+Kaluza--Klein ansatz with a compact U(1) phase fibre over four-dimensional
+spacetime, we recalled how the Einstein--Maxwell action arises from the
+five-dimensional Einstein--Hilbert action under dimensional reduction.
+We then introduced a simple phenomenological rule for phase clocks ---
+uniform advance along the fibre with respect to proper time --- and
+showed how gravitational redshift follows immediately once the relation
+between proper and coordinate time is taken into account.
+
+We also summarised a Newtonian phase-field sector, developed in more
+detail in Part~III of the PhaseGeometry series, in which a static real
+phase field $\varphi(\mathbf{x})$ generates an effective mass density
+proportional to $|\nabla\varphi|^2$ and thus a weak gravitational
+potential via the Poisson equation. The same potential controls the
+rate of phase clocks through $g_{00}$, so a given phase texture
+$\varphi(\mathbf{x})$ simultaneously generates a gravitational well and
+slows down all phase clocks placed within it. This provides a simple
+intuition for how phase textures and weak gravity can be related within
+the common language of the fifth coordinate.
+
+To summarise why the phase-fibre construction is useful, even though it
+does not modify any fundamental equations of motion:
+(i) it promotes phase to a genuine fifth coordinate and thus provides a
+unified geometric language for weak gravity, classical electromagnetism
+and phase clocks, treating $g_{\mu\nu}$, $A_\mu$ and the internal phase
+on the same footing;
+(ii) it offers a natural bridge between weak-field general relativity
+and analogue-gravity scenarios in superconductors and other coherent
+media, including the Newtonian phase-field sector of Part~III; and
+(iii) it gives a clean conceptual framework for analysing superconducting
+and Josephson devices operating in weak gravitational or rotational
+fields. In the present note we have focused on this intuitive 5D
+picture; a separate technical companion, ``Phase-Fibre Geometry~II'',
+develops the underlying action and field equations and works out explicit
+phase-clock configurations in more detail.
+
+\section*{Acknowledgements}
+
+The author thanks colleagues and collaborators for discussions and
+feedback on the PhaseGeometry notes. Any remaining errors or omissions
+are the author's responsibility.
+
+%======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Carroll}
+S.~M.~Carroll,
+\emph{Spacetime and Geometry: An Introduction to General Relativity},
+Addison--Wesley (2004).
+
+\bibitem{Wald}
+R.~M.~Wald,
+\emph{General Relativity},
+University of Chicago Press (1984).
+
+\bibitem{Kaluza}
+T.~Kaluza,
+``On the unification problem in physics,''
+Sitzungsber.\ Preuss.\ Akad.\ Wiss.\ Berlin (Math.\ Phys.) (1921) 966.
+
+\bibitem{Klein}
+O.~Klein,
+``Quantum theory and five-dimensional theory of relativity,''
+Z.\ Phys.\ \textbf{37}, 895 (1926).
+
+\bibitem{Jackson}
+J.~D.~Jackson,
+\emph{Classical Electrodynamics}, 3rd ed.,
+Wiley (1998).
+
+\bibitem{Tinkham}
+M.~Tinkham,
+\emph{Introduction to Superconductivity}, 2nd ed.,
+McGraw--Hill (1996).
+
+\bibitem{JosephsonMetrology}
+C.~A.~Hamilton,
+``Josephson voltage standards,''
+Rev.\ Sci.\ Instrum.\ \textbf{71}, 3611--3623 (2000).
+
+\bibitem{TurchanovPhaseFieldPartIII}
+A.~Turchanov,
+\emph{PhaseGeometry Phase-Fibre Foundations III: Newtonian phase-field sector},
+Zenodo preprint (2025).
+
+\bibitem{PhaseFibreCore}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Fibre Core Package v1.0},
+\newblock Zenodo (2025),
+DOI:\,\texttt{10.5281/zenodo.17783322}.
+
+\end{thebibliography}
+
+\end{document}

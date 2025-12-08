@@ -1,0 +1,454 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Phase as the Fifth Dimension:\\[4pt]
+from 4D to 5D without mysticism}
+
+\author{Aleksey Turchanov}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+This essay is part of the \emph{PhaseGeometry Phase-Fibre programme}.\\[2pt]
+
+\scriptsize
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[1pt]
+PhaseGeometry Phase-Fibre Core Package v1.0: DOI\,\texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+Since Newton we have been used to saying that we live in a four-dimensional
+world ``space $3D$ + time $t$'' and to describing phenomena in these
+coordinates. In practice, however, we constantly use one more coordinate:
+the phase $\phi$, which tells us ``where in the cycle'' a process is.
+Ocean waves, tides, planetary orbits, changing seasons, heartbeats,
+pendulum motion, day--night cycles, ``project stages'' or ``sleep phases''
+are all most naturally described in terms of their position along a cycle.
+
+In effect we have long been living in a five-dimensional world
+$3D + t + \phi$, where phase is a coordinate of state: it answers the
+question ``which point of a repeating process the system currently
+occupies''. This note suggests treating phase as a genuine ``fifth
+dimension'' and looking at physics from that angle --- without mysticism,
+but with a new language that later connects naturally to the
+phase-fibre PhaseGeometry framework.
+\end{abstract}
+
+%======================================================================
+\section{Phase as a forgotten coordinate}
+%======================================================================
+
+The classical ``shop-window'' picture of physics is simple: there are
+three spatial coordinates $(x,y,z)$ and there is time $t$. Together
+this gives $3D + t$ --- a four-dimensional description everyone is
+used to.
+
+But this picture answers only two questions:
+\emph{where} and \emph{when}. Very often we also care about a third:
+\begin{quote}
+\textbf{In which stage of its process are we now?}
+\end{quote}
+
+This third ingredient --- \emph{position within the course of a
+process} --- has traditionally been pushed ``outside the brackets'' and
+hidden inside heavy formulas, parametric descriptions and special
+notations. Meanwhile, it can be organised as one more coordinate, and a
+fairly simple one: the \emph{phase} $\phi$.
+
+%======================================================================
+\section{What is phase?}
+%======================================================================
+
+From a physics point of view:
+\begin{quote}
+Phase $\phi$ is a quantity that tells us at which point of its repeating
+or developing process a system is, relative to some reference state.
+\end{quote}
+
+In everyday terms:
+\begin{quote}
+Phase is the ``stage'' of a process expressed as a number: an angle on
+a circle, a fraction between 0 and 1, or a value between 0 and $2\pi$.
+\end{quote}
+
+We can distinguish two main regimes.
+
+%----------------------------------------------------------------------
+\subsection{Linear process (with beginning and end)}
+%----------------------------------------------------------------------
+
+For processes with a clear start and finish it is convenient to think:
+\begin{itemize}
+  \item $\phi = 0$ --- start;
+  \item $\phi = \pi$ --- roughly halfway;
+  \item $\phi = 2\pi$ --- completion of one pass through the process.
+\end{itemize}
+
+One can define phase via the completion fraction:
+\begin{equation}
+  \phi = 2\pi \times \text{completion fraction between 0 and 1}.
+\end{equation}
+For example, a project is 50\% done $\Rightarrow \phi = \pi$.
+
+%----------------------------------------------------------------------
+\subsection{Cyclic process (repeats again and again)}
+%----------------------------------------------------------------------
+
+For repeating processes (waves, daily rhythm, rotations):
+\begin{itemize}
+  \item $\phi = 0$ and $\phi = 2\pi$ describe the same state; only one
+        more turn has been completed;
+  \item here phase is not ``start--finish'' but \emph{position on the
+        circle}.
+\end{itemize}
+
+So:
+\begin{itemize}
+  \item for project-like, life-like, single-pass processes it is natural
+        to think: $0$ --- beginning, $2\pi$ --- end of one run;
+  \item for oscillators and waves $2\pi$ means a return to the initial
+        state on a new cycle.
+\end{itemize}
+
+%======================================================================
+\section{We already speak the language of phase, we just do not call it so}
+%======================================================================
+
+In everyday speech, phase language has long been present:
+\begin{itemize}
+  \item ``I'm in a different phase of life now'';
+  \item ``The project is at an early stage'';
+  \item ``Sleep was shallow, I woke up in the wrong phase'';
+  \item ``The economy has entered a recession phase''.
+\end{itemize}
+
+In all these cases we are in fact describing a \emph{coordinate of
+state}, but not via $(x,y,z,t)$; instead we talk about the stage of
+a process.
+
+Examples:
+\begin{itemize}
+  \item \textbf{Day}: morning, afternoon, evening, night --- four rough
+        phases of the daily cycle;
+  \item \textbf{Breathing}: inhale $\rightarrow$ pause $\rightarrow$
+        exhale $\rightarrow$ pause;
+  \item \textbf{Heart}: systole / diastole;
+  \item \textbf{Life of a project}: idea $\rightarrow$ prototype
+        $\rightarrow$ pilot $\rightarrow$ deployment
+        $\rightarrow$ maintenance.
+\end{itemize}
+
+Thus, on top of $3D + t$ we constantly add one more coordinate $\phi$:
+\begin{quote}
+\emph{position within the process}.
+\end{quote}
+We simply do not make this coordinate explicit in the usual picture of
+the world.
+
+%======================================================================
+\section{How physics has historically treated phase}
+%======================================================================
+
+It is important to understand: physics did not ``sleep through'' the
+idea of phase. On the contrary, within physics, phase has been a
+working tool for many generations.
+
+%----------------------------------------------------------------------
+\subsection{Waves and oscillations}
+%----------------------------------------------------------------------
+
+For a harmonic wave one writes:
+\begin{equation}
+  h(x,t) = A \cos(kx - \omega t + \phi_0),
+\end{equation}
+where $\phi_0$ is the initial phase. At time $t$ the state of the
+system (wave height, voltage, current) is determined by the argument
+\[
+  \phi(x,t) = kx - \omega t + \phi_0,
+\]
+i.e.\ by a point on the circle $S^1$.
+
+Before the compact phase language became standard, this was expressed
+in much more cumbersome terms:
+\begin{itemize}
+  \item people spoke of ``delay'' of one wave relative to another
+        as a fraction of a period;
+  \item in optics one operated with ``path difference'' of rays instead
+        of simply talking about a phase shift.
+\end{itemize}
+Phase compresses all of that into a single parameter $\phi$.
+
+%----------------------------------------------------------------------
+\subsection{State coordinates inside physics}
+%----------------------------------------------------------------------
+
+In different areas of physics, coordinates of state have existed for a
+long time, even if they are rarely presented to the outside world as
+one unified image:
+\begin{itemize}
+  \item \emph{phase space} $(x,p)$ in classical mechanics;
+  \item \emph{configuration space} $q_i$ for complex systems;
+  \item in quantum mechanics the state is a vector in Hilbert space;
+  \item in thermodynamics a state is given by $(T,P,V,S,\dots)$;
+  \item in field theory a state is a field configuration $\varphi(x)$
+        in all points.
+\end{itemize}
+
+So \emph{inside} physics, state coordinates do exist, and many of them.
+But they are:
+\begin{itemize}
+  \item fragmented between subfields;
+  \item not presented as a simple, unified ``fifth layer'' of world
+        description, understandable both to physicists and
+        non-specialists.
+\end{itemize}
+
+The shop-window picture remains $3D + t$, while everything that
+concerns state is hidden in special notations and equations. From the
+point of view of the cultural image of the world, this part is
+effectively ``pulled outside the brackets''.
+
+%======================================================================
+\section{An ocean wave as a simple 5D example}
+%======================================================================
+
+Consider a concrete point on the shore. At a moment, say
+\texttt{15:30:12.05}:
+\begin{itemize}
+  \item the spatial coordinates $(x,y,z)$ are fixed;
+  \item the time $t$ is known (clock, date, experimental timestamp);
+  \item but the water height depends on \emph{which phase of the wave}
+        we are in: rising towards the crest, at the crest, going down,
+        in the trough.
+\end{itemize}
+
+We can say:
+\begin{itemize}
+  \item $t = \texttt{15:30:12.05}$;
+  \item $\phi \approx 0.8\pi$ --- the wave is almost at its maximum.
+\end{itemize}
+
+This is already an honest $5D$ description:
+\begin{itemize}
+  \item $(x,y,z)$ --- where on the shore;
+  \item $t$ --- when;
+  \item $\phi$ --- where within the current wave cycle.
+\end{itemize}
+
+For a physicist this is just the language of $\cos(\omega t + \phi_0)$.
+For a non-specialist it is the intuitive sentence:
+\begin{quote}
+``Right now the wave is almost at the peak of its run.''
+\end{quote}
+The only difference is whether we formalise this as a separate
+coordinate $\phi$ or leave it in words.
+
+%======================================================================
+\section{Project, life, economy as phase processes}
+%======================================================================
+
+For non-cyclic or slowly cyclic processes (large projects, a life,
+economic cycles) linear time by itself does not say much. The sentence
+``I am 35'' carries less information than ``I am at such-and-such
+stage of life''.
+
+One can introduce phase for a long process:
+\begin{itemize}
+  \item $\phi = 0$ --- project start;
+  \item $\phi = \pi$ --- roughly mid-way;
+  \item $\phi = 2\pi$ --- completion of one full cycle.
+\end{itemize}
+
+The same can be done for:
+\begin{itemize}
+  \item life path (childhood, youth, maturity, old age);
+  \item a product or company (emergence, growth, saturation, decline);
+  \item an economic cycle (expansion, overheating, crisis, recovery).
+\end{itemize}
+
+From the point of view of subjective experience we already live in the
+coordinate ``phase'':
+\begin{quote}
+wakefulness/sleep, work/rest, energy rise/fatigue, ebb/flow of strength.
+\end{quote}
+In this sense the language $3D + t + \phi$ is closer to inner
+experience than pure $3D + t$.
+
+%======================================================================
+\section{Why an explicit 5D language is useful for society}
+%======================================================================
+
+\subsection*{(i) An honest description of reality}
+
+We already use a coordinate of state $\phi$ across all scales, from
+neural rhythms and heart beats to economic and cultural oscillations.
+Making it explicit simply means acknowledging what already exists in
+our experience.
+
+\subsection*{(ii) A common language for different fields}
+
+\begin{itemize}
+  \item a physicist speaks of phase of a wave or oscillator;
+  \item a doctor --- of sleep phase or arrhythmia;
+  \item an engineer --- of the phase of a device cycle;
+  \item a psychologist --- of the phase of a crisis or remission;
+  \item an economist --- of the phase of a market cycle.
+\end{itemize}
+
+In a $5D$ language these are all special cases of the same coordinate:
+\begin{quote}
+the state of a process along its course, $\phi$.
+\end{quote}
+
+\subsection*{(iii) A soft bridge between science and everyday life}
+
+If we say: ``we live in 5D, where the fifth is not a magical dimension
+but the phase of a process'', this does not sound like esoterica; it is
+a careful clarification:
+\begin{quote}
+besides space and time we almost always need one more coordinate to
+describe what is \emph{really} happening.
+\end{quote}
+
+\subsection*{(iv) A tool for thinking and practice}
+
+Phase language allows more precise formulations:
+\begin{itemize}
+  \item instead of ``pure chaos'' --- ``subsystems are in different
+        phases of their cycles'';
+  \item instead of ``failure'' --- ``we entered the decline phase too
+        early / too late relative to other elements of the system''.
+\end{itemize}
+
+This does not replace equations and models, but it makes it easier to
+talk about complex processes in understandable terms.
+
+%======================================================================
+\section{Phase as a bridge to unified frameworks}
+\label{sec:bridge}
+%======================================================================
+
+In a more technical context, introducing an explicit phase coordinate
+$\phi$ opens the door to neat unified descriptions.
+
+In particular, one can build a framework in which:
+\begin{itemize}
+  \item weak-field gravity (through the $g_{00}$ component);
+  \item the electromagnetic field (through the potential $A_\mu$);
+  \item phase clocks (Josephson oscillators, coherent condensates and
+        other systems where we measure phase growth rate)
+\end{itemize}
+are described in a single geometric language. Technically this may look
+like a five-dimensional construction with a compact phase dimension
+$S^1$, where the coordinate $\phi$ plays the role of a \emph{phase
+fibre} over ordinary spacetime.
+
+One specific realisation of this approach is developed by the author in
+the \emph{PhaseGeometry Phase-Fibre Foundations} series (in English):
+
+\begin{itemize}
+  \item \textbf{Foundations 0: Technical Passport} --- a compact
+        technical summary of the framework, ontology and notation;
+  \item \textbf{Foundations I: Conceptual Framework} --- conceptual
+        picture: phase fibre, weak gravity, phase clocks, links to
+        superconductivity and the Josephson effect;
+  \item \textbf{Foundations II: Field Equations and Phase-Clock Configurations} ---
+        derivation of the action and equations of motion, simple
+        configurations of phase clocks in gravitational and rotating
+        backgrounds;
+  \item \textbf{Foundations III: Newtonian Halo Analogues from Phase Fields} ---
+        Newtonian phase sector, phase defects and halo-like rotation
+        curves;
+  \item \textbf{Foundations IV: Newtonian Black-Hole Analogues from Phase-Fibre Defects} ---
+        phase-fibre ``bubbles'' and Newtonian black-hole analogues.
+\end{itemize}
+
+All these works, as well as other related PhaseGeometry notes, are
+collected in the \emph{PhaseGeometry Phase-Fibre Core Package v1.0} on
+Zenodo (DOI \texttt{10.5281/zenodo.17783322}).
+
+These notes form the technical layer beneath the intuitive ``5D
+language'' discussed in the present popular-physics essay.
+
+Such an approach:
+\begin{itemize}
+  \item does not require mysticism and does not modify the basic
+        equations of general relativity or Maxwell theory;
+  \item changes the \emph{language of description} and the emphasis:
+        gravity, electromagnetism and phase clocks are treated
+        together as parts of a single stage design;
+  \item is convenient both for analysing fundamental effects
+        (gravitational redshift of phase clocks, Sagnac-like phase
+        shifts) and for applied questions in superconducting devices.
+\end{itemize}
+
+%======================================================================
+\section{Discussion: phase as an honest fifth dimension}
+\label{sec:discussion}
+%======================================================================
+
+In this essay we introduce the phase $\phi$ as a full, honest fifth coordinate
+of state on the same footing as $x, y, z$ and $t$. The idea is not to add yet
+another “exotic dimension” on top of familiar $3D + t$, but to make explicit
+something we already use all the time when we talk about waves, cycles, stages
+and phases of life or a project.
+
+In essence, the main claim can be stated as follows:
+we have long been living and thinking in a five–coordinate world $3D + t + \phi$.
+Three coordinates describe “where”, time describes “when”, and the phase $\phi$
+answers the question “at which point in the process we are right now”.
+The four–dimensional description $3D + t$ is convenient and familiar, but it arose
+historically as a shop–window simplification, in which the state coordinate was
+taken out of sight and hidden inside special symbols and equations.
+
+The text highlights two key observations. First, the phase coordinate is already
+present de facto on all scales: from harmonic waves and pendulums to biological
+rhythms, sleep, heartbeat, project phases, economic cycles and the stages of a
+human life. All of this is naturally described in the language of “where we are
+on the circle”, that is, in terms of a quantity equivalent to the phase $\phi$
+on $S^1$. Second, this language is equally accessible to a non–physicist and to
+a professional physicist: for one it is an “early/late stage”, for the other it
+is the argument of a cosine or a point on a phase trajectory.
+
+It is important to stress that such a 5D description requires no mysticism and
+does not contradict existing physical theories. At the level of strict
+formalisation, the phase is treated as an additional coordinate in a
+phase–fibre picture: above ordinary space–time there hangs a compact phase
+dimension $S^1$, and the state of the system at any moment is specified not
+only by $(x, y, z, t)$, but also by its position on this phase circle. In this
+sense the proposed picture is not an alternative to classical physics, but a
+refinement of its language: we add an explicit fifth layer of description that
+has long been hidden inside the formulas.
+
+From a cultural point of view, this shift of language has several effects.
+It brings the physical picture of the world closer to subjective experience:
+people already think in terms of phases and stages, they simply rarely see this
+framed as a coordinate. It provides a soft common language for different
+domains — from neuroscience and medicine to economics and psychology — where
+one and the same idea of “position on a cycle” keeps reappearing. And finally,
+it creates a neat bridge to more technical frameworks such as PhaseGeometry
+Phase–Fibre Foundations, where the same coordinate $\phi$ is used in a
+fully geometric way to describe gravity, electromagnetism and phase clocks.
+
+Put in the simplest possible way, the conclusion of the essay can be reduced
+to one phrase:
+we have always lived in 5D — in space, in time and in the phases of our
+processes. Perhaps it is time to start speaking about this openly ---
+both in human and in physical language.
+
+\bigskip
+
+\end{document}

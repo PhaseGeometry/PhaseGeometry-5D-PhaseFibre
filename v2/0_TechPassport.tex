@@ -1,0 +1,611 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+
+\title{PhaseGeometry Phase-Fibre Foundations 0:\\[4pt]
+Phase as a compact fifth dimension for gravity, electromagnetism and phase clocks\\[4pt]
+Technical Passport}
+
+\author{Aleksey Turchanov}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\small
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\[2pt]
+Part of the PhaseGeometry Phase-Fibre programme; archived in the Core Package\\
+DOI: \texttt{10.5281/zenodo.17783322}.
+\end{center}
+
+\vspace{1em}
+
+\begin{abstract}
+We formulate a minimal five-dimensional phase-fibre framework in which weak gravity,
+classical electromagnetism and phase-based clocks are described within a single
+geometric structure. The central structural move is to \emph{promote phase to a
+genuine fifth dimension}: a compact internal coordinate $\phi$ living on a U(1)
+fibre above ordinary four-dimensional spacetime. In other words, physical systems
+are described on $M_5 = M_4 \times S^1$, where $M_4$ carries the usual spacetime
+metric and $S^1$ carries the phase coordinate.
+
+The construction is deliberately conservative. We take standard four-dimensional
+general relativity and Maxwell electrodynamics and repackage them into a
+five-dimensional Kaluza--Klein metric with a compact phase fibre. No new
+propagating degrees of freedom are introduced; any Einstein--Maxwell solution
+can be lifted to this phase-fibre picture. Gauge transformations of the
+electromagnetic potential are encoded as reparametrisations of the phase
+coordinate on the fibre.
+
+On top of the background fields we introduce a simple worldline description of a
+``phase clock'' --- a test trajectory in spacetime carrying an internal phase
+variable on the fibre. The covariant phase rate is constrained to a constant
+reference frequency in proper time. This provides a compact way to discuss
+phase-based clocks (including Josephson oscillators) and gravitational redshift
+in the same geometric language as weak gravity and electromagnetism.
+
+The goal of this Technical Passport is not to derive every result in detail, but
+to fix a stable set of assumptions, equations and conventions for the
+\emph{``phase as fifth dimension''} framework that subsequent notes in the
+Phase-Fibre series can refer to. The framework does not modify the tested
+content of classical GR+Maxwell; it reorganises it so that phase becomes a
+central geometric ingredient rather than an auxiliary label.
+\end{abstract}
+
+%======================================================================
+\section*{0. Purpose of this document}
+%======================================================================
+
+This document specifies a minimal five-dimensional phase-fibre framework
+designed to:
+
+\begin{itemize}
+  \item \textbf{Promote phase to a full geometric coordinate.}
+        Make explicit the move from a purely four-dimensional
+        spacetime picture to a \emph{$4D + \phi$} picture, where phase
+        becomes a compact fifth dimension: a U(1) fibre with coordinate
+        $\phi$ above each spacetime point.
+  \item Package standard weak-field gravity and classical electromagnetism
+        into a single geometric structure, without introducing extra
+        light fields beyond Einstein--Maxwell.
+  \item Provide a clean description of phase-based clocks
+        (e.g.\ Josephson oscillators, interferometers) in curved
+        spacetime and electromagnetic backgrounds, with their internal
+        phase treated as motion along the fifth dimension.
+  \item Make the link between Newtonian gravity, redshift of clocks and
+        phase evolution transparent and calculable in one common
+        language.
+  \item Serve as a ``core'' reference: later Phase-Fibre notes
+        (on clock configurations, horizons, haloes, cosmology, etc.)
+        will use exactly this framework.
+\end{itemize}
+
+The philosophy is deliberately conservative. We remain entirely within
+classical four-dimensional general relativity (GR) and Maxwell theory.
+The five-dimensional viewpoint is used as a structural rephrasing whose
+\emph{key step} is:
+
+\begin{quote}
+Treat phase as a genuine fifth dimension, modelled by a compact
+U(1) fibre with coordinate $\phi$ over $M_4$, and encode
+electromagnetism and phase clocks in this fibre geometry.
+\end{quote}
+
+Concretely:
+
+\begin{itemize}
+  \item gravity is encoded in the spacetime metric $g_{\mu\nu}(x)$;
+  \item electromagnetism is the connection on the compact U(1) phase
+        fibre, via the gauge field $A_\mu(x)$;
+  \item phase clocks follow timelike worldlines and carry an internal
+        phase coordinate $\phi(\tau)$ on this fibre, i.e.\ the
+        coordinate along the fifth dimension.
+\end{itemize}
+
+All calculations in follow-up work can be performed in ordinary
+four-dimensional notation. The phase-fibre picture simply provides a
+compact ``source code'' that keeps the assumptions and normalisations
+under control and keeps the ``phase as fifth dimension'' idea explicit.
+
+%======================================================================
+\section{Ontology: base, fibre and fields}
+%======================================================================
+
+\subsection{Spacetime base}
+
+We start from a four-dimensional spacetime manifold $M_4$ with Lorentzian
+metric $g_{\mu\nu}(x)$ of signature $(+,-,-,-)$. Greek indices
+$\mu,\nu,\dots$ run over $0,1,2,3$, with $x^0 = ct$.
+
+In the weak-field regime we often write
+\begin{equation}
+  g_{00}(x) \simeq 1 + \frac{2\Phi(x)}{c^2}, \qquad
+  g_{0i}(x) \simeq 0, \qquad
+  g_{ij}(x) \simeq -\delta_{ij},
+  \label{eq:weak_field_metric}
+\end{equation}
+where $\Phi(x)$ is the Newtonian gravitational potential.
+
+\subsection{Phase fibre: phase as a geometric fifth dimension}
+
+Over each spacetime point $x^\mu$ we attach a compact U(1) phase fibre
+with coordinate $\phi$, identified modulo $2\pi$,
+\begin{equation}
+  \phi \sim \phi + 2\pi.
+\end{equation}
+The fibre is a circle $S^1$ of fixed radius $R$ in internal space. The
+total five-dimensional manifold is the product
+\begin{equation}
+  M_5 = M_4 \times S^1,
+\end{equation}
+described locally by coordinates $X^A = (x^\mu,\phi)$. Capital indices
+$A,B,\dots$ run over $0,1,2,3,5$.
+
+This embodies the main conceptual step of the Phase-Fibre line:
+
+\begin{quote}
+Phase is not just an auxiliary label in the equations; it is a
+\emph{geometric coordinate} on a compact fifth dimension, on the same
+footing (mathematically) as the usual spacetime coordinates.
+\end{quote}
+
+The geometric role of the fibre is twofold:
+\begin{itemize}
+  \item it provides a natural home for electromagnetic gauge transformations
+        as shifts of the phase coordinate;
+  \item it hosts an internal phase variable for macroscopic clocks, so
+        that their phase evolution can be treated as motion along the
+        fifth dimension.
+\end{itemize}
+
+\subsection{Fields and sources}
+
+On $M_4$ we consider the usual gravitational and electromagnetic fields:
+\begin{itemize}
+  \item a spacetime metric $g_{\mu\nu}(x)$;
+  \item a U(1) gauge field $A_\mu(x)$ with field strength
+        $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$;
+  \item matter sources with energy--momentum tensor $T_{\mu\nu}$ and
+        electromagnetic current $J^\mu$.
+\end{itemize}
+
+The phase-fibre framework is agnostic about the microscopic origin of the
+matter sector: it can be any effective fluid or field model consistent
+with Einstein--Maxwell theory.
+
+\subsection{Notation for phase variables}
+
+In the broader PhaseGeometry programme several types of phase variables
+appear. We will use the following conventions:
+
+\begin{itemize}
+  \item $\theta(x)$ denotes the condensate phase of a superconducting
+        order parameter in device-oriented notes.
+  \item $\phi$ denotes the compact phase-fibre coordinate on $S^1$.
+        Along a worldline $x^\mu(\tau)$ we write $\phi(\tau)$ for the
+        corresponding phase variable carried by a clock, i.e.\ the
+        coordinate along the fifth dimension.
+  \item $\varphi(x)$ (or, in some notes, $\phi_{\rm N}(x)$) denotes a
+        phase-field degree of freedom in the Phase-Field Newtonian
+        sector, used to model effective gravitational sources and
+        defects.
+\end{itemize}
+
+In the present Technical Passport we only work with the phase-fibre
+coordinate and its worldline version; the condensate and phase-field
+variables appear in other notes but obey the same basic conventions
+outlined here.
+
+%======================================================================
+\section{5D phase-fibre metric and effective action}
+%======================================================================
+
+\subsection{Kaluza--Klein metric with phase fibre}
+
+On $M_5$ we adopt the Kaluza--Klein-type metric ansatz
+\begin{equation}
+  ds_5^2 = G_{AB} dX^A dX^B
+  = g_{\mu\nu}(x) dx^\mu dx^\nu
+  + R^2 \bigl(d\phi + k A_\mu(x) dx^\mu\bigr)^2,
+  \label{eq:5d_metric}
+\end{equation}
+where $R$ and $k$ are constants chosen so that $kA_\mu dx^\mu$ is
+dimensionless. The one-form
+\begin{equation}
+  \mathcal{A} \equiv d\phi + k A_\mu(x) dx^\mu
+\end{equation}
+is interpreted as a connection on the U(1) phase fibre. In this form,
+electromagnetism is literally encoded as geometry of the fifth
+(phase) dimension.
+
+Under a local phase redefinition
+\begin{equation}
+  \phi(x) \rightarrow \phi'(x) = \phi(x) + \chi(x),
+\end{equation}
+we require the five-dimensional metric to remain invariant. This is
+achieved if the four-dimensional gauge field transforms as
+\begin{equation}
+  A_\mu(x) \rightarrow A'_\mu(x)
+  = A_\mu(x) - \frac{1}{k}\,\partial_\mu \chi(x),
+  \label{eq:gauge_transformation}
+\end{equation}
+which is exactly the standard U(1) gauge transformation. Thus Maxwell
+gauge invariance is geometrically encoded as freedom to shift the phase
+coordinate along the fibre: a direct realisation of the
+``phase as fifth dimension'' idea.
+
+\subsection{Five-dimensional Einstein--Hilbert action}
+
+We consider the five-dimensional Einstein--Hilbert action
+\begin{equation}
+  S_5 = \frac{1}{16\pi G_5}
+        \int d^5X \,\sqrt{-G}\, R_5,
+  \label{eq:S5}
+\end{equation}
+where $G = \det G_{AB}$, $R_5$ is the five-dimensional Ricci scalar and
+$G_5$ is the five-dimensional Newton constant.
+
+For the metric ansatz \eqref{eq:5d_metric} with all fields independent of
+$\phi$ one finds the standard Kaluza--Klein identity
+\begin{equation}
+  R_5 = R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu} F^{\mu\nu},
+  \label{eq:R5_decomposition}
+\end{equation}
+where $R_4$ is the four-dimensional Ricci scalar of $g_{\mu\nu}$.
+
+The determinant factorises as
+\begin{equation}
+  \sqrt{-G} = R\,\sqrt{-g},
+\end{equation}
+so that integration over the compact fibre (with $\phi \in[0,2\pi)$)
+yields
+\begin{equation}
+  S_5 = \frac{2\pi R}{16\pi G_5}
+        \int d^4x\,\sqrt{-g}\,
+        \left(R_4 - \frac{1}{4}(kR)^2 F_{\mu\nu}F^{\mu\nu}\right).
+  \label{eq:S5_reduced}
+\end{equation}
+
+\subsection{Dimensional reduction to Einstein--Maxwell}
+
+We now identify the effective four-dimensional Newton constant $G_4$ via
+\begin{equation}
+  \frac{1}{16\pi G_4} \equiv \frac{2\pi R}{16\pi G_5},
+\end{equation}
+and choose the combination $(kR)^2$ such that the Maxwell term acquires
+its standard prefactor $1/(4\mu_0)$:
+\begin{equation}
+  \frac{2\pi R}{16\pi G_5} (kR)^2 = \frac{1}{\mu_0}.
+\end{equation}
+With this normalisation, the gravitational and electromagnetic parts of
+\eqref{eq:S5_reduced} reduce to the familiar four-dimensional action
+\begin{equation}
+  S_{\rm grav+EM}
+  = \frac{1}{16\pi G_4} \int d^4x\,\sqrt{-g}\,R_4
+    - \frac{1}{4\mu_0} \int d^4x\,\sqrt{-g}\,F_{\mu\nu}F^{\mu\nu}.
+  \label{eq:S_Einstein_Maxwell}
+\end{equation}
+
+Matter fields couple in the usual way through an action
+\begin{equation}
+  S_{\rm matter} = \int d^4x\,\sqrt{-g}\,\mathcal{L}_{\rm matter}
+                   [g_{\mu\nu}, A_\mu, \dots],
+\end{equation}
+giving an energy--momentum tensor $T_{\mu\nu}$ and current $J^\mu$.
+
+Varying the total four-dimensional action
+$S = S_{\rm grav+EM} + S_{\rm matter}$ with respect to $g_{\mu\nu}$ and
+$A_\mu$ yields the standard Einstein and Maxwell equations,
+\begin{align}
+  G_{\mu\nu} &= 8\pi G_4\,T_{\mu\nu}, \label{eq:Einstein_eq}\\[3pt]
+  \nabla_\mu F^{\mu\nu} &= \mu_0 J^\nu. \label{eq:Maxwell_eq}
+\end{align}
+
+Thus, at the level of background fields the phase-fibre framework is
+exactly equivalent to ordinary Einstein--Maxwell theory: every solution of
+\eqref{eq:Einstein_eq}--\eqref{eq:Maxwell_eq} lifts to a five-dimensional
+solution of \eqref{eq:S5} with metric \eqref{eq:5d_metric}, and no new
+propagating modes are introduced. The novelty lies not in new dynamics,
+but in treating phase as an explicit fifth dimension that geometrises
+both electromagnetism and phase clocks.
+
+%======================================================================
+\section{Phase clocks as test worldlines}
+%======================================================================
+
+We now introduce a minimal description of phase-based clocks as test
+worldlines carrying an internal phase coordinate on the fibre. The goal
+is to obtain a clear evolution equation for the phase in a given
+background $(g_{\mu\nu},A_\mu)$ and to connect it to gravitational
+redshift and other phase phenomena.
+
+\subsection{Worldline and proper time}
+
+A point-like clock follows a timelike worldline $x^\mu(\lambda)$ in
+spacetime. For a given metric $g_{\mu\nu}$ the line element is
+\begin{equation}
+  ds^2 = g_{\mu\nu} dx^\mu dx^\nu.
+\end{equation}
+For timelike curves with $ds^2>0$ we define proper time $\tau$ along the
+worldline by
+\begin{equation}
+  d\tau = \frac{1}{c}\sqrt{ds^2}
+        = \frac{1}{c}\sqrt{g_{\mu\nu} u^\mu u^\nu}\,d\lambda,
+\end{equation}
+where $u^\mu \equiv dx^\mu / d\lambda$ is the tangent vector.
+Choosing $\lambda=\tau$ we obtain the four-velocity
+\begin{equation}
+  u^\mu \equiv \frac{dx^\mu}{d\tau}, \qquad
+  g_{\mu\nu} u^\mu u^\nu = c^2.
+\end{equation}
+
+\subsection{Phase variable and covariant phase rate}
+
+On top of the spacetime trajectory we introduce an internal phase
+variable $\phi(\tau)$ taking values on the fibre,
+\begin{equation}
+  \phi(\tau) \sim \phi(\tau) + 2\pi.
+\end{equation}
+Geometrically, this is the coordinate along the fifth (phase) dimension
+for that particular worldline.
+
+Its covariant rate along the worldline is defined by
+\begin{equation}
+  \frac{D\phi}{D\tau}
+  \equiv \frac{d\phi}{d\tau} + k A_\mu(x(\tau))\,u^\mu(\tau).
+  \label{eq:covariant_phase_rate}
+\end{equation}
+This combination is invariant under the gauge transformation
+\eqref{eq:gauge_transformation} and corresponds to the phase velocity
+measured with respect to proper time, including the minimal coupling to
+the electromagnetic potential.
+
+\subsection{Clock action and ideal phase constraint}
+
+We model a phase-based clock by the worldline action
+\begin{equation}
+  S_{\rm clock}
+  = -m c^2 \int d\tau
+    + \frac{I}{2} \int d\tau\,
+      \left[\frac{D\phi}{D\tau} - \omega_0\right]^2,
+  \label{eq:S_clock}
+\end{equation}
+where:
+\begin{itemize}
+  \item $m$ is the rest mass of the clock (assumed small enough that it
+        can be treated as a test body);
+  \item $I$ is an effective ``moment of inertia'' in phase space
+        controlling how tightly the phase rate is constrained;
+  \item $\omega_0$ is a constant reference angular frequency representing
+        the intrinsic phase rate of the clock in proper time.
+\end{itemize}
+
+The first term in \eqref{eq:S_clock} is the usual proper-time action for
+a point particle. The second term penalises deviations of the covariant
+phase rate from $\omega_0$. In the formal limit $I\to\infty$ the
+constraint is enforced exactly,
+\begin{equation}
+  \frac{D\phi}{D\tau} = \omega_0,
+  \label{eq:ideal_clock_constraint}
+\end{equation}
+and the clock runs at a fixed phase rate along its worldline.
+
+Throughout this Technical Passport we work in the test-clock limit:
+the backreaction of $S_{\rm clock}$ on the background fields
+$g_{\mu\nu}$ and $A_\mu$ is neglected. The worldline follows a timelike
+geodesic (or prescribed trajectory), while the phase evolution is
+governed by \eqref{eq:covariant_phase_rate} and
+\eqref{eq:ideal_clock_constraint}. In the five-dimensional picture, this
+is simply a curve in $M_5$ with a constrained component of its velocity
+along the fifth (phase) direction.
+
+%======================================================================
+\section{Newtonian limit and gravitational redshift}
+%======================================================================
+
+To make contact with familiar weak-field physics we consider a static
+gravitational potential $\Phi(\mathbf{x})$ and, for simplicity, set
+$A_\mu = 0$.
+
+\subsection{Static clocks at different heights}
+
+In the weak-field metric \eqref{eq:weak_field_metric} a static clock at
+position $\mathbf{x}$ has worldline
+\begin{equation}
+  x^\mu(\tau) = \bigl(ct(\tau),\mathbf{x}\bigr), \qquad
+  \frac{dx^i}{d\tau}=0.
+\end{equation}
+The proper time increment is
+\begin{equation}
+  d\tau = \sqrt{g_{00}(\mathbf{x})}\,dt
+        \simeq \left(1 + \frac{\Phi(\mathbf{x})}{c^2}\right) dt,
+\end{equation}
+where $t$ is the coordinate time.
+
+For an ideal phase clock obeying
+\eqref{eq:ideal_clock_constraint} with $A_\mu=0$ we have
+\begin{equation}
+  \frac{d\phi}{d\tau} = \omega_0,
+\end{equation}
+so that
+\begin{equation}
+  \frac{d\phi}{dt}
+  = \omega_0 \sqrt{g_{00}(\mathbf{x})}.
+\end{equation}
+The frequency of the clock as measured in coordinate time is therefore
+\begin{equation}
+  f(\mathbf{x}) \equiv \frac{1}{2\pi}\frac{d\phi}{dt}
+  = \frac{\omega_0}{2\pi}\sqrt{g_{00}(\mathbf{x})}.
+  \label{eq:local_frequency}
+\end{equation}
+
+Consider two identical clocks held at positions $\mathbf{x}_1$ and
+$\mathbf{x}_2$ in the same static gravitational field. Their frequency
+ratio is
+\begin{equation}
+  \frac{f_2}{f_1}
+  = \sqrt{\frac{g_{00}(\mathbf{x}_2)}{g_{00}(\mathbf{x}_1)}}
+  \simeq 1
+    + \frac{\Phi(\mathbf{x}_2)-\Phi(\mathbf{x}_1)}{c^2},
+  \label{eq:redshift_ratio}
+\end{equation}
+which is the standard gravitational redshift formula in the
+weak-field limit. In the ``phase as fifth dimension'' language this
+simply means that identical clocks have the same intrinsic phase
+velocity $D\phi/D\tau=\omega_0$ along the fifth direction, but the
+projection of this motion onto coordinate time $t$ is modulated by
+$g_{00}(\mathbf{x})$.
+
+\subsection{Outlook towards more general configurations}
+
+The same geometric picture can be applied to more general situations:
+\begin{itemize}
+  \item moving clocks in static or time-dependent potentials;
+  \item clocks coupled to non-trivial electromagnetic backgrounds,
+        where the $kA_\mu u^\mu$ term in \eqref{eq:covariant_phase_rate}
+        contributes to the phase evolution;
+  \item interferometric setups where phase differences between
+        alternative worldlines encode both gravitational and
+        electromagnetic effects.
+\end{itemize}
+The details depend on the specific background $(g_{\mu\nu},A_\mu)$,
+but the underlying building blocks remain those fixed in this Passport.
+
+%======================================================================
+\section{Discussion and outlook}
+%======================================================================
+
+\subsection{Phase as a conservative fifth dimension}
+
+The phase-fibre framework offers a conservative way to talk about
+gravity, electromagnetism and phase-based clocks within one geometric
+structure, while keeping the central idea explicit:
+
+\begin{quote}
+Phase is treated as a compact fifth dimension, not as an informal label.
+\end{quote}
+
+More concretely:
+
+\begin{itemize}
+  \item The background sector is exactly Einstein--Maxwell theory.
+        No additional light fields or exotic dynamics are introduced.
+  \item The U(1) gauge symmetry of electromagnetism is realised as
+        fibre reparametrisation along the phase coordinate $\phi$, which
+        keeps track of phase in a geometrically transparent way.
+  \item Phase clocks are modelled as test worldlines with a covariant
+        phase rate fixed in proper time. Gravitational redshift and
+        other phase effects are then read off from the same metric
+        components that describe Newtonian gravity.
+\end{itemize}
+
+In this sense the framework can be viewed as a ``classical unification''
+of geometry and phase: it merges the description of gravitational
+potentials, electromagnetic potentials and phase evolution without
+leaving the domain of standard classical physics, and makes the
+$4D + \phi$ structure explicit.
+
+\subsection{Practical advantages}
+
+For subsequent work the main practical advantages are:
+
+\begin{itemize}
+  \item \textbf{Single language for many phenomena.} Weak gravity,
+        redshift of clocks, electromagnetic couplings and phase
+        interference effects can all be written in terms of the same
+        few objects $(g_{\mu\nu},A_\mu,\phi)$.
+  \item \textbf{Clean separation of background and clocks.} The
+        background obeys the usual Einstein--Maxwell equations; clocks
+        are test systems whose phase evolution is governed by
+        \eqref{eq:covariant_phase_rate} and
+        \eqref{eq:ideal_clock_constraint}. This makes it
+        straightforward to analyse different experimental
+        configurations by ``plugging in'' the relevant background
+        solution.
+  \item \textbf{Transparent Newtonian limit.} Newtonian gravity and
+        gravitational redshift emerge directly from $g_{00}$, making it
+        easy to connect to laboratory and astrophysical regimes.
+\end{itemize}
+
+\subsection{Step towards unified field descriptions}
+
+Although the present framework is entirely classical and does not
+attempt to quantise the fields, it can be seen as a step towards more
+unified descriptions where phase plays a central role:
+
+\begin{itemize}
+  \item At the level of classical field theory, the phase-fibre picture
+        encourages treating phase (and its gauge structure) on the same
+        footing as spacetime geometry, as an explicit fifth dimension.
+  \item It provides a natural stage for studying horizons, black holes,
+        haloes, cosmology and interferometric experiments in terms of
+        phase clocks and phase transport, to be developed in follow-up
+        notes.
+  \item It is compatible with a wide range of microscopic models for
+        matter and condensed-matter inspired clocks (e.g.\
+        superconducting devices), which can be embedded at the level of
+        the matter Lagrangian.
+\end{itemize}
+
+The intent of this Technical Passport is to stabilise the core
+assumptions and notation. Subsequent works in the PhaseGeometry
+Phase-Fibre series (on specific clock configurations, Newtonian
+phase-field haloes, phase-fibre black-hole analogues and related topics)
+will build on this framework without modifying its basic structure.
+
+%======================================================================
+\section*{Core equations (quick reference)}
+%======================================================================
+
+For convenience we collect here the key relations fixed in this
+Technical Passport:
+
+\begin{itemize}
+  \item \textbf{5D phase-fibre metric with phase as fifth dimension:}
+        Eq.~\eqref{eq:5d_metric}.
+  \item \textbf{Four-dimensional Einstein--Maxwell action:}
+        Eq.~\eqref{eq:S_Einstein_Maxwell}, obtained from the 5D
+        Einstein--Hilbert action \eqref{eq:S5} via dimensional
+        reduction on the compact phase fibre $S^1$.
+  \item \textbf{Covariant phase rate and ideal phase clock:}
+        Eq.~\eqref{eq:covariant_phase_rate} together with the
+        constraint \eqref{eq:ideal_clock_constraint}.
+  \item \textbf{Local clock frequency and weak-field redshift:}
+        Eq.~\eqref{eq:local_frequency} with
+        $g_{00}(x) \simeq 1 + 2\Phi(x)/c^2$, and the corresponding
+        frequency ratio \eqref{eq:redshift_ratio},
+        \[
+          \frac{f_2}{f_1}
+          \simeq 1 + \frac{\Phi(\mathbf{x}_2)-\Phi(\mathbf{x}_1)}{c^2},
+        \]
+        so that in the limit $|\Phi|/c^2 \ll 1$ one has
+        $\Delta f/f \simeq \Delta\Phi/c^2$.
+\end{itemize}
+
+These equations define the ``core'' of the Phase-Fibre framework ---
+the minimal $4D + \phi$ structure with phase as a compact fifth
+dimension --- used throughout the subsequent notes in the series.
+
+%======================================================================
+\begin{thebibliography}{99}
+%======================================================================
+
+\bibitem{PhaseFibreSeries}
+A.~Turchanov,
+\newblock \emph{PhaseGeometry Phase-Fibre Core Package v1.0},
+\newblock Zenodo (2025),
+DOI:\,\texttt{10.5281/zenodo.17783322}.
+
+\end{thebibliography}
+
+\end{document}
