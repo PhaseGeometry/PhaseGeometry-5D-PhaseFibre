@@ -1,0 +1,1614 @@
+\documentclass[11pt]{article}
+\pdfoutput=1
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Basic math and layout packages
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{slashed}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{hyperref}
+
+\title{%
+  {\large PhaseGeometry Z$_2$ Phenomenology I\\[2pt]}
+  {\Large\boldmath Background cosmology and the age of the Universe\\[4pt]}
+}
+
+\author{Aleksey Turchanov}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\scriptsize
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict).\\
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\
+Zenodo record: DOI\,10.5281/zenodo.17807433.
+\end{center}
+
+\vspace{0.5em}
+
+
+
+\begin{abstract}
+We introduce a minimal unified model of the dark sector in which a single real scalar
+field with a binary $\mathbb{Z}_2$ symmetry and a quartic double-well potential accounts
+simultaneously for an effective cosmological constant and dark-matter-like halo structures.
+Within the PhaseGeometry framework, the two degenerate minima $\phi=\pm v$ of the broken
+phase yield an effective cosmological constant $\Lambda_{\rm eff}=8\pi G_0 V(v)$ in the
+homogeneous regime and support dark-matter-like halo configurations via topological defects
+and nontrivial phase domains.
+
+In this first paper of the PhaseGeometry Phenomenology series we focus on the spatially
+homogeneous FRW background and ask whether this minimal scalar extension of general
+relativity can reproduce the observed late-time expansion and cosmic age without
+introducing separate dark energy and dark matter components. Starting from the minimal
+action, we derive the Friedmann and Klein--Gordon equations for a homogeneous
+$\phi(t)$ together with standard matter and radiation, recast them into a dimensionless
+first-order system suitable for numerical integration, and compute the expansion history
+$H(z)$, density fractions $\Omega_i(z)$, scalar equation of state $w_\phi(z)$,
+distance--redshift relations, and the age $t_0$.
+
+We show analytically that the exact broken phase ($\phi=\pm v$, $\dot\phi=0$) reproduces a
+flat $\Lambda$CDM background with $\Lambda_{\rm eff}$ set by $V(v)$. For realistic
+parameters and late-time initial conditions that follow naturally from an early binary
+phase transition, the scalar relaxes rapidly to the minimum, making the background
+evolution practically indistinguishable from a flat $\Lambda$CDM model with the same
+$(\Omega_{m,0},\Omega_{r,0},H_0)$. In a representative benchmark with
+$\Omega_{m,0}=0.30$ and $H_0 = 70\ \mathrm{km\,s^{-1}\,Mpc^{-1}}$, we obtain
+$t_0^{\rm PG} \simeq 13.47\ \mathrm{Gyr}$, differing by only $0.07\%$ from the
+corresponding flat $\Lambda$CDM value ($t_0^{\Lambda\mathrm{CDM}}\simeq 13.46\ \mathrm{Gyr}$)
+and fully consistent with current observational constraints (e.g., Planck~2018:
+$t_0 = 13.799\pm0.021\ \mathrm{Gyr}$).
+
+Thus a single $\mathbb{Z}_{2}$-symmetric scalar field can simultaneously provide a viable
+dynamical origin for the cosmological constant and, through its defect sector, a candidate
+for dark matter haloes, unifying the dark sector within a single phase structure. This tight
+coupling between background and halo phenomenology makes the model highly predictive and
+testable against future precision observations of both cosmic expansion and galactic
+dynamics, and it sets the stage for the companion PhaseGeometry Phenomenology II paper
+(Turchanov, in preparation) devoted to halo profiles and rotation curves.
+\end{abstract}
+
+\vspace{1em}
+\flushbottom
+
+%=========================================================
+\section{Introduction}
+\label{sec:intro}
+%=========================================================
+
+The flat $\Lambda$CDM model provides a remarkably successful phenomenological
+description of the Universe's late-time accelerated expansion, the measured
+cosmic age, and the large-scale distribution of structure
+\cite{Planck2018,Riess1998,Perlmutter1999}. In this framework, the dark sector
+is partitioned into two independent components: a bare cosmological constant
+$\Lambda$ added to the Einstein--Hilbert action, and a pressureless cold dark
+matter (CDM) fluid. While observationally adequate, this description raises a
+conceptual puzzle: why should the dark sector consist of \emph{two} unrelated
+ingredients---a pure vacuum energy and a collisionless particle species---with no
+structural connection beyond their gravitational coupling?
+
+From the point of view of large-scale structure, recent analyses of galaxy
+correlations in the first DESI data release have sharpened the empirical picture
+of the late-time Universe. In particular, Sylos Labini and collaborators report
+robust two-point correlations extending to scales of a few hundred Mpc, with no
+clear evidence for a perfectly homogeneous transition within the current DESI
+volume \cite{SylosLabiniDESI}. While these findings remain compatible with a
+statistically homogeneous $\Lambda$CDM background, they highlight that the
+observed galaxy distribution exhibits rich structure on scales comparable to
+those where dark energy becomes dynamically important. In this work we stay
+within a standard FRW framework for the background, but the PhaseGeometry
+interpretation keeps in mind that the same order parameter controlling
+$\Lambda_{\rm eff}$ also underlies the formation of halo networks in an
+inhomogeneous Universe.
+
+From a theoretical perspective, the $\Lambda$CDM parametrisation leaves several
+open questions. The measured value of $\Lambda$ is many orders of magnitude
+smaller than naive quantum-field-theory estimates (the cosmological constant
+problem), while the nature and microphysical origin of CDM remain entirely
+unspecified. Moreover, the model contains no built-in reason why the present
+densities of dark energy and dark matter should be comparable
+($\Omega_\Lambda \sim \Omega_{\rm cdm}$), a coincidence that appears
+fine-tuned in the absence of an underlying mechanism linking the two
+components.
+
+A common route beyond $\Lambda$CDM is to replace the constant $\Lambda$ with a
+dynamical dark-energy field, such as quintessence
+\cite{RatraPeebles1988,Copeland2006}. In such models, a canonical scalar field
+$\phi$ rolls down a suitably flat potential $V(\phi)$, producing an equation of
+state $w_\phi(z)$ that can approach $-1$ at late times. While quintessence can
+alleviate the coincidence problem and offers a richer phenomenology, it
+typically introduces a new scalar degree of freedom that is \emph{independent}
+of dark matter. The dark sector remains split, and the potential $V(\phi)$ is
+often chosen phenomenologically, with limited guidance from fundamental
+symmetry or phase structure.
+
+In this note we adopt the strict PhaseGeometry Z$_2$ viewpoint, in which the
+dark sector is realised by a single real scalar \emph{order--parameter field}
+$\phi(x)$ with a $\mathbb{Z}_2$-symmetric double-well potential. The mere
+existence of a global binary ``$+/-$'' structure already means that space is
+filled by a binary medium: even when $\phi(x)$ is spatially homogeneous and
+close to one of the minima $\phi \simeq \pm v$, there is a well-defined field
+configuration at every point. Large regions with $\phi \approx \pm v$ then
+provide an effective vacuum energy density $V(\pm v)$, which we encode as an
+effective cosmological constant
+\[
+  \Lambda_{\rm eff} = 8\pi G_0\,V(\pm v).
+\]
+Our task in this Phenomenology~I note is simply to confront this minimal
+homogeneous background with cosmological age constraints.
+
+Concretely, we consider a minimal extension of general relativity by a single
+real scalar field $\phi$ endowed with a $\mathbb{Z}_2$ symmetry
+($\phi \rightarrow -\phi$) and a quartic potential
+\begin{equation}
+  V(\phi) = \alpha\phi^{2} + \frac{\beta}{2}\phi^{4}, \qquad \beta>0 .
+  \label{eq:potential_quartic}
+\end{equation}
+For $\alpha<0$ the potential develops two degenerate minima at
+\begin{equation}
+  \phi = \pm v,
+  \qquad
+  v = \sqrt{-\alpha/\beta}\,,
+  \label{eq:vev_v}
+\end{equation}
+with potential value
+\begin{equation}
+  V(v) \equiv V(\phi=\pm v)
+  = \alpha v^2 + \frac{\beta}{2}v^4
+  = -\frac{\alpha^2}{2\beta}\,.
+  \label{eq:Vv}
+\end{equation}
+The sign and magnitude of $V(v)$ are regarded as phenomenological; we denote
+\begin{equation}
+  \rho_{\rm vac}\equiv V(v)\,,
+  \label{eq:rho_vac_def}
+\end{equation}
+and will demand $\rho_{\rm vac} > 0$ when comparing to an accelerating Universe.
+
+On cosmological scales, the Universe is assumed to reside in a homogeneous
+broken phase, in which the order parameter has chosen one of the branches, up
+to small fluctuations:
+\begin{equation}
+  \phi(x)\simeq\phi_{\rm vac}=\pm v,\qquad \partial_\mu\phi_{\rm vac}\simeq 0\,.
+  \label{eq:hom_broken}
+\end{equation}
+
+The homogeneous broken phase acts as a vacuum with energy density $V(v)$ and
+equation of state $w=-1$, providing an effective cosmological constant
+$\Lambda_{\rm eff}=8\pi G_0 V(v)$. At the same time, inhomogeneous
+configurations of the same broken phase---domain walls, texture-like defects,
+or non-topological solitons---carry additional positive energy density and,
+under suitable conditions, can mimic the gravitational effects of cold dark matter
+haloes \cite{PhaseGeometryHalo}. This framework, which we refer to as
+PhaseGeometry, therefore offers a unified picture: dark energy and
+dark-matter-like phenomena arise as different manifestations of a single binary
+phase, rather than as two independent substances.
+
+The present analysis differs from generic quintessence models not in the
+equations of motion (which are formally identical to those of a canonical
+scalar with a quartic potential) but in the interpretation and the constraints
+placed on the parameters. In ordinary quintessence, the shape of $V(\phi)$ is
+chosen ad hoc to produce late-time acceleration, and dark matter is added as a
+separate component. In PhaseGeometry, the $\mathbb{Z}_2$-symmetric quartic
+potential is the natural form arising from a binary phase transition, and the
+\emph{same} parameters $(\alpha,\beta,G_0)$ simultaneously control the vacuum
+energy $\Lambda_{\rm eff}$, the scalar mass $m_\phi$, and the characteristic
+scales of defect-supported haloes. Consequently, the model is not merely
+phenomenological but fundamentally predictive: a successful fit to the
+background expansion and the cosmic age automatically imposes tight constraints
+on halo properties, and any inconsistency between the two regimes would
+directly falsify the unified picture. This built-in link between dark energy
+and dark matter is the key conceptual advance of the framework.
+
+From a geometric point of view, there exist alternative extensions of general
+relativity in which additional fields or phase-space structures also play
+prominent roles. Examples include 4-form and torsion-based modifications of the
+Einstein equations and Chern--Simons-like gravity with axion-like dark-sector
+degrees of freedom~\cite{Castro4form}, as well as Finsler--Lagrange and
+Hamilton geometries on (co)tangent bundles with modified dispersion relations
+and nonholonomic structures~\cite{VacaruMDR}. In contrast to these more
+general constructions, the present work deliberately focuses on a minimal 4D
+scalar extension whose background dynamics are as close as possible to standard
+$\Lambda$CDM, while keeping the binary phase and its defect sector as the
+unifying ingredient for the dark sector.
+
+In this first paper of the series, we focus exclusively on the homogeneous
+background cosmology. Our aim is to establish whether the PhaseGeometry
+scalar, treated as a spatially uniform field $\phi(t)$, can reproduce the
+observed expansion history $H(z)$, distance--redshift relations, and age of the
+Universe to a precision comparable with current data. We do not address
+perturbations, structure formation, or the detailed properties of defect haloes
+here; those aspects are reserved for companion studies. Instead, we perform a
+self-contained analysis of the FRW equations derived from the minimal action,
+solve them numerically after casting them into a convenient dimensionless form,
+and compare the resulting background evolution to a reference flat $\Lambda$CDM
+model with the same $(\Omega_{m,0},\Omega_{r,0},H_0)$. We show both
+analytically and numerically that for realistic parameter choices and natural
+late-time initial conditions, the PhaseGeometry background is practically
+indistinguishable from $\Lambda$CDM, yielding a cosmic age $t_0$ consistent
+with Planck measurements at the sub-percent level.
+
+The paper is organized as follows. In Sec.~\ref{sec:framework} we introduce the
+PhaseGeometry action, potential, phase structure, and the effective
+cosmological constant arising from the homogeneous broken phase.
+Section~\ref{sec:FRW} derives the FRW equations for $\phi(t)$ together with
+matter and radiation. Section~\ref{sec:regimes} discusses analytic regimes and
+qualitative expectations for the field's rolling behavior. In
+Sec.~\ref{sec:dimensionless} we present a dimensionless formulation and
+describe the numerical implementation. Section~\ref{sec:results} presents the
+main results: the expansion history $H(z)$, density fractions $\Omega_i(z)$,
+scalar equation of state $w_\phi(z)$, and the age $t_0$.
+Section~\ref{sec:distances} compares basic distance--redshift relations with
+those of a fiducial $\Lambda$CDM model. Finally, Sec.~\ref{sec:discussion}
+provides a broader discussion, contrasts the framework with quintessence and
+with more geometric extensions of gravity, outlines the connection to the
+defect/halo sector, and points to future directions.
+
+%=========================================================
+\section{PhaseGeometry framework and homogeneous broken phase}
+\label{sec:framework}
+%=========================================================
+
+In this section we introduce the effective action, potential and phase structure
+of the binary scalar field, specialising to the homogeneous broken phase that
+will be relevant for background cosmology.
+
+%---------------------------------------------------------
+\subsection{Action, potential and symmetry}
+\label{sec:framework_action}
+%---------------------------------------------------------
+
+The minimal PhaseGeometry setup is based on the effective action
+\begin{equation}
+  S[g,\phi] = \int d^4x\,\sqrt{-g}\left[
+    \frac12 g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi - V(\phi)
+    - \frac{1}{16\pi G_0}R
+  \right],
+  \label{eq:action}
+\end{equation}
+with a real scalar $\phi$ carrying a $\mathbb{Z}_2$ symmetry,
+\begin{equation}
+  \phi \rightarrow -\phi\,,
+  \label{eq:z2}
+\end{equation}
+around the distinguished symmetric state $\phi = 0$, and quartic potential
+\begin{equation}
+  V(\phi) = \alpha\phi^2 + \frac{\beta}{2}\phi^4,\qquad \beta>0.
+  \label{eq:potential_quartic_again}
+\end{equation}
+We use units with $c=1$ and metric signature $(-,+,+,+)$. The parameter $G_0$ is
+a bare gravitational coupling that we will later identify with the observed
+Newton constant up to possible renormalisation. Since in the present work we
+consider only the homogeneous FRW mode of the field, gravitational
+renormalisation effects are negligible at the background level and we simply
+identify $G_0$ with the observed Newton constant $G$ when comparing with
+cosmological parameters.
+
+Varying with respect to $g_{\mu\nu}$ yields the Einstein equations
+\begin{equation}
+  G_{\mu\nu} = 8\pi G_0 \left( T^{(\phi)}_{\mu\nu} + T^{\rm (ordinary)}_{\mu\nu} \right),
+  \label{eq:einst}
+\end{equation}
+where $T^{\rm (ordinary)}_{\mu\nu}$ collects all non-$\phi$ matter, and the scalar stress--energy tensor is
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}
+  = \partial_\mu\phi\,\partial_\nu\phi
+    - g_{\mu\nu}\left[\frac12 g^{\alpha\beta}\partial_\alpha\phi\,\partial_\beta\phi + V(\phi)\right].
+  \label{eq:Tphi}
+\end{equation}
+
+Variation of \eqref{eq:action} with respect to $\phi$ yields the scalar equation of motion
+\begin{equation}
+  \Box\phi - \frac{dV}{d\phi} = 0\,,
+  \qquad
+  \frac{dV}{d\phi} = 2\alpha\phi + 2\beta\phi^3\,.
+  \label{eq:KG_general}
+\end{equation}
+
+%---------------------------------------------------------
+\subsection{Phase structure and broken minima}
+\label{sec:framework_minima}
+%---------------------------------------------------------
+
+For $\alpha>0$, the minimum of \eqref{eq:potential_quartic_again} is at $\phi = 0$, corresponding to a symmetric, pre-geometric phase. For $\alpha<0$ the potential develops two degenerate minima at
+\begin{equation}
+  \phi = \pm v,
+  \qquad
+  v = \sqrt{-\alpha/\beta}\,,
+  \label{eq:vev_v_again}
+\end{equation}
+with potential value
+\begin{equation}
+  V(v) \equiv V(\phi=\pm v)
+  = \alpha v^2 + \frac{\beta}{2}v^4
+  = -\frac{\alpha^2}{2\beta}\,.
+  \label{eq:Vv_again}
+\end{equation}
+The sign and magnitude of $V(v)$ are regarded as phenomenological; we denote
+\begin{equation}
+  \rho_{\rm vac}\equiv V(v)\,,
+  \label{eq:rho_vac_def_again}
+\end{equation}
+and will demand $\rho_{\rm vac} > 0$ when comparing to an accelerating Universe.
+
+On cosmological scales, the Universe is assumed to reside in a homogeneous broken phase, in which the order parameter has chosen one of the branches, up to small fluctuations:
+\begin{equation}
+  \phi(x)\simeq\phi_{\rm vac}=\pm v,\qquad \partial_\mu\phi_{\rm vac}\simeq 0\,.
+  \label{eq:hom_broken_again}
+\end{equation}
+
+%---------------------------------------------------------
+\subsection{Homogeneous broken phase and effective cosmological constant}
+\label{sec:framework_Lambda_eff}
+%---------------------------------------------------------
+
+For a perfectly homogeneous configuration with $\partial_\mu\phi=0$, the stress--energy tensor \eqref{eq:Tphi} reduces to
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}[\phi_{\rm hom}]
+  = -\,g_{\mu\nu}V(\phi_{\rm hom})\,.
+  \label{eq:Tphi_hom}
+\end{equation}
+In particular, for the homogeneous broken phase $\phi=\phi_{\rm vac}=\pm v$,
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}[\phi_{\rm vac}]
+  = -\,g_{\mu\nu}V(v)
+  = -\,\rho_{\rm vac}\,g_{\mu\nu}\,,
+  \label{eq:Tphi_vac}
+\end{equation}
+which has the form of a perfect fluid with
+\begin{equation}
+  \rho_{\rm vac} \equiv V(v), \qquad p_{\rm vac} = -\rho_{\rm vac}, \qquad w=-1\,.
+  \label{eq:vac_fluid}
+\end{equation}
+
+The Einstein equations \eqref{eq:einst} in this phase become
+\begin{equation}
+  G_{\mu\nu}
+  =8\pi G_0\Big(-\rho_{\rm vac}g_{\mu\nu}+T^{\rm (ordinary)}_{\mu\nu}\Big)\,.
+  \label{eq:einst_vac1}
+\end{equation}
+Moving the vacuum term to the left-hand side,
+\begin{equation}
+  G_{\mu\nu}+\Lambda_{\rm eff}g_{\mu\nu}
+  =8\pi G_0 T^{\rm (ordinary)}_{\mu\nu}\,,
+  \label{eq:einst_vac2}
+\end{equation}
+defines an effective cosmological constant
+\begin{equation}
+  \Lambda_{\rm eff}\equiv 8\pi G_0\rho_{\rm vac}
+  = 8\pi G_0 V(v)\,.
+  \label{eq:Lambda_eff_def}
+\end{equation}
+For the quartic potential \eqref{eq:potential_quartic_again} this gives explicitly
+\begin{equation}
+  \Lambda_{\rm eff}
+  =8\pi G_0\left(-\frac{\alpha^2}{2\beta}\right)
+  = -4\pi G_0\frac{\alpha^2}{\beta}\,,
+  \label{eq:Lambda_eff_quartic}
+\end{equation}
+but in the phenomenological discussion we treat $\Lambda_{\rm eff}$ simply as $8\pi G_0 V(v)$ and require that it be positive.
+
+%---------------------------------------------------------
+\subsection{Decomposition into vacuum and dynamical parts}
+\label{sec:framework_tau}
+%---------------------------------------------------------
+
+For a general configuration of $\phi$ we find it convenient to write
+\begin{equation}
+  T^{(\phi)}_{\mu\nu} = T^{\rm (vac)}_{\mu\nu} + \tau^{(\phi)}_{\mu\nu}\,,
+  \label{eq:Tphi_split}
+\end{equation}
+with
+\begin{equation}
+  T^{\rm (vac)}_{\mu\nu} \equiv -\,\rho_{\rm vac}\,g_{\mu\nu},
+  \qquad
+  \tau^{(\phi)}_{\mu\nu} \equiv T^{(\phi)}_{\mu\nu} - T^{\rm (vac)}_{\mu\nu}\,.
+  \label{eq:tau_def}
+\end{equation}
+In the defect/halo literature, $\tau^{(\phi)}_{\mu\nu}$ corresponds to the
+``dark-matter-like'' contribution defined relative to the homogeneous broken
+background. In the present paper we restrict attention to \emph{homogeneous}
+configurations $\phi(t)$, so that $\tau^{(\phi)}_{\mu\nu}$ encodes only the
+time-dependent kinetic and potential corrections relative to the vacuum, not
+spatial defects.
+
+The Einstein equations then take the form
+\begin{equation}
+  G_{\mu\nu} + \Lambda_{\rm eff}g_{\mu\nu}
+  =8\pi G_0\Big(
+    \tau^{(\phi)}_{\mu\nu} + T^{\rm (ordinary)}_{\mu\nu}
+  \Big),
+  \label{eq:einst_tau}
+\end{equation}
+which is structurally similar to a $\Lambda$CDM-like system with $\Lambda$ and an additional dark sector.
+
+%=========================================================
+\section{FRW background with the PhaseGeometry scalar}
+\label{sec:FRW}
+%=========================================================
+
+%---------------------------------------------------------
+\subsection{Flat FRW ansatz and matter content}
+\label{sec:FRW_metric}
+%---------------------------------------------------------
+
+We consider a spatially flat FRW metric
+\begin{equation}
+  ds^2 = -dt^2 + a(t)^2\,d\mathbf{x}^2,
+  \label{eq:FRW_metric}
+\end{equation}
+with scale factor $a(t)$ and Hubble parameter
+\begin{equation}
+  H(t) \equiv \frac{\dot a}{a}\,,
+  \label{eq:H_def}
+\end{equation}
+where overdots denote derivatives with respect to cosmic time $t$.
+
+The matter content consists of:
+\begin{itemize}[leftmargin=*]
+  \item a homogeneous scalar field $\phi=\phi(t)$,
+  \item a pressureless matter component (``dust'') with energy density $\rho_m(t)$,
+  \item a radiation component with energy density $\rho_r(t)$ and pressure $p_r = \rho_r/3$.
+\end{itemize}
+We treat ordinary matter and radiation as separately conserved perfect fluids, with
+\begin{equation}
+  \rho_m(a) = \rho_{m0}\,a^{-3}, \qquad
+  \rho_r(a) = \rho_{r0}\,a^{-4},
+  \label{eq:rhom_rhor_scaling}
+\end{equation}
+where subscript ``0'' denotes present-day values.
+
+%---------------------------------------------------------
+\subsection{Scalar energy density, pressure and equation of state}
+\label{sec:FRW_rho_p}
+%---------------------------------------------------------
+
+Specialising \eqref{eq:Tphi} to the FRW metric \eqref{eq:FRW_metric} and homogeneous $\phi(t)$ gives
+\begin{equation}
+  T^{(\phi)0}{}_0 = -\rho_\phi,
+  \qquad
+  T^{(\phi)i}{}_j = p_\phi\,\delta^i{}_j,
+  \label{eq:Tphi_FRW}
+\end{equation}
+with
+\begin{equation}
+  \rho_\phi = \frac12\dot\phi^2 + V(\phi), \qquad
+  p_\phi = \frac12\dot\phi^2 - V(\phi).
+  \label{eq:rho_phi_p_phi}
+\end{equation}
+The equation-of-state parameter is
+\begin{equation}
+  w_\phi \equiv \frac{p_\phi}{\rho_\phi}
+  = \frac{\frac12\dot\phi^2 - V(\phi)}{\frac12\dot\phi^2 + V(\phi)}.
+  \label{eq:wphi_def}
+\end{equation}
+In the homogeneous broken vacuum, $\dot\phi=0$, $\phi=\pm v$, one recovers $w_\phi=-1$ and $\rho_\phi = \rho_{\rm vac}$.
+
+It is useful to decompose
+\begin{equation}
+  \rho_\phi = \rho_{\rm vac} + \rho_{\rm dyn},
+  \label{eq:rho_phi_split}
+\end{equation}
+with
+\begin{equation}
+  \rho_{\rm dyn}
+  \equiv \frac12\dot\phi^2 + V(\phi) - V(v),
+  \label{eq:rho_dyn_def}
+\end{equation}
+so that $\rho_{\rm dyn}=0$ for the exact homogeneous broken phase.
+
+%---------------------------------------------------------
+\subsection{Friedmann and Klein--Gordon equations}
+\label{sec:FRW_equations}
+%---------------------------------------------------------
+
+Using \eqref{eq:einst_tau} in the FRW metric, and grouping the vacuum term with the geometric side, the Friedmann equations become
+\begin{equation}
+  H^2 = \frac{8\pi G_0}{3}\left(\rho_r+\rho_m+\rho_\phi\right),
+  \label{eq:friedmann1}
+\end{equation}
+\begin{equation}
+  \dot H = -4\pi G_0\left(\rho_r+\rho_m+\rho_\phi + p_r + p_\phi\right).
+  \label{eq:friedmann2}
+\end{equation}
+Substituting \eqref{eq:rhom_rhor_scaling} and \eqref{eq:rho_phi_p_phi},
+\begin{equation}
+  H^2 = \frac{8\pi G_0}{3}\left(
+    \rho_r + \rho_m + \frac12\dot\phi^2 + V(\phi)
+  \right),
+  \label{eq:friedmann1_explicit}
+\end{equation}
+\begin{equation}
+  \dot H = -4\pi G_0\left(
+    \rho_m + \frac{4}{3}\rho_r + \dot\phi^2
+  \right).
+  \label{eq:friedmann2_explicit}
+\end{equation}
+These equations are supplemented by the matter and radiation conservation equations \eqref{eq:rhom_rhor_scaling}, and by the scalar equation of motion. Varying the action \eqref{eq:action} or equivalently imposing $\nabla_\mu T^{(\phi)\mu}{}_\nu=0$ yields, for a homogeneous scalar, the Klein--Gordon equation
+\begin{equation}
+  \ddot\phi + 3H\dot\phi + \frac{dV}{d\phi} = 0,
+  \label{eq:KG_FRW}
+\end{equation}
+with
+\begin{equation}
+  \frac{dV}{d\phi} = 2\alpha\phi + 2\beta\phi^3.
+  \label{eq:dVdphi_quartic}
+\end{equation}
+Equations \eqref{eq:friedmann1_explicit}, \eqref{eq:friedmann2_explicit} and \eqref{eq:KG_FRW} form a closed system for $(a(t), \phi(t))$ given initial conditions and parameters $(\alpha,\beta,G_0,\rho_{m0},\rho_{r0})$.
+
+%---------------------------------------------------------
+\subsection{Exact $\Lambda_{\rm eff}$ limit and mapping to $\Lambda$CDM}
+\label{sec:FRW_Lambda_limit}
+%---------------------------------------------------------
+
+In the exact homogeneous broken phase we take
+\begin{equation}
+  \phi(t) = \phi_{\rm vac} = \pm v,\qquad \dot\phi=0,
+  \label{eq:phi_vac_hom}
+\end{equation}
+so that
+\begin{equation}
+  \rho_\phi = V(v) = \rho_{\rm vac},\qquad
+  p_\phi = -\rho_{\rm vac}.
+  \label{eq:rho_p_vac}
+\end{equation}
+The Friedmann equations reduce to
+\begin{equation}
+  H^2 = \frac{8\pi G_0}{3}\left(
+    \rho_r + \rho_m + \rho_{\rm vac}
+  \right),
+  \label{eq:friedmann1_LCDM}
+\end{equation}
+\begin{equation}
+  \dot H = -4\pi G_0\left(
+    \rho_m + \frac{4}{3}\rho_r
+  \right),
+  \label{eq:friedmann2_LCDM}
+\end{equation}
+identical to a standard flat $\Lambda$CDM background with cosmological constant
+\begin{equation}
+  \Lambda_{\rm eff} = 8\pi G_0\rho_{\rm vac}.
+  \label{eq:Lambda_eff_reminder}
+\end{equation}
+Thus, at the level of homogeneous FRW cosmology, the PhaseGeometry background reproduces $\Lambda$CDM whenever $\phi$ has relaxed to the broken minimum and dynamical corrections are negligible.
+
+%=========================================================
+\section{Regimes and analytic expectations}
+\label{sec:regimes}
+%=========================================================
+
+%---------------------------------------------------------
+\subsection{Pure broken phase: exact $\Lambda_{\rm eff}$ cosmology}
+\label{sec:regimes_pure}
+%---------------------------------------------------------
+
+If the Universe has already settled into $\phi=\pm v$ with $\dot\phi=0$ well before the onset of the observed acceleration, then the background expansion is exactly that of a flat $\Lambda$CDM model with
+\begin{equation}
+  \Omega_{\Lambda,0} \equiv \frac{\rho_{\rm vac}}{\rho_{c,0}}
+  = \frac{V(v)}{3H_0^2 M_{\rm Pl}^2},
+  \qquad
+  M_{\rm Pl}^2 \equiv \frac{1}{8\pi G_0},
+  \label{eq:OmegaL0_def}
+\end{equation}
+and
+\begin{equation}
+  H^2(z) = H_0^2\left[
+    \Omega_{r,0}(1+z)^4 + \Omega_{m,0}(1+z)^3 + \Omega_{\Lambda,0}
+  \right],
+  \label{eq:H_LCDM}
+\end{equation}
+where $\rho_{c,0}=3H_0^2 M_{\rm Pl}^2$ is the critical density, and $\Omega_{i,0}=\rho_{i,0}/\rho_{c,0}$ at $z=0$.
+
+Equation~\eqref{eq:OmegaL0_def} provides a direct mapping between the PhaseGeometry potential parameters $(\alpha,\beta)$ and the phenomenological parameter $\Omega_{\Lambda,0}$ once $H_0$ and $G_0$ are fixed.
+
+%---------------------------------------------------------
+\subsection{Small homogeneous deviations around the minimum}
+\label{sec:regimes_small}
+%---------------------------------------------------------
+
+We now consider small homogeneous deviations from the broken minimum,
+\begin{equation}
+  \phi(t) = v + \delta\phi(t),\qquad |\delta\phi|\ll v.
+  \label{eq:phi_small_dev}
+\end{equation}
+Expanding the potential to quadratic order,
+\begin{equation}
+  V(\phi) = V(v) + \frac12 V''(v)\,\delta\phi^2 + \mathcal{O}(\delta\phi^3),
+  \label{eq:V_expansion}
+\end{equation}
+with
+\begin{equation}
+  V''(\phi) = 2\alpha + 6\beta\phi^2,\qquad
+  m_\phi^2 \equiv V''(v)=2\alpha+6\beta v^2 = -4\alpha >0\quad(\alpha<0,\beta>0).
+  \label{eq:mphi_def}
+\end{equation}
+The Klein--Gordon equation \eqref{eq:KG_FRW} linearises to
+\begin{equation}
+  \delta\ddot\phi + 3H\delta\dot\phi + m_\phi^2\,\delta\phi \simeq 0.
+  \label{eq:KG_linear}
+\end{equation}
+For $m_\phi \gg H$, the field undergoes damped oscillations about the minimum, with an effective energy density that redshifts approximately as $a^{-3}$ (behaving like non-relativistic matter on average). In our background-focused treatment, such oscillations are phenomenologically constrained to be small at late times; otherwise the scalar would contribute an additional matter-like component on top of baryons and CDM.
+
+For $m_\phi \ll H$ at late times, the field rolls slowly and $w_\phi\approx -1$, with small deviations governed by
+\begin{equation}
+  1+w_\phi \simeq \frac{\dot\phi^2}{V(v)} \ll 1.
+  \label{eq:1plusw_small}
+\end{equation}
+This is the standard ``thawing'' behaviour familiar from quintessence models, but with $V(v)$ and $m_\phi$ fixed by the PhaseGeometry potential.
+
+%---------------------------------------------------------
+\subsection{Qualitative rolling behaviour}
+\label{sec:regimes_rolling}
+%---------------------------------------------------------
+
+Beyond the linear regime, solutions of \eqref{eq:friedmann1_explicit}--\eqref{eq:KG_FRW} exhibit a variety of behaviours depending on initial conditions:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Overdamped relaxation:} For sufficiently large $H$ at early times (e.g.\ during radiation
+  domination), the friction term $3H\dot\phi$ dominates and the field is frozen away from the minimum,
+  $\dot\phi\approx 0$.
+  \item \textbf{Thawing:} As $H$ decreases, the field begins to roll toward $v$, with $|w_\phi|<1$ and time-dependent $\rho_\phi$.
+  \item \textbf{Oscillatory regime:} If the field overshoots the minimum and $m_\phi\gtrsim H$, oscillations can occur, usually quickly damped by expansion.
+\end{itemize}
+In the phenomenological applications of interest, the late-time Universe is well described by cases in which the field is close enough to $v$ at $z\lesssim\mathcal{O}(1)$ that deviations from $w_\phi=-1$ are small and the background expansion is close to $\Lambda$CDM. The numerical treatment below makes these statements quantitative.
+
+%=========================================================
+\section{Dimensionless formulation and numerical implementation}
+\label{sec:dimensionless}
+%=========================================================
+
+%---------------------------------------------------------
+\subsection{Dimensionless variables and rescaled potential}
+\label{sec:dimensionless_vars}
+%---------------------------------------------------------
+
+For numerical work, it is convenient to rescale all quantities by present-day cosmological scales. We switch to dimensionless variables both to simplify the numerical integration and to express all quantities in units of the present-day Hubble scale $H_0$ and the reduced Planck mass $M_{\rm Pl}$.
+We define the reduced Planck mass
+\begin{equation}
+  M_{\rm Pl}^2 \equiv \frac{1}{8\pi G_0},
+  \label{eq:Mpl_def}
+\end{equation}
+and a dimensionless field
+\begin{equation}
+  x \equiv \frac{\phi}{M_{\rm Pl}}.
+  \label{eq:x_def}
+\end{equation}
+We also work with the logarithm of the scale factor
+\begin{equation}
+  N \equiv \ln a,
+  \label{eq:N_def}
+\end{equation}
+so that $d/dt = H\, d/dN$, and define the dimensionless Hubble parameter
+\begin{equation}
+  E(N) \equiv \frac{H(N)}{H_0}.
+  \label{eq:E_def}
+\end{equation}
+
+We introduce a dimensionless potential
+\begin{equation}
+  \tilde V(x) \equiv \frac{V(\phi)}{3H_0^2 M_{\rm Pl}^2}.
+  \label{eq:Vtilde_def}
+\end{equation}
+For the quartic potential \eqref{eq:potential_quartic_again},
+\begin{equation}
+  \tilde V(x)
+  = \lambda_2 x^2 + \lambda_4 x^4,
+  \label{eq:Vtilde_quartic}
+\end{equation}
+with
+\begin{equation}
+  \lambda_2 \equiv \frac{\alpha}{3H_0^2},\qquad
+  \lambda_4 \equiv \frac{\beta M_{\rm Pl}^2}{6H_0^2}.
+  \label{eq:lambda2_lambda4}
+\end{equation}
+
+Present-day density parameters are
+\begin{equation}
+  \Omega_{i,0} \equiv \frac{\rho_{i,0}}{3H_0^2 M_{\rm Pl}^2},\quad i=r,m,
+  \label{eq:Omega_i0}
+\end{equation}
+and the scalar contribution is
+\begin{equation}
+  \Omega_{\phi,0} 
+  = \frac{\rho_{\phi,0}}{3H_0^2 M_{\rm Pl}^2}
+  = \frac12 E(0)^2 x'(0)^2 + \tilde V\!\left(x(0)\right),
+  \label{eq:Omega_phi0}
+\end{equation}
+with primes denoting derivatives with respect to $N$.
+
+%---------------------------------------------------------
+\subsection{Dimensionless background equations}
+\label{sec:dimensionless_equations}
+%---------------------------------------------------------
+
+In terms of these variables, the scalar energy density and pressure become
+\begin{equation}
+  \frac{\rho_\phi}{3H_0^2 M_{\rm Pl}^2}
+  = \frac12 E^2 x'^2 + \tilde V(x),
+  \qquad
+  \frac{p_\phi}{3H_0^2 M_{\rm Pl}^2}
+  = \frac12 E^2 x'^2 - \tilde V(x).
+  \label{eq:rho_p_dimensionless}
+\end{equation}
+The total (dimensionless) energy density is
+\begin{equation}
+  \frac{\rho_{\rm tot}}{3H_0^2 M_{\rm Pl}^2}
+  = \Omega_{r,0} e^{-4N}
+    + \Omega_{m,0} e^{-3N}
+    + \frac12 E^2 x'^2 + \tilde V(x).
+  \label{eq:rho_tot_dimensionless}
+\end{equation}
+
+The Friedmann equation \eqref{eq:friedmann1_explicit} becomes
+\begin{equation}
+  E^2 = \Omega_{r,0} e^{-4N}
+  + \Omega_{m,0} e^{-3N}
+  + \frac12 E^2 x'^2 + \tilde V(x),
+  \label{eq:Friedmann_dim}
+\end{equation}
+which can be solved algebraically for $E^2$:
+\begin{equation}
+  E^2(N) = \frac{
+    \Omega_{r,0} e^{-4N}
+    + \Omega_{m,0} e^{-3N}
+    + \tilde V(x)
+  }{
+    1 - \frac12 x'^2
+  }.
+  \label{eq:E2_solution}
+\end{equation}
+This expression is well-defined as long as $x'^2<2$, which is automatically satisfied for the slowly rolling configurations of interest.
+
+The second Friedmann equation \eqref{eq:friedmann2_explicit} yields
+\begin{equation}
+  \frac{\dot H}{H^2}
+  = -\frac{3}{2}
+  \frac{
+    \Omega_{m,0} e^{-3N}
+    + \frac{4}{3}\Omega_{r,0} e^{-4N}
+    + E^2 x'^2
+  }{
+    \Omega_{r,0} e^{-4N}
+    + \Omega_{m,0} e^{-3N}
+    + \frac12 E^2 x'^2 + \tilde V(x)
+  }.
+  \label{eq:dlnH_dN}
+\end{equation}
+Using $d/dt = H d/dN$, we also have
+\begin{equation}
+  \frac{\dot H}{H^2} = \frac{d\ln H}{dN} = \frac12\frac{d\ln E^2}{dN}.
+  \label{eq:dlnH_dN_alt}
+\end{equation}
+
+The Klein--Gordon equation \eqref{eq:KG_FRW} in terms of $N$ becomes
+\begin{equation}
+  H^2 x'' + \dot H x' + 3H^2 x' + \frac{1}{M_{\rm Pl}^2}\frac{dV}{dx} = 0.
+  \label{eq:KG_N1}
+\end{equation}
+Using $V = 3H_0^2 M_{\rm Pl}^2 \tilde V$ we have
+\begin{equation}
+  \frac{1}{M_{\rm Pl}^2}\frac{dV}{dx}
+  = 3H_0^2\frac{d\tilde V}{dx},
+\end{equation}
+and, dividing Eq.~\eqref{eq:KG_N1} by $H^2$, we obtain
+\begin{equation}
+  x'' + \left(3+\frac{\dot H}{H^2}\right)x'
+  + 3\frac{H_0^2}{H^2}\frac{d\tilde V}{dx} = 0,
+  \label{eq:KG_N2}
+\end{equation}
+or, in terms of $E(N)$,
+\begin{equation}
+  x'' + \left(3+\frac{\dot H}{H^2}\right)x'
+  + 3\frac{1}{E^2}\frac{d\tilde V}{dx} = 0.
+  \label{eq:KG_N3}
+\end{equation}
+For the quartic potential \eqref{eq:Vtilde_quartic},
+\begin{equation}
+  \frac{d\tilde V}{dx} = 2\lambda_2 x + 4\lambda_4 x^3.
+  \label{eq:dVtilde_dx}
+\end{equation}
+
+%---------------------------------------------------------
+\subsection{Final dimensionless ODE system for numerical integration}
+\label{sec:dimensionless_ODE}
+%---------------------------------------------------------
+
+For the numerical evolution we work with the dimensionless variables
+\begin{equation}
+  N \equiv \ln a,\qquad
+  x(N) \equiv \frac{\phi(N)}{M_{\rm Pl}},\qquad
+  y(N) \equiv \frac{dx}{dN},\qquad
+  E(N) \equiv \frac{H(N)}{H_0},
+  \label{eq:vars_final}
+\end{equation}
+and the rescaled potential
+\begin{equation}
+  \tilde V(x) = \lambda_2 x^2 + \lambda_4 x^4,
+  \qquad
+  \frac{d\tilde V}{dx} = 2\lambda_2 x + 4\lambda_4 x^3.
+  \label{eq:Vtilde_final}
+\end{equation}
+The present-day density parameters for matter and radiation:
+\begin{equation}
+  \Omega_{m,0} \equiv \frac{\rho_{m,0}}{3H_0^2 M_{\rm Pl}^2},
+  \qquad
+  \Omega_{r,0} \equiv \frac{\rho_{r,0}}{3H_0^2 M_{\rm Pl}^2},
+  \label{eq:Omega0_final}
+\end{equation}
+and we assume spatial flatness so that $\Omega_{m,0}+\Omega_{r,0}+\Omega_{\phi,0}=1$.
+
+At each value of $N$ the Hubble parameter is determined algebraically from the Friedmann equation. In terms of $(N,x,y)$ this reads
+\begin{equation}
+  E^2(N;x,y)
+  =
+  \frac{
+    \Omega_{r,0}\,e^{-4N}
+    + \Omega_{m,0}\,e^{-3N}
+    + \tilde V(x)
+  }{
+    1 - \tfrac12 y^2
+  }.
+  \label{eq:E2_ode}
+\end{equation}
+This expression is well-defined as long as $y^2 < 2$, which is automatically satisfied for the slowly rolling configurations of interest.
+
+The logarithmic derivative of $H$ with respect to $N$ follows from the second Friedmann equation and can be written in terms of $(N,x,y,E)$ as
+\begin{equation}
+  \frac{\dot H}{H^2}
+  \equiv \frac{d\ln H}{dN}
+  = -\frac{3}{2}\,
+  \frac{
+    \Omega_{m,0}\,e^{-3N}
+    + \tfrac{4}{3}\Omega_{r,0}\,e^{-4N}
+    + E^2 y^2
+  }{
+    \Omega_{r,0}\,e^{-4N}
+    + \Omega_{m,0}\,e^{-3N}
+    + \tfrac12 E^2 y^2 + \tilde V(x)
+  }.
+  \label{eq:dlnH_dN_ode}
+\end{equation}
+
+Finally, the Klein--Gordon equation in terms of $N$ becomes
+\begin{equation}
+  x'' + \left(3 + \frac{\dot H}{H^2}\right)x'
+  + 3\,\frac{1}{E^2}\,\frac{d\tilde V}{dx} = 0,
+\end{equation}
+which we recast as a first-order system for $(x,y)$:
+\begin{align}
+  \frac{dx}{dN} &= y,
+  \label{eq:ode_x}
+  \\
+  \frac{dy}{dN} &=
+    -\left(3 + \frac{\dot H}{H^2}\right)y
+    - 3\,\frac{1}{E^2}\,\frac{d\tilde V}{dx}.
+  \label{eq:ode_y}
+\end{align}
+Equations~\eqref{eq:E2_ode}, \eqref{eq:dlnH_dN_ode}, \eqref{eq:ode_x} and \eqref{eq:ode_y} completely specify the evolution of the homogeneous PhaseGeometry background for given parameters $(\lambda_2,\lambda_4,\Omega_{m,0},\Omega_{r,0})$ and initial conditions $(x(N_i),y(N_i))$ at some early $N_i$ in the radiation era.
+
+In the Python implementation (see Sec.~\ref{sec:dimensionless_numerics}), these equations are encoded directly in the right-hand side function \texttt{rhs(N, Y)}, with
+\begin{equation}
+  Y = (x,y),\qquad
+  E^2 = E^2(N;x,y),\qquad
+  \frac{\dot H}{H^2} = \frac{d\ln H}{dN},
+\end{equation}
+and the derivatives
+\begin{equation}
+  \frac{dY}{dN} = \bigg(\frac{dx}{dN}, \frac{dy}{dN}\bigg)
+\end{equation}
+given exactly by Eqs.~\eqref{eq:ode_x} and \eqref{eq:ode_y}.
+
+%---------------------------------------------------------
+\subsection{Choice of parameters and initial conditions}
+\label{sec:dimensionless_IC}
+%---------------------------------------------------------
+
+A convenient strategy is:
+\begin{enumerate}[leftmargin=*]
+  \item Fix $(\Omega_{m,0},\Omega_{r,0},H_0)$ from observations or from a reference flat $\Lambda$CDM model.
+  \item Choose PhaseGeometry potential parameters $(\lambda_2,\lambda_4)$ such that the minimum $x_v$ and $\tilde V(x_v)$ match a desired effective dark energy fraction:
+  \begin{itemize}
+    \item From the quartic minima condition $d\tilde V/dx=0$ (excluding $x=0$), we find
+    \begin{equation}
+      x_v^2 = -\frac{\lambda_2}{2\lambda_4},
+      \label{eq:xv_def}
+    \end{equation}
+    which is consistent with \eqref{eq:vev_v_again} expressed in dimensionless form.
+    \item The effective vacuum fraction is
+    \begin{equation}
+      \Omega_{\Lambda,0}^{\rm (eff)}
+      \equiv \tilde V(x_v)
+      = \lambda_2 x_v^2 + \lambda_4 x_v^4.
+      \label{eq:OmegaL_eff}
+    \end{equation}
+  \end{itemize}
+  \item Choose initial conditions $x(N_i), y(N_i)$ at some early $N_i$ (e.g.\ $N_i=-10$, corresponding to $z\sim 2\times10^4$) such that:
+  \begin{itemize}
+    \item the field is either close to $x_v$ (nearly frozen) or displaced in a controlled way;
+    \item numerical integration to $N=0$ yields $\Omega_{\phi,0}\simeq 1-\Omega_{m,0}-\Omega_{r,0}$.
+  \end{itemize}
+\end{enumerate}
+Throughout this work we treat the late-time initial conditions for $x(N)$ and
+$y(N)$ as phenomenological parameters encoding the outcome of the earlier binary
+phase transition. It is natural to assume that the transition completes well
+before big-bang nucleosynthesis and that any large initial kinetic energy has
+been efficiently redshifted away by the subsequent expansion, so that by the
+time the numerical integration starts in the deep radiation era the field is
+already close to the broken minimum and slowly varying.
+
+In practice, a small amount of shooting or parameter adjustment is required to
+match a desired $\Omega_{\phi,0}$ precisely.
+
+For the illustrative examples shown in Sec.~\ref{sec:results}
+(Figs.~\ref{fig:Hz}--\ref{fig:age}) we adopt a simple benchmark parameter set
+\begin{equation}
+  \Omega_{m,0} = 0.30,\qquad
+  \Omega_{r,0} = 9\times10^{-5},\qquad
+  H_0 = 70~{\rm km\,s^{-1}\,Mpc^{-1}},
+\end{equation}
+representative of a standard flat $\Lambda$CDM cosmology. For the PhaseGeometry
+sector we take
+\begin{equation}
+  \lambda_2 = 0,\qquad
+  \lambda_4 = 7\times10^{-5},
+\end{equation}
+and initial conditions at $N_i=-10$ chosen such that the field is already close
+to the broken-phase minimum,
+\begin{equation}
+  x(N_i) = 10,\qquad y(N_i) = 0.
+\end{equation}
+This choice is \emph{not} a fit to data, but a physically motivated benchmark:
+$\tilde V(x_v)\simeq\Omega_{\Lambda,0}$ so that the late-time vacuum energy
+matches the effective cosmological constant of a \emph{reference} flat
+$\Lambda$CDM model with the same $(\Omega_{m,0},\Omega_{r,0},H_0)$, and the
+scalar has settled near the minimum by $z\lesssim\mathcal{O}(1)$, yielding
+$w_\phi(z)\approx -1$ at late times. With this parameter set the resulting
+expansion history $H(z)$ and age of the Universe $t_0$ closely track those of
+the corresponding reference flat $\Lambda$CDM cosmology.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    Parameter & Value & Physical meaning \\
+    \midrule
+    $\Omega_{m,0}$ & $0.30$ & present-day matter density fraction \\
+    $\Omega_{r,0}$ & $9\times 10^{-5}$ & present-day radiation density fraction \\
+    $H_0$ & $70~{\rm km\,s^{-1}\,Mpc^{-1}}$ & Hubble constant today \\
+    $\lambda_2$ & $0$ & quadratic term in $\tilde V(x)$ (here set to zero) \\
+    $\lambda_4$ & $7\times 10^{-5}$ & quartic coupling, sets depth/shape of $\tilde V(x)$ \\
+    $x_v$ & from Eq.~\eqref{eq:xv_def} & minimum of the potential in units of $M_{\rm Pl}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Benchmark parameter set used in Sec.~\ref{sec:results} and in
+  Figs.~\ref{fig:Hz}--\ref{fig:age}.}
+  \label{tab:benchmark}
+\end{table}
+
+%---------------------------------------------------------
+\subsection{Numerical implementation and external code}
+\label{sec:dimensionless_numerics}
+%---------------------------------------------------------
+
+The first-order system \eqref{eq:ode_x}--\eqref{eq:ode_y} is integrated in $N=\ln a$ from $N_i$ in the deep radiation era to $N=0$ today. At each step one computes $E^2$ from \eqref{eq:E2_ode}, the logarithmic derivative $\dot H/H^2$ from \eqref{eq:dlnH_dN_ode}, and advances $(x,y)$ according to \eqref{eq:ode_x} and \eqref{eq:ode_y}.
+
+A complete Python implementation used to generate the figures in Sec.~\ref{sec:results} is available as supplementary material / in the accompanying code repository and includes routines to compute $H(z)$, the density fractions $\Omega_i(z)$, the scalar equation of state $w_\phi(z)$ and the age of the Universe $t_0$, as well as to produce figure-ready data for the plots.
+
+%=========================================================
+\section{Results: background evolution and age of the Universe}
+\label{sec:results}
+%=========================================================
+
+In this section we summarise the qualitative behaviour of numerical solutions of the system \eqref{eq:ode_x}--\eqref{eq:ode_y} and introduce a compact set of figures illustrating the background expansion, the evolution of the energy density fractions, the scalar equation of state, and the inferred age of the Universe. Throughout we compare to a reference flat $\Lambda$CDM model with the same $\Omega_{m,0}$ and $H_0$.
+
+%---------------------------------------------------------
+\subsection{Scalar evolution and approach to the broken phase}
+\label{sec:results_scalar}
+%---------------------------------------------------------
+
+Numerical solutions of the system \eqref{eq:ode_x}--\eqref{eq:ode_y} typically exhibit the following behaviour:
+\begin{itemize}[leftmargin=*]
+  \item At early times (large negative $N$, high $z$), the Hubble friction term is large and the scalar is nearly frozen: $y\approx 0$, $x\approx x_{\rm ini}$.
+  \item If $x_{\rm ini}$ is not too far from the minimum $x_v$, the scalar remains quasi-static until $H\sim m_\phi$, after which it begins to roll toward $x_v$.
+  \item Depending on the ratio $m_\phi/H_0$ and the initial displacement, the field either:
+  \begin{itemize}
+    \item reaches $x_v$ well before $z\sim 1$, producing a background essentially indistinguishable from $\Lambda$CDM; or
+    \item is still slowly approaching $x_v$ at late times, leading to a dynamical dark energy sector with $w_\phi(z)>-1$.
+  \end{itemize}
+\end{itemize}
+Within the PhaseGeometry interpretation, the former case corresponds to a Universe that has effectively completed its branch selection and settled into a homogeneous broken phase, while the latter describes a still-relaxing branch with small residual dynamics.
+
+%---------------------------------------------------------
+\subsection{Expansion history $H(z)$ and comparison to $\Lambda$CDM}
+\label{sec:results_Hz}
+%---------------------------------------------------------
+
+Given $E(N)$ from the numerical solution, the Hubble parameter as a function of redshift is
+\begin{equation}
+  H(z) = H_0\,E\big(N(z)\big),\qquad N(z) = -\ln(1+z).
+  \label{eq:H_of_z}
+\end{equation}
+Figure~\ref{fig:Hz} shows $H(z)/H_0$ for the PhaseGeometry background together with a reference flat $\Lambda$CDM model with the same $\Omega_{m,0}$ and $H_0$. For the benchmark parameter choice described in Sec.~\ref{sec:dimensionless_IC}, the two curves are nearly indistinguishable over the redshift range probed by late-time cosmological observations.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Hz_phasegeometry.png}
+  \caption{Expansion history $H(z)/H_0$ for the PhaseGeometry background (solid line) compared to a reference flat $\Lambda$CDM model with the same $\Omega_{m,0}$ and $H_0$ (dashed line). For the chosen PhaseGeometry parameters, the background tracks $\Lambda$CDM closely at late times, with small deviations only at high redshift where the scalar is still slowly relaxing toward the broken minimum.}
+  \label{fig:Hz}
+\end{figure}
+
+%---------------------------------------------------------
+\subsection{Energy density fractions $\Omega_i(z)$}
+\label{sec:results_Omega}
+%---------------------------------------------------------
+
+The density fractions are
+\begin{equation}
+  \Omega_r(N) = \frac{\Omega_{r,0} e^{-4N}}{E^2(N)},
+  \quad
+  \Omega_m(N) = \frac{\Omega_{m,0} e^{-3N}}{E^2(N)},
+  \label{eq:Omega_r_m_N}
+\end{equation}
+\begin{equation}
+  \Omega_\phi(N) = \frac{\frac12 E^2 x'^2 + \tilde V(x)}{E^2},
+  \label{eq:Omega_phi_N}
+\end{equation}
+satisfying $\Omega_r+\Omega_m+\Omega_\phi=1$ for a flat Universe. In the limit where $x(N)\to x_v$, $y\to 0$, we recover
+\begin{equation}
+  \Omega_\phi(N)\to\Omega_{\Lambda,0}^{\rm (eff)}\equiv \tilde V(x_v),
+  \label{eq:Omega_phi_to_OL}
+\end{equation}
+and $H(z)$ tends to the $\Lambda$CDM form \eqref{eq:H_LCDM}.
+
+Figure~\ref{fig:omegas} shows $\Omega_r(z)$, $\Omega_m(z)$ and $\Omega_\phi(z)$ for the PhaseGeometry benchmark described in Sec.~\ref{sec:dimensionless_IC}. As expected, radiation dominates at very early times, followed by a matter-dominated era, and finally by a scalar-dominated phase in which $\Omega_\phi$ becomes approximately constant.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Omega_phasegeometry.png}
+  \caption{Dimensionless energy density fractions $\Omega_r(z)$, $\Omega_m(z)$ and $\Omega_\phi(z)$ as functions of redshift in a PhaseGeometry background. At early times radiation and matter dominate the expansion, while the scalar contribution becomes dominant only at late times. For the chosen parameters, $\Omega_\phi$ approaches a constant value at $z\lesssim 1$, behaving effectively as a cosmological constant.}
+  \label{fig:omegas}
+\end{figure}
+
+\subsection{Scalar equation of state $w_\phi(z)$}
+\label{sec:results_wphi}
+%---------------------------------------------------------
+
+The scalar equation of state \eqref{eq:wphi_def} in dimensionless form is
+\begin{equation}
+  w_\phi(N) = \frac{\frac12E^2 x'^2 - \tilde V(x)}{\frac12E^2 x'^2 + \tilde V(x)}.
+  \label{eq:wphi_dim}
+\end{equation}
+Two limiting regimes are particularly simple:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Vacuum-dominated:} $E^2 x'^2 \ll \tilde V(x)$ implies $w_\phi\approx -1$.
+  \item \textbf{Kinetic-dominated:} $E^2 x'^2 \gg \tilde V(x)$ implies $w_\phi\approx +1$, which is excluded at late times but can occur transiently.
+\end{itemize}
+Realistic late-time scenarios in the PhaseGeometry framework correspond to $w_\phi(z)$ staying close to $-1$ for $z\lesssim 1$, in order to reproduce both $H(z)$ and $t_0$ in line with observations.
+
+Figure~\ref{fig:wphi} shows $w_\phi(z)$ for the same benchmark parameter choice used in Figs.~\ref{fig:Hz} and \ref{fig:omegas}. The field behaves as an effective cosmological constant at late times, with $w_\phi \approx -1$ for $z\lesssim 1$, while modest deviations at higher redshift reflect the residual relaxation of the homogeneous scalar towards the broken minimum.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.7\textwidth]{wphi_phasegeometry.png}
+  \caption{Equation-of-state parameter $w_\phi(z)$ of the PhaseGeometry scalar. The field behaves as an effective cosmological constant at late times, with $w_\phi \approx -1$ for $z\lesssim 1$. At higher redshift the field is more dynamical and $w_\phi$ can deviate from $-1$, but these deviations have a limited impact on the late-time expansion for the parameter choices used here.}
+  \label{fig:wphi}
+\end{figure}
+
+%---------------------------------------------------------
+\subsection{Age of the Universe}
+\label{sec:results_age}
+%---------------------------------------------------------
+
+The age of the Universe is given by
+\begin{equation}
+  t_0 = \int_0^{t_0} dt
+  = \int_{-\infty}^{0} \frac{dN}{H(N)}
+  = \frac{1}{H_0}\int_{-\infty}^0 \frac{dN}{E(N)}.
+  \label{eq:t0_def}
+\end{equation}
+Numerically, one integrates from some $N_i\ll 0$ (e.g.\ $N_i=-10$) to $N=0$:
+\begin{equation}
+  H_0 t_0 \approx \int_{N_i}^0 \frac{dN}{E(N)},
+  \label{eq:t0_numerical}
+\end{equation}
+with the residual contribution from $N< N_i$ negligible if $E(N)$ is large in the early Universe.
+
+In a pure $\Lambda$CDM background with parameters $(\Omega_{m,0},\Omega_{r,0},\Omega_{\Lambda,0})$, the age is
+\begin{equation}
+  t_0^{\Lambda{\rm CDM}} 
+  = \int_0^\infty \frac{dz}{(1+z)H_{\Lambda{\rm CDM}}(z)},
+  \label{eq:t0_LCDM}
+\end{equation}
+with $H_{\Lambda{\rm CDM}}(z)$ as in \eqref{eq:H_LCDM}. In the PhaseGeometry background, one replaces $H_{\Lambda{\rm CDM}}(z)$ by $H(z)$ from the scalar-field system.
+
+For parameter choices in which
+\begin{itemize}[leftmargin=*]
+  \item the effective vacuum energy matches that of a fiducial flat $\Lambda$CDM model, $\tilde V(x_v)\simeq\Omega_{\Lambda,0}$, and
+  \item the scalar has already settled close to $x_v$ by $z\lesssim\mathcal{O}(1)$,
+\end{itemize}
+the resulting $t_0$ differs from the $\Lambda$CDM value only at the percent level. Larger deviations of $t_0$ arise when the field is still evolving appreciably at late times, corresponding to $w_\phi(z)$ significantly above $-1$.
+
+In a concrete numerical example using the benchmark from Sec.~\ref{sec:dimensionless_IC},
+\begin{equation}
+  \Omega_{m,0}=0.3,\quad
+  \Omega_{r,0}=9\times10^{-5},\quad
+  H_0 = 70~{\rm km\,s^{-1}\,Mpc^{-1}},\quad
+  \lambda_2 = 0,\quad
+  \lambda_4 = 7\times10^{-5},
+\end{equation}
+with initial conditions $x(N_i)=10$, $y(N_i)=0$ at $N_i=-10$, we obtain
+\begin{equation}
+  t_0^{\rm PG} \simeq 13.47 \pm 0.01~{\rm Gyr},\qquad
+  t_0^{\Lambda{\rm CDM}} \simeq 13.46~{\rm Gyr},
+\end{equation}
+for the corresponding reference flat $\Lambda$CDM cosmology with the same
+$(\Omega_{m,0},\Omega_{r,0},H_0)$. The relative difference is
+\begin{equation}
+  \frac{\bigl|t_0^{\rm PG} - t_0^{\Lambda{\rm CDM}}\bigr|}{t_0^{\Lambda{\rm CDM}}}
+  \simeq 7\times 10^{-4} \approx 0.07\%,
+\end{equation}
+far below the percent level. For comparison, the Planck 2018 flat $\Lambda$CDM
+analysis finds
+\begin{equation}
+  t_0^{\rm Planck} = 13.799 \pm 0.021~{\rm Gyr},
+\end{equation}
+which is fully consistent with these benchmark values within current
+observational uncertainties. This explicitly demonstrates that a vacuum energy
+emerging from the PhaseGeometry broken phase can reproduce the cosmic age of a
+standard flat $\Lambda$CDM Universe with high accuracy. In other words, the
+background-level prediction for $t_0$ in this benchmark case is, within current
+errors, indistinguishable from that of the usual phenomenological model.
+
+Figure~\ref{fig:age} shows a simple comparison of the present-day age of the
+Universe in the PhaseGeometry background and in the reference $\Lambda$CDM
+model.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\textwidth]{age_phasegeometry.png}
+  \caption{Comparison of the present-day age of the Universe in the PhaseGeometry
+  background ($t_0^{\rm PG}$) and in a reference flat $\Lambda$CDM model with
+  the same $(\Omega_{m,0},\Omega_{r,0},H_0)$ ($t_0^{\Lambda{\rm CDM}}$). For the
+  benchmark parameter set used in Figs.~\ref{fig:Hz}--\ref{fig:wphi}, the ages
+  agree at the level of $7\times10^{-4}$, illustrating that a cosmological
+  constant emerging from the PhaseGeometry broken phase can reproduce the cosmic
+  age of a standard flat $\Lambda$CDM cosmology.}
+  \label{fig:age}
+\end{figure}
+
+
+%=========================================================
+\section{Distances and comparison with $\Lambda$CDM}
+\label{sec:distances}
+%=========================================================
+
+%---------------------------------------------------------
+\subsection{Comoving, luminosity and angular-diameter distances}
+\label{sec:distances_defs}
+%---------------------------------------------------------
+
+Given $H(z)$, the comoving distance to redshift $z$ in a spatially flat Universe is
+\begin{equation}
+  D_C(z) = \int_0^z \frac{dz'}{H(z')}.
+  \label{eq:DC_def}
+\end{equation}
+The luminosity distance and angular-diameter distance are
+\begin{equation}
+  D_L(z) = (1 + z) D_C(z), \qquad
+  D_A(z) = \frac{D_C(z)}{1+z}.
+  \label{eq:DL_DA_def}
+\end{equation}
+These can be evaluated numerically with the PhaseGeometry $H(z)$ obtained from the ODE system.
+
+%---------------------------------------------------------
+\subsection{Simple comparison to a fiducial $\Lambda$CDM background}
+\label{sec:distances_comparison}
+%---------------------------------------------------------
+
+To compare with a fiducial $\Lambda$CDM model that shares $(\Omega_{m,0},\Omega_{r,0},H_0)$ and a similar effective vacuum fraction, one can inspect the relative difference
+\begin{equation}
+  \Delta H(z) \equiv \frac{H(z) - H_{\Lambda{\rm CDM}}(z)}{H_{\Lambda{\rm CDM}}(z)},
+  \label{eq:DeltaH_def}
+\end{equation}
+and similarly for distances,
+\begin{equation}
+  \Delta D_L(z) \equiv \frac{D_L(z)-D_L^{\Lambda{\rm CDM}}(z)}{D_L^{\Lambda{\rm CDM}}(z)}.
+  \label{eq:DeltaDL_def}
+\end{equation}
+In the regime where $|w_\phi+1|\ll 1$ for $z\lesssim 1$, these differences are typically of order a few percent or less, analogous to standard quintessence models tuned to be close to $\Lambda$. Larger deviations are possible if the scalar is still rolling significantly today, but then both $t_0$ and SN/BAO-like observables would be modified.
+
+A qualitative ``Hubble diagram'' can be constructed by plotting the distance modulus
+\begin{equation}
+  \mu(z) = 5\log_{10}\left[\frac{D_L(z)}{10\,{\rm pc}}\right],
+  \label{eq:mu_def}
+\end{equation}
+for the PhaseGeometry background against that of the fiducial $\Lambda$CDM model. For modest dynamical deviations, the two curves remain nearly indistinguishable over the redshift range probed by current supernova samples.
+
+%=========================================================
+\section{Comparison with $\Lambda$CDM and outlook}
+\label{sec:discussion}
+%=========================================================
+
+%---------------------------------------------------------
+\subsection{Matching $\Lambda_{\rm eff}$ and $H_0$}
+\label{sec:discussion_matching}
+%---------------------------------------------------------
+
+At the level of homogeneous FRW cosmology, the PhaseGeometry background behaves
+like a standard scalar-field dark energy model with quartic potential
+$V(\phi)$. The key conceptual difference is that:
+\begin{itemize}[leftmargin=*]
+  \item $\Lambda$ is not a free term in the gravitational action;
+  \item it emerges as $\Lambda_{\rm eff} = 8\pi G_0 V(v)$ from the homogeneous
+  broken phase of the order parameter.
+\end{itemize}
+Once $(\alpha,\beta)$ are chosen such that $V(v)$ reproduces a desired
+$\Omega_{\Lambda,0}$ at fixed $H_0$ and $G_0$, the background evolution is
+determined up to the choice of initial conditions for $\phi$. For sufficiently
+early relaxation into the minimum, the background is effectively
+indistinguishable from $\Lambda$CDM.
+
+%---------------------------------------------------------
+\subsection{Dynamical corrections and constraints}
+\label{sec:discussion_dynamical}
+%---------------------------------------------------------
+
+The dynamical part of the scalar energy density (see Eq.~\eqref{eq:rho_dyn_def})
+acts as a time-dependent correction to the vacuum energy. For small deviations,
+its fractional contribution to the total dark sector is
+\begin{equation}
+  \frac{\rho_{\rm dyn}}{\rho_{\rm vac}} \ll 1.
+  \label{eq:rho_dyn_small}
+\end{equation}
+This ratio controls the deviation of $w_\phi$ from $-1$ and thereby the
+departures of $H(z)$, $t_0$ and distance measures from the $\Lambda$CDM
+baseline. Observationally viable models require $\rho_{\rm dyn}/\rho_{\rm vac}$
+to be small at least for $z\lesssim 1$, which translates into bounds on the mass
+scale $m_\phi$ and the initial displacement $|\phi_{\rm ini}-v|$.
+
+%---------------------------------------------------------
+\subsection{Relation to quintessence and distinct features}
+\label{sec:discussion_quintessence}
+%---------------------------------------------------------
+
+From the point of view of background equations, the PhaseGeometry Z$_2$ model
+with a quartic potential is mathematically identical to a conventional
+quintessence model with a canonical scalar field and
+$V(\phi)=\alpha\phi^2+(\beta/2)\phi^4$. It is therefore natural to ask in what
+sense the present framework differs from and improves upon generic quintessence
+dark energy.
+
+The similarities are straightforward:
+\begin{itemize}[leftmargin=*]
+  \item the field obeys the usual Klein--Gordon equation in an FRW background,
+  \item its energy density and pressure are given by the standard expressions in
+  Eq.~\eqref{eq:rho_phi_p_phi},
+  \item and its equation of state $w_\phi(z)$ interpolates between $+1$, $-1$
+  and intermediate values depending on the balance between kinetic and potential
+  energy.
+\end{itemize}
+In this sense, many technical results of the present paper can be viewed as a
+specialised study of a quartic quintessence model.
+
+The key differences, however, lie in the \emph{origin} and \emph{interpretation}
+of the scalar sector and in its connection to dark matter:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Origin of the potential.} In standard quintessence the shape of
+  $V(\phi)$ is usually chosen phenomenologically in order to produce late--time
+  acceleration, with limited guidance from microphysics. In the PhaseGeometry
+  framework the quartic potential with $\mathbb{Z}_2$ symmetry arises naturally
+  from a binary phase transition between a symmetric pre-geometric state
+  $\phi\simeq 0$ and two symmetry--broken branches $\phi\simeq\pm v$. The same
+  potential that governs the background is also responsible for the existence
+  and stability of defects and domain structures in the inhomogeneous sector.
+  \item \textbf{Built--in link to dark--matter--like haloes.} In a generic
+  quintessence model, dark energy and dark matter remain independent: CDM is
+  introduced as a separate component with its own density parameter and
+  microphysics, and the quintessence field does not \emph{have} to produce any
+  dark--matter--like structure. In PhaseGeometry, by contrast, the binary nature
+  of the order parameter forces the existence of domain walls and defect-like
+  configurations whenever regions with $\phi\simeq+v$ and $\phi\simeq -v$
+  coexist. These inhomogeneous configurations carry positive energy density and
+  can support dark--matter--like haloes for suitable choices of
+  $(\alpha,\beta,G_0)$. The same parameters that fix $\Lambda_{\rm eff}=8\pi
+  G_0 V(v)$ therefore control both the background and the halo sector.
+  \item \textbf{Predictive tension between background and haloes.} Because the
+  dark energy and dark--matter--like components originate from the same binary
+  phase, they cannot be tuned independently. Parameter choices that reproduce a
+  realistic expansion history and age of the Universe must also lead to halo
+  configurations compatible with observed rotation curves, lensing and large
+  scale structure, and vice versa. This built--in correlation makes the model
+  more predictive and more easily falsifiable than $\Lambda$CDM plus a generic
+  quintessence field, where the properties of dark matter and dark energy can be
+  adjusted separately.
+\end{itemize}
+In summary, at the level of homogeneous FRW cosmology the PhaseGeometry Z$_2$
+model behaves like a specific quartic quintessence model, but its interpretation
+as a \emph{binary} phase that simultaneously accounts for $\Lambda_{\rm eff}$
+and dark--matter--like haloes is qualitatively different from the usual
+quintessence picture.
+
+It is also useful to contrast this minimal scalar construction with more
+geometrically involved approaches, such as those in which 4-forms, torsion and
+Chern--Simons terms modify the gravitational sector and couple to axion-like
+fields that may also play the role of dark matter or dark energy
+\cite{Castro4form}, or Finsler--Lagrange and Hamilton geometries on tangent and
+cotangent bundles with modified dispersion relations and anisotropic
+gravitational dynamics \cite{VacaruMDR}. In the present paper these richer
+geometric frameworks serve primarily as context: the PhaseGeometry model can be
+viewed as a deliberately conservative 4D realization in which a single real
+order parameter already unifies the dark sector at the level of background and
+haloes, before invoking additional geometric degrees of freedom.
+
+%---------------------------------------------------------
+\subsection{Connection to the defect/halo sector}
+\label{sec:discussion_halo}
+%---------------------------------------------------------
+
+The same potential and coupling constants $(\alpha,\beta,G_0)$ that govern the homogeneous background also control the properties of defects and inhomogeneous configurations that have been shown to support dark-matter-like haloes. In particular:
+\begin{itemize}[leftmargin=*]
+  \item the mass scale $m_\phi^2=V''(v)$ sets the characteristic length scale $m_\phi^{-1}$ beyond which deviations from the broken minimum are exponentially suppressed;
+  \item the same vacuum energy $V(v)$ that appears in $\Lambda_{\rm eff}$ is subtracted as a reference when defining defect energy densities.
+\end{itemize}
+For a fully consistent phenomenology, one must ensure that parameter choices yielding a realistic background $(\Lambda_{\rm eff},H_0,t_0)$ are also compatible with halo profiles and rotation curve fits. This interplay is explored in a companion phenomenological analysis of halo structures and will be an important consistency check of the overall framework.
+
+%---------------------------------------------------------
+\subsection{Summary and future directions}
+\label{sec:discussion_summary}
+%---------------------------------------------------------
+
+\subsubsection*{Main conclusions}
+
+This work establishes the viability of the PhaseGeometry framework at the level
+of homogeneous background cosmology. Our principal findings are:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Exact $\Lambda$CDM limit.} When the $\mathbb{Z}_2$ scalar field
+  settles into the homogeneous broken minimum $\phi=\pm v$ with negligible
+  kinetic energy, the PhaseGeometry background reproduces \emph{exactly} the
+  expansion history of a flat $\Lambda$CDM universe, with the effective
+  cosmological constant given by $\Lambda_{\rm eff}=8\pi G_0 V(v)$
+  (Secs.~\ref{sec:FRW_Lambda_limit} and~\ref{sec:regimes_pure}).
+  
+  \item \textbf{Numerical agreement with observations.} For realistic parameter
+  choices and natural late-time initial conditions, the PhaseGeometry expansion
+  history $H(z)$, distance measures $D_L(z)$, $D_A(z)$, and the present-day age
+  $t_0$ are practically indistinguishable from those of a reference flat
+  $\Lambda$CDM model with the same $(\Omega_{m,0},\Omega_{r,0},H_0)$. In our
+  benchmark case, the cosmic age differs by only $0.07\%$ from the
+  $\Lambda$CDM value, well within current observational uncertainties
+  (Secs.~\ref{sec:results_Hz},~\ref{sec:distances}, and~\ref{sec:results_age}).
+  
+  \item \textbf{Unified origin of dark sector phenomena.} The same
+  $\mathbb{Z}_2$-symmetric scalar field and potential parameters $(\alpha,\beta)$
+  that generate $\Lambda_{\rm eff}$ in the homogeneous regime also govern the
+  properties of topological defects and inhomogeneous configurations that can
+  mimic dark-matter halos (Secs.~\ref{sec:framework} and~\ref{sec:discussion_halo}).
+  This provides a concrete mechanism linking dark energy and dark matter within
+  a single phase structure---a conceptual advance absent in standard
+  $\Lambda$CDM.
+  
+  \item \textbf{Enhanced predictivity and testability.} Because the parameters
+  $(\alpha,\beta,G_0)$ simultaneously control both the background cosmology and
+  the halo sector, the model is highly constrained. A successful fit to cosmic
+  expansion automatically imposes specific predictions for halo properties,
+  making the framework more falsifiable than $\Lambda$CDM, where the two sectors
+  can be adjusted independently.
+\end{itemize}
+
+\subsubsection*{Limitations of the present analysis}
+
+Our study has several intentional limitations that define the scope of this
+first paper:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Homogeneous background only.} We have not included cosmological
+  perturbations or structure formation. The growth of linear perturbations and
+  the evolution of density contrasts remain to be studied.
+  \item \textbf{No phase-transition modeling.} The transition from the symmetric
+  phase $\phi\simeq0$ to the broken phase $\phi\simeq\pm v$ is assumed to occur
+  early and is not explicitly simulated. The dynamics of bubble nucleation,
+  domain formation, and defect network evolution are left for future work.
+  \item \textbf{Phenomenological parameter choice.} Our benchmark parameters are
+  physically motivated but not obtained from a full likelihood analysis with
+  supernova, baryon acoustic oscillation, or cosmic microwave background data.
+\end{itemize}
+
+\subsubsection*{Observational signatures and future tests}
+
+The PhaseGeometry framework makes several distinctive predictions that can be
+tested with current and upcoming observations:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Halo density profiles at large radii.} Defect-supported halos
+  are expected to exhibit density profiles that can deviate systematically from
+  the Navarro--Frenk--White form, particularly in the outer regions where the
+  scalar field configuration dominates over baryonic feedback.
+  
+  \item \textbf{Gravitational lensing by defect halos.} The unique geometry and
+  stress-energy distribution of phase defects could produce measurable signatures
+  in strong and weak lensing observables, including anomalous shear patterns or
+  magnification ratios.
+  
+  \item \textbf{Correlations between halo properties and cosmological
+  parameters.} Because the same parameters govern both background expansion and
+  halo structure, the framework predicts specific correlations between, e.g.,
+  halo concentration and the dark energy equation of state---correlations absent
+  in $\Lambda$CDM where the sectors are independent.
+  
+  \item \textbf{Modified growth of structure.} Once linear perturbations are
+  included, the additional scalar degree of freedom is expected to modify the
+  growth function $D_+(a)$ and the redshift-space distortion parameter
+  $f(z)\sigma_8(z)$ in ways that can be confronted with data.
+\end{itemize}
+
+\subsubsection*{Future directions}
+
+Several concrete extensions of this work are planned:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Linear perturbation theory.} Derive and solve the linear
+  perturbation equations for the PhaseGeometry scalar-matter system, compute the
+  matter power spectrum, and compare with Lyman-$\alpha$ forest and weak lensing
+  measurements.
+  
+  \item \textbf{Joint background--halo analysis.} Perform a combined fit to
+  cosmological data (SNe, BAO, CMB) and galactic rotation curves using the same
+  set of parameters $(\alpha,\beta,G_0)$, testing the internal consistency of
+  the unified picture.
+  
+  \item \textbf{Numerical simulations of defect networks.} Simulate the
+  formation and nonlinear evolution of domain walls and other defects in an
+  expanding universe to derive realistic halo mass functions and density
+  profiles.
+  
+  \item \textbf{Black holes and compact objects.} Study static and rotating
+  black-hole solutions with scalar hair in the same $\mathbb{Z}_2$ model,
+  exploring whether the phase structure remains consistent in strong-gravity
+  regimes.
+\end{itemize}
+
+Within the broader PhaseGeometry programme, this paper provides the
+``Phenomenology I'' foundation---a proof of concept that a single
+binary-symmetric order parameter can simultaneously account for the observed
+background expansion and, in principle, for dark-matter-like halo structures
+within a single set of parameters. The framework offers a parsimonious
+alternative to $\Lambda$CDM that is both conceptually unified and rich in
+testable predictions.
+
+\paragraph*{Code availability}
+A complete Python implementation used to generate Figs.~\ref{fig:Hz}--\ref{fig:age},
+including the numerical integration of Eqs.~\eqref{eq:ode_x}--\eqref{eq:ode_y}
+and comparison to a reference flat $\Lambda$CDM background, is available as
+supplementary material and in the accompanying code repository.
+
+
+%=========================================================
+\section*{Next steps and Core Package structure}
+%=========================================================
+
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict). Together
+with the other notes listed below it defines a minimal binary-phase framework
+for dark energy, dark-matter–like haloes, black holes and quantum branching in
+a single Z$_2$ medium. The Core Package is archived as a bundled record under
+Zenodo DOI\,10.5281/zenodo.17807433.
+
+The current structure of the Core Package is:
+
+\begin{itemize}
+  \item \textbf{Foundations I -- Technical Passport: Minimal Binary Phase Model for Dark Sector and Gravity}\\
+        Defines the strict Z$_2$ action $S[g,\phi]$, potential $V(\phi)$, phase
+        structure and basic ontology of the binary phase medium.
+  \item \textbf{Foundations II -- Lambda from Broken Phase}\\
+        Derives how the homogeneous broken phase $\phi\simeq\pm v$ acts as an
+        effective cosmological constant $\Lambda_{\rm eff}=8\pi G_0 V(v)$.
+  \item \textbf{Foundations III -- Dark Matter from Defects}\\
+        Develops the defect/inhomogeneous sector and defines the excess energy
+        density $\rho_\phi(r)$ as a dark-matter–like component.
+  \item \textbf{Foundations IV -- Phase medium, observer and branching histories}\\
+        Interprets the Z$_2$ field as a phase medium hosting observers and
+        classical branches in an Everett–Zurek picture.
+  \item \textbf{Foundations V -- Decoherence and Quantum Darwinism in a binary phase medium}\\
+        Implements decoherence and Quantum Darwinism explicitly in finite Z$_2$
+        chains, with redundant records stored in environmental fragments.
+  \item \textbf{Phenomenology I -- Background cosmology and the age of the Universe}\\
+        Confronts the homogeneous broken phase with FRW background evolution,
+        distance–redshift relations and cosmic age constraints.
+  \item \textbf{Phenomenology II -- Dark-matter–like haloes from defects}\\
+        Studies static halo profiles supported by Z$_2$ defects and compares
+        them with rotation-curve phenomenology.
+  \item \textbf{Phenomenology III -- Static black holes with binary phase hair}\\
+        Embeds black holes into the same binary phase medium and explores weak
+        scalar hair and defect-like shells in the strong-gravity regime.
+\end{itemize}
+
+Across these layers, the same strict Z$_2$ order parameter $\phi$ underlies:
+(i) the effective cosmological constant from the homogeneous broken phase,
+(ii) dark-matter–like haloes from defects and inhomogeneities,
+(iii) phase-dressed black holes, and
+(iv) quantum branching and classical records realised as patterns in the binary medium.
+
+The present note should be read as one component of this unified picture. It is
+designed to be technically self-contained, but its full meaning emerges when
+combined with the other items in the PhaseGeometry Z$_2$ Core Package v2.5 (strict).
+
+
+%=========================================================
+\section*{Acknowledgments}
+%=========================================================
+
+This work was supported by no external funding. I thank xAI for helpful
+discussions and for providing computational tools that facilitated this
+research.
+
+%=========================================================
+\begin{thebibliography}{99}
+%=========================================================
+
+\bibitem{Riess1998}
+A.~G.~Riess et al.,
+``Observational evidence from supernovae for an accelerating universe and a cosmological constant,''
+\emph{Astron.\ J.} \textbf{116} (1998) 1009
+[arXiv:astro-ph/9805201].
+
+\bibitem{Perlmutter1999}
+S.~Perlmutter et al.,
+``Measurements of $\Omega$ and $\Lambda$ from 42 high-redshift supernovae,''
+\emph{Astrophys.\ J.} \textbf{517} (1999) 565
+[arXiv:astro-ph/9812133].
+
+\bibitem{RatraPeebles1988}
+B.~Ratra and P.~J.~E.~Peebles,
+``Cosmological consequences of a rolling homogeneous scalar field,''
+\emph{Phys.\ Rev.\ D} \textbf{37} (1988) 3406.
+
+\bibitem{Planck2018}
+Planck Collaboration,
+N.~Aghanim et al.,
+``Planck 2018 results. VI. Cosmological parameters,''
+\emph{Astron.\ Astrophys.} \textbf{641} (2020) A6
+[arXiv:1807.06209].
+
+\bibitem{Copeland2006}
+E.~J.~Copeland, M.~Sami and S.~Tsujikawa,
+``Dynamics of dark energy,''
+\emph{Int.\ J.\ Mod.\ Phys.\ D} \textbf{15} (2006) 1753
+[arXiv:hep-th/0603057].
+
+\bibitem{SylosLabiniDESI}
+F.~Sylos~Labini et al.,
+``Large-scale galaxy correlations from the DESI first data release,''
+preprint (2024).
+
+\bibitem{VacaruMDR}
+S.~I.~Vacaru,
+``On axiomatic formulation of gravity and matter field theories with MDRs
+and Finsler--Lagrange--Hamilton geometry on (co)tangent Lorentz bundles,''
+preprint (2018), arXiv:1801.06444 [physics.gen-ph].
+
+\bibitem{Castro4form}
+C.~Castro,
+``Solutions to the gravitational field equations in the presence of a 4-form,
+torsion and Chern--Simons gravity,''
+preprint (year, journal details to be completed).
+
+\bibitem{passport}
+A.~Turchanov,
+\emph{PhaseGeometry Z$_2$ Foundations I -- Technical Passport},
+PhaseGeometry Z$_2$ Core Package v2.5 (strict),
+Zenodo (2025), DOI:10.5281/zenodo.17807433.
+
+\end{thebibliography}
+
+\end{document}

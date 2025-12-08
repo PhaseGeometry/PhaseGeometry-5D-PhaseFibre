@@ -1,0 +1,524 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{a4paper, margin=2.5cm}
+
+\title{%
+  {\large PhaseGeometry Z$_2$ Foundations III -- Dark Matter from Defects\\[2pt]}
+  {\Large\boldmath Dark-Matter-Like Halos from Inhomogeneous Binary Phase\\[4pt]}
+}
+
+\author{Aleksey Turchanov}
+
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\scriptsize
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict).\\
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\
+Zenodo record: DOI\,10.5281/zenodo.17807433.
+\end{center}
+
+\vspace{0.5em}
+
+\begin{abstract}
+Within the minimal PhaseGeometry Z$_2$ framework defined in Foundations I (Technical Passport), we show how inhomogeneous configurations of the same order parameter that yields an effective cosmological constant $\Lambda_{\rm eff}$ (Foundations II) can also produce dark-matter-like phenomenology. Working with static, spherically symmetric defect profiles $\phi(r)$ that interpolate between the broken-phase minima, we derive the defect energy density $\rho_\phi(r) = \frac{1}{2}\phi'(r)^2 + V(\phi(r)) - V(v)$. Linearising around the minimum $v$ for $r \gg r_{\rm core}$ yields $\rho_\phi(r) \approx A^2 m_\phi^2/r^2$ in an intermediate radial range, where $m_\phi^2 = 2|\alpha|$. This $1/r^2$ scaling produces an enclosed mass $M_\phi(r) \propto r$ and consequently an approximately flat rotation curve $v_c(r) \approx {\rm const}$ over the same range. The mechanism demonstrates how a single binary-phase field can, in principle, account for both dark energy (via its homogeneous vacuum) and dark-matter-like halos (via its inhomogeneous defects), without introducing new fields beyond the strict Z$_2$ core.
+\end{abstract}
+
+%===========================================================
+\section{Introduction: From $\Lambda_{\rm eff}$ to DM-like defects}
+%===========================================================
+
+This note is the third in the PhaseGeometry Z$_2$ Foundations series. It builds directly on:
+\begin{itemize}
+  \item \textbf{Foundations I (Technical Passport)}: Minimal Z$_2$ framework with one real scalar $\phi$, quartic potential $V(\phi)=\alpha\phi^2+\frac{\beta}{2}\phi^4$, and minimal coupling to gravity.
+  \item \textbf{Foundations II (Lambda from Broken Phase)}: The homogeneous broken phase $\phi=\pm v$ yields an effective cosmological constant $\Lambda_{\rm eff}=8\pi G_0 V(v)$.
+\end{itemize}
+
+Here we ask: What happens when the broken phase is \emph{not} homogeneous? If $\phi(x)$ stays in the broken branch asymptotically ($\phi\to +v$ as $r\to\infty$) but develops spatial inhomogeneities---domain walls, kinks, or more general defects---these configurations carry additional energy density beyond the constant $V(v)$. We show that this excess energy behaves gravitationally like a dark-matter component, and under simple analytic approximations produces halo-like profiles with flat rotation curves.
+
+The analysis stays strictly within the passport action $S[g,\phi]$; no new fields, parameters, or couplings are introduced. The goal is to see how much dark-matter-like phenomenology can be extracted from the minimal binary-phase engine before hitting its structural limitations.
+
+%===========================================================
+\section{Setup: Minimal framework and defect configurations}
+%===========================================================
+
+\subsection{Recap of the passport action and homogeneous phase}
+
+The action is
+\begin{equation}
+  S[g,\phi] = \int d^4x\sqrt{-g}\Big[
+    \frac{1}{2}g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi
+    - V(\phi)
+    - \frac{1}{16\pi G_0}R
+  \Big],
+  \label{eq:action}
+\end{equation}
+with
+\begin{equation}
+  V(\phi) = \alpha\phi^2 + \frac{\beta}{2}\phi^4,\quad \beta>0.
+  \label{eq:V}
+\end{equation}
+For $\alpha<0$ the potential has two degenerate minima
+\begin{equation}
+  v = \sqrt{-\alpha/\beta}, \qquad \phi = \pm v,
+  \label{eq:minima}
+\end{equation}
+with
+\begin{equation}
+  V(v) = \alpha v^2 + \frac{\beta}{2}v^4 = -\frac{\alpha^2}{2\beta}.
+  \label{eq:Vv}
+\end{equation}
+
+The stress-energy tensor of $\phi$ is
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}
+  = \partial_\mu\phi\,\partial_\nu\phi
+    - g_{\mu\nu}\Big[
+        \frac{1}{2}g^{\alpha\beta}\partial_\alpha\phi\,\partial_\beta\phi
+        + V(\phi)
+      \Big].
+  \label{eq:Tphi}
+\end{equation}
+
+For the homogeneous vacuum $\phi_{\rm vac}=\pm v$, $\partial_\mu\phi_{\rm vac}=0$,
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}[\phi_{\rm vac}] = -V(v)g_{\mu\nu},
+\end{equation}
+which acts as an effective cosmological constant
+\begin{equation}
+  \Lambda_{\rm eff} = 8\pi G_0 V(v).
+  \label{eq:Lambda-eff}
+\end{equation}
+
+\subsection{Inhomogeneous broken phase and defect energy density}
+
+In the strict Z$_2$ version of PhaseGeometry we treat such inhomogeneous
+broken–phase configurations as structured regions of the same binary
+order–parameter field that realises the homogeneous vacuum. Large regions with
+$\phi \simeq \pm v$ form a binary background with vacuum energy density
+$V(\pm v)$, while halo–like solutions correspond to static defects in which
+$\phi(x)$ departs from $v$ in a localized region before returning to it at
+large radii. In this note all dark–matter–like contributions will therefore be
+attributed to the defect part of $\phi(x)$, rather than to an additional
+dark–matter fluid.
+
+Now consider a configuration where $\phi(x)$ is not constant but approaches the broken minimum at spatial infinity:
+\begin{equation}
+  \phi(x) \to +v \quad \text{as} \quad r\to\infty.
+  \label{eq:bc-infinity}
+\end{equation}
+Such a configuration could describe, for example, a spherical domain wall or kink where $\phi$ interpolates from $-v$ at the origin to $+v$ at infinity.
+
+It is convenient to split $T^{(\phi)}_{\mu\nu}$ into a vacuum part and a defect part:
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}
+  = T^{\rm(vac)}_{\mu\nu} + \tau^{(\phi)}_{\mu\nu},
+  \qquad
+  T^{\rm(vac)}_{\mu\nu} \equiv -V(v)g_{\mu\nu},
+\end{equation}
+so that
+\begin{equation}
+  \tau^{(\phi)}_{\mu\nu}
+  = \partial_\mu\phi\,\partial_\nu\phi
+    - g_{\mu\nu}\Big[
+        \frac{1}{2}g^{\alpha\beta}\partial_\alpha\phi\,\partial_\beta\phi
+        + V(\phi) - V(v)
+      \Big].
+  \label{eq:tau-def}
+\end{equation}
+The Einstein equations then become
+\begin{equation}
+  G_{\mu\nu} + \Lambda_{\rm eff}g_{\mu\nu}
+  = 8\pi G_0\Big(
+    T^{\rm(ordinary)}_{\mu\nu} + \tau^{(\phi)}_{\mu\nu}
+  \Big),
+  \label{eq:Einstein-split}
+\end{equation}
+where $\Lambda_{\rm eff}$ is given by \eqref{eq:Lambda-eff}. The tensor $\tau^{(\phi)}_{\mu\nu}$ encodes the additional energy-momentum due to inhomogeneities; we will interpret it as a dark-matter-like contribution.
+
+For a static configuration in the weak-field limit, the energy density measured by a comoving observer is
+\begin{equation}
+  T^{(\phi)0}{}_{0} \simeq \frac{1}{2}(\nabla\phi)^2 + V(\phi).
+\end{equation}
+We define the \emph{defect energy density} as the excess over the homogeneous vacuum:
+\begin{equation}
+  \rho_\phi(r)
+  \equiv T^{(\phi)0}{}_{0}[\phi(r)] - T^{(\phi)0}{}_{0}[\phi_{\rm vac}]
+  \simeq \frac{1}{2}\big(\partial_r\phi\big)^2 + V\big(\phi(r)\big) - V(v).
+  \label{eq:rho-phi-def}
+\end{equation}
+By construction, $\rho_\phi(r)\to0$ as $r\to\infty$ if $\phi(r)\to v$ and $\phi'(r)\to0$.
+
+%===========================================================
+\section{Static spherical defect: Equation of motion and linearisation}
+%===========================================================
+
+\subsection{Full non-linear equation}
+
+For a static, spherically symmetric configuration $\phi(r)$ in a weakly curved background, the leading-order equation of motion is the flat-space Klein–Gordon equation:
+\begin{equation}
+  \phi''(r) + \frac{2}{r}\phi'(r) = \frac{dV}{d\phi}
+  = 2\alpha\phi + 2\beta\phi^3.
+  \label{eq:EOM-full}
+\end{equation}
+We impose the boundary conditions
+\begin{equation}
+  \phi(r) \to +v \quad (r\to\infty), \qquad
+  \phi(0) = \phi_c \quad (\text{e.g. } \phi_c \approx -v \text{ for a kink}).
+  \label{eq:BCs}
+\end{equation}
+
+Equation \eqref{eq:EOM-full} with these boundary conditions describes a non-linear defect (domain wall) with a characteristic core radius $r_{\rm core}$ where $\phi$ crosses through zero. An exact analytic solution is not available in closed form, but we can study the behaviour outside the core by linearising around the minimum.
+
+\subsection{Linearisation around $\phi=v$}
+
+For $r \gg r_{\rm core}$, assume $\phi(r)$ is close to the asymptotic value $v$:
+\begin{equation}
+  \phi(r) = v + \delta\phi(r), \qquad |\delta\phi(r)| \ll v.
+  \label{eq:linear-ansatz}
+\end{equation}
+
+Expand the potential to quadratic order:
+\begin{align}
+  V(\phi) &= V(v) + V'(v)\delta\phi + \frac{1}{2}V''(v)\delta\phi^2 + \mathcal{O}(\delta\phi^3) \\
+          &= V(v) + \frac{1}{2}m_\phi^2\,\delta\phi^2 + \mathcal{O}(\delta\phi^3),
+\end{align}
+since $V'(v)=0$ at the minimum, and
+\begin{equation}
+  m_\phi^2 \equiv V''(v) = 2\alpha + 6\beta v^2.
+\end{equation}
+Using $v^2 = -\alpha/\beta$ from \eqref{eq:minima},
+\begin{equation}
+  m_\phi^2 = 2\alpha + 6\beta\left(-\frac{\alpha}{\beta}\right)
+           = 2\alpha - 6\alpha = -4\alpha.
+\end{equation}
+With $\alpha<0$, set $|\alpha| = -\alpha$, then
+\begin{equation}
+  m_\phi^2 = 4|\alpha| \equiv (2m)^2, \quad \text{where } m \equiv \sqrt{|\alpha|}.
+  \label{eq:mphi}
+\end{equation}
+Thus $m_\phi$ is the mass of small fluctuations around the broken minimum.
+
+The right-hand side of \eqref{eq:EOM-full} becomes
+\begin{align}
+  \frac{dV}{d\phi}
+  &= 2\alpha\phi + 2\beta\phi^3 \\
+  &= 2\alpha(v+\delta\phi) + 2\beta(v^3 + 3v^2\delta\phi + 3v\delta\phi^2 + \delta\phi^3) \\
+  &= \underbrace{(2\alpha v + 2\beta v^3)}_{=0} 
+     + \underbrace{(2\alpha + 6\beta v^2)}_{=m_\phi^2}\delta\phi
+     + \mathcal{O}(\delta\phi^2) \\
+  &= m_\phi^2\,\delta\phi + \mathcal{O}(\delta\phi^2).
+\end{align}
+
+Dropping terms of order $\delta\phi^2$ and higher, the linearised equation of motion is
+\begin{equation}
+  \delta\phi''(r) + \frac{2}{r}\delta\phi'(r) - m_\phi^2\,\delta\phi(r) = 0.
+  \label{eq:EOM-linear}
+\end{equation}
+
+\subsection{Solution of the linear equation}
+
+Equation \eqref{eq:EOM-linear} is the modified spherical Bessel equation of order zero. Its general solution is
+\begin{equation}
+  \delta\phi(r) = C_1\frac{e^{-m_\phi r}}{r} + C_2\frac{e^{+m_\phi r}}{r}.
+\end{equation}
+Regularity at infinity requires $C_2=0$. Hence
+\begin{equation}
+  \delta\phi(r) = -\,\frac{A}{r}\,e^{-m_\phi r},
+  \label{eq:delta-phi-sol}
+\end{equation}
+where we have written the constant as $-A$ for later convenience. The amplitude $A$ is determined by matching to the non-linear core solution at $r\sim r_{\rm core}$.
+
+From \eqref{eq:delta-phi-sol},
+\begin{equation}
+  \delta\phi'(r) = -A\frac{e^{-m_\phi r}}{r}\Big(m_\phi + \frac{1}{r}\Big).
+  \label{eq:delta-phi-prime}
+\end{equation}
+
+%===========================================================
+\section{Defect energy density in the linear regime}
+%===========================================================
+
+\subsection{Expression for $\rho_\phi(r)$}
+
+Insert the linearised expressions into the definition \eqref{eq:rho-phi-def}. First compute the gradient term:
+\begin{align}
+  \frac{1}{2}\big[\phi'(r)\big]^2
+  &= \frac{1}{2}\big[\delta\phi'(r)\big]^2 \\
+  &= \frac{A^2}{2}\,\frac{e^{-2m_\phi r}}{r^2}
+     \Big(m_\phi^2 + \frac{2m_\phi}{r} + \frac{1}{r^2}\Big).
+\end{align}
+
+Next, the potential difference:
+\begin{align}
+  V(\phi) - V(v)
+  &\simeq \frac{1}{2}m_\phi^2[\delta\phi(r)]^2 \\
+  &= \frac{1}{2}m_\phi^2\,\frac{A^2}{r^2}e^{-2m_\phi r}.
+\end{align}
+
+Adding the two contributions,
+\begin{align}
+  \rho_\phi(r)
+  &\simeq \frac{A^2}{2}\,\frac{e^{-2m_\phi r}}{r^2}
+          \Big(m_\phi^2 + \frac{2m_\phi}{r} + \frac{1}{r^2}\Big)
+          + \frac{1}{2}m_\phi^2\frac{A^2}{r^2}e^{-2m_\phi r} \\
+  &= \frac{A^2}{2}\,e^{-2m_\phi r}
+     \Big[
+       \frac{m_\phi^2}{r^2} + \frac{2m_\phi}{r^3} + \frac{1}{r^4}
+       + \frac{m_\phi^2}{r^2}
+     \Big] \\
+  &= \frac{A^2}{2}\,e^{-2m_\phi r}
+     \Big[
+       \frac{2m_\phi^2}{r^2}
+       + \frac{2m_\phi}{r^3}
+       + \frac{1}{r^4}
+     \Big].
+  \label{eq:rho-phi-explicit}
+\end{align}
+
+\subsection{Three radial regimes}
+
+Equation \eqref{eq:rho-phi-explicit} contains three power-law terms multiplied by an exponential cutoff. Their relative importance changes with radius.
+
+\begin{enumerate}
+  \item \textbf{Core region} ($r \lesssim r_{\rm core}$): \\
+  The linearisation $|\delta\phi|\ll v$ breaks down. Here $\phi$ is far from $v$, often crossing through zero. The full non-linear equation \eqref{eq:EOM-full} must be solved. For qualitative estimates we may approximate the core as having roughly constant density $\rho_{\rm core}$.
+
+  \item \textbf{Intermediate halo} ($r_{\rm core} \ll r \ll m_\phi^{-1}$): \\
+  In this range $e^{-2m_\phi r}\approx 1$, and the terms in \eqref{eq:rho-phi-explicit} scale as $r^{-2}$, $r^{-3}$, $r^{-4}$. For $r \gg m_\phi^{-1}$ the exponential kills everything, but here the $r^{-2}$ term dominates:
+  \begin{equation}
+    \rho_\phi(r) \approx \frac{A^2 m_\phi^2}{r^2},
+    \qquad r_{\rm core} \ll r \ll m_\phi^{-1}.
+    \label{eq:rho-r2}
+  \end{equation}
+
+  \item \textbf{Outer region} ($r \gg m_\phi^{-1}$): \\
+  The exponential suppression $e^{-2m_\phi r}$ becomes decisive, and $\rho_\phi(r)$ decays faster than any power law:
+  \begin{equation}
+    \rho_\phi(r) \sim A^2 m_\phi^2\,\frac{e^{-2m_\phi r}}{r^2},
+    \qquad r \gg m_\phi^{-1}.
+  \end{equation}
+  This ensures the total mass $M_\phi(\infty)$ is finite.
+\end{enumerate}
+
+The intermediate regime \eqref{eq:rho-r2} is key for dark-matter-like halos: a $1/r^2$ density profile leads to a linearly growing enclosed mass and a flat rotation curve.
+
+%===========================================================
+\section{Mass profile and rotation curve}
+%===========================================================
+
+\subsection{Enclosed mass}
+
+The mass enclosed within radius $r$ is
+\begin{equation}
+  M_\phi(r) = 4\pi\int_0^r dr'\,r'^2\rho_\phi(r').
+\end{equation}
+
+In the intermediate regime where $\rho_\phi(r)\approx A^2 m_\phi^2/r^2$,
+\begin{align}
+  M_\phi(r)
+  &\approx 4\pi A^2 m_\phi^2 \int_{r_{\rm core}}^r \frac{dr'}{r'^2}\,r'^2 \\
+  &= 4\pi A^2 m_\phi^2 (r - r_{\rm core}) \\
+  &\approx 4\pi A^2 m_\phi^2 r, \qquad r \gg r_{\rm core}.
+  \label{eq:Mphi-linear}
+\end{align}
+We have neglected the contribution from the core region, which adds a constant offset to $M_\phi(r)$ but does not affect the $r$-dependence at large $r$.
+
+Thus, for $r_{\rm core} \ll r \ll m_\phi^{-1}$,
+\begin{equation}
+  M_\phi(r) \propto r.
+  \label{eq:M-propto-r}
+\end{equation}
+
+\subsection{Circular velocity}
+
+In the weak-field, quasi-Newtonian limit, the circular velocity $v_c(r)$ for a test particle on a circular orbit of radius $r$ satisfies
+\begin{equation}
+  v_c^2(r) = \frac{G_0 M_{\rm tot}(r)}{r},
+\end{equation}
+where $M_{\rm tot}(r)$ is the total mass (ordinary + defect) inside $r$. If the defect contribution dominates in the halo region, $M_{\rm tot}(r)\approx M_\phi(r)$ there.
+
+Using \eqref{eq:Mphi-linear},
+\begin{align}
+  v_c^2(r)
+  &\approx \frac{G_0}{r}\,4\pi A^2 m_\phi^2 r \\
+  &= 4\pi G_0 A^2 m_\phi^2.
+\end{align}
+Remarkably, the factors of $r$ cancel, giving
+\begin{equation}
+  v_c(r) \approx v_{\rm flat}
+  \equiv \sqrt{4\pi G_0}\,A m_\phi,
+  \qquad r_{\rm core} \ll r \ll m_\phi^{-1}.
+  \label{eq:vflat}
+\end{equation}
+The rotation curve is approximately \emph{flat} over this radial range.
+
+\subsection{Three-zone picture}
+
+Putting everything together, a spherical defect in the broken phase produces a rotation curve with three characteristic zones:
+
+\begin{enumerate}
+  \item \textbf{Inner core} ($r \lesssim r_{\rm core}$): \\
+  $\rho_\phi \approx {\rm const}$, $M_\phi(r) \propto r^3$, $v_c(r) \propto r$.
+
+  \item \textbf{Intermediate halo} ($r_{\rm core} \ll r \ll m_\phi^{-1}$): \\
+  $\rho_\phi(r) \propto r^{-2}$, $M_\phi(r) \propto r$, $v_c(r) \approx {\rm const}$.
+
+  \item \textbf{Outer region} ($r \gg m_\phi^{-1}$): \\
+  $\rho_\phi(r)$ decays exponentially, $M_\phi(r)$ approaches a constant $M_\phi(\infty)$, $v_c(r) \propto r^{-1/2}$ (Keplerian).
+\end{enumerate}
+
+This three-zone structure resembles observed galactic rotation curves, with a rising inner part, a flat middle part, and a falling outer part.
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+%======================================================================
+
+\subsection{Summary of the defect-based halo picture}
+
+In this note we have analysed static, spherically symmetric configurations of
+the strict Z$_2$ order parameter in the broken phase and shown that
+inhomogeneities in $\phi$ naturally support dark-matter--like halo profiles.
+Starting from the general stress--energy tensor $T^{(\phi)}_{\mu\nu}$, we
+defined the defect energy density $\rho_\phi(r)$ as the excess over the
+homogeneous vacuum and studied its behaviour in regimes where the scalar field
+deviates from the vacuum value $v$.
+
+In the weak-field, quasi-Newtonian approximation, configurations in which
+$\phi(r)$ interpolates away from $v$ over a large radial range can produce an
+effective density profile with $\rho_\phi(r)\propto r^{-2}$, leading to
+approximately flat circular velocity curves $v_c(r)\simeq \mathrm{const}$ over
+that range. This realises, at the level of the scalar field alone, a standard
+phenomenological requirement for dark-matter haloes, without introducing a
+separate particle species.
+
+\subsection{Validity of approximations and limitations}
+
+The analysis is deliberately conservative and relies on several simplifying
+assumptions:
+\begin{itemize}
+  \item \textbf{Static, spherically symmetric configurations.} We have focused
+        on time-independent, spherically symmetric solutions. Real galactic
+        haloes are neither perfectly static nor exactly spherical, and
+        departures from this idealised picture may affect both the existence
+        and stability of defect-supported profiles.
+  \item \textbf{Weak-field and linearised regimes.} Most of the explicit
+        calculations were performed in the weak-field limit and, in some
+        regions, using linearised equations for $\phi(r)$ around the vacuum
+        value $v$. The matching between these linearised outer profiles and a
+        fully non-linear core solution remains to be established.
+  \item \textbf{Neglect of baryons and environment.} The rôle of baryonic
+        matter, feedback, and the broader cosmological environment has been
+        ignored. In realistic galaxies these effects can significantly reshape
+        the inner halo profile and must eventually be included.
+  \item \textbf{Parameter sensitivity.} The characteristic halo scales depend
+        on the same parameters $(\alpha,\beta,G_0)$ that control the homogeneous
+        vacuum energy. Although this tight coupling is conceptually attractive,
+        it also means that the allowed parameter space is highly constrained.
+\end{itemize}
+
+These limitations do not invalidate the basic mechanism, but they do delimit
+the domain of validity of the present treatment. A full assessment of the
+model's viability requires relaxing some of these assumptions and solving the
+non-linear field equations numerically.
+
+\subsection{Phenomenological implications and tests}
+
+From a phenomenological standpoint, the defect-based halo picture suggests
+several concrete signatures and tests:
+\begin{itemize}
+  \item \textbf{Rotation curves and scaling relations.} The approximate
+        $\rho_\phi(r)\propto r^{-2}$ behaviour over an extended radial interval
+        should reproduce flat rotation curves in spirals. The model can be
+        tested by confronting its predicted profiles with observed velocity
+        data and scaling relations (e.g.\ Tully--Fisher-type relations).
+  \item \textbf{Core structure.} The inner behaviour of $\phi(r)$ determines
+        whether haloes are cored or cuspy. Numerical solutions of the
+        Einstein--scalar system with realistic boundary conditions will
+        provide predictions for the central profiles, to be compared with
+        data from dwarf galaxies and low-surface-brightness systems.
+  \item \textbf{Scaling with cosmological parameters.} Because the same
+        parameters that fix $\Lambda_{\rm eff}$ also control the defect sector,
+        any successful fit to galactic haloes must be consistent with the
+        background cosmology. This linkage provides a non-trivial cross-check
+        of the unified picture.
+  \item \textbf{Non-sphericity and substructure.} Deviations from spherical
+        symmetry, as well as the presence of subhaloes, tidal features and
+        environmental effects, may leave characteristic imprints in lensing
+        maps and kinematic data. These features offer additional channels to
+        test whether defect-supported haloes can reproduce the observed
+        complexity of galactic and cluster-scale dark matter.
+\end{itemize}
+
+In summary, the present analysis demonstrates that within the strict Z$_2$
+framework, inhomogeneous configurations of a single scalar order parameter
+provide a plausible mechanism for generating dark-matter--like haloes. Whether
+this mechanism can satisfy the full set of observational constraints, while
+remaining consistent with the homogeneous cosmology and other sectors of the
+PhaseGeometry programme, is the subject of ongoing and future work.
+
+
+%=========================================================
+\section*{Next steps and Core Package structure}
+%=========================================================
+
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict).
+Together with the other notes listed below it defines a minimal binary-phase
+framework for dark energy, dark-matter--like haloes, black holes and quantum
+branching in a single Z$_2$ medium. The Core Package is archived as a bundled
+record under Zenodo DOI\,10.5281/zenodo.17807433.
+
+The current structure of the Core Package is:
+\begin{itemize}
+  \item \textbf{Foundations I -- Technical Passport: Minimal Binary Phase Model for Dark Sector and Gravity}\\
+        Defines the strict Z$_2$ action $S[g,\phi]$, potential $V(\phi)$, phase
+        structure and basic ontology of the binary phase medium.
+  \item \textbf{Foundations II -- Lambda from Broken Phase}\\
+        Derives how the homogeneous broken phase $\phi \simeq \pm v$ acts as an
+        effective cosmological constant
+        $\Lambda_{\rm eff} = 8\pi G_0 V(v)$.
+  \item \textbf{Foundations III -- Dark Matter from Defects}\\
+        Develops the defect/inhomogeneous sector and defines the excess energy
+        density $\rho_\phi(r)$ as a dark-matter--like component.
+  \item \textbf{Foundations IV -- Phase medium, observer and branching histories}\\
+        Interprets the Z$_2$ field as a phase medium hosting observers and
+        classical branches in an Everett--Zurek picture.
+  \item \textbf{Foundations V -- Decoherence and Quantum Darwinism in a binary phase medium}\\
+        Implements decoherence and Quantum Darwinism explicitly in finite Z$_2$
+        chains, with redundant records stored in environmental fragments.
+  \item \textbf{Phenomenology I -- Background cosmology and the age of the Universe}\\
+        Confronts the homogeneous broken phase with FRW background evolution,
+        distance--redshift relations and cosmic age constraints.
+  \item \textbf{Phenomenology II -- Dark-matter--like haloes from defects}\\
+        Studies static halo profiles supported by Z$_2$ defects and compares
+        them with rotation-curve phenomenology.
+  \item \textbf{Phenomenology III -- Static black holes with binary phase hair}\\
+        Embeds black holes into the same binary phase medium and explores weak
+        scalar hair and defect-like shells in the strong-gravity regime.
+\end{itemize}
+
+Across these layers, the same strict Z$_2$ order parameter $\phi$ underlies:
+(i) the effective cosmological constant from the homogeneous broken phase,
+(ii) dark-matter--like haloes from defects and inhomogeneities,
+(iii) phase-dressed black holes, and
+(iv) quantum branching and classical records realised as patterns in the
+binary medium.
+
+The present note should be read as one component of this unified picture. It is
+designed to be technically self-contained, but its full meaning emerges when
+combined with the other items in the PhaseGeometry Z$_2$ Core Package
+v2.5 (strict).
+
+
+
+\end{document}

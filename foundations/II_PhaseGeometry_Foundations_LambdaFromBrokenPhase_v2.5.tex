@@ -1,0 +1,409 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{a4paper, margin=2.5cm}
+
+\title{%
+  {\large PhaseGeometry Z$_2$ Foundations II -- Lambda from Broken Phase\\[2pt]}
+  {\Large\boldmath $\Lambda_{\rm eff}$ from the Homogeneous Broken Binary Phase\\[4pt]}
+}
+
+\author{Aleksey Turchanov}
+
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\scriptsize
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict).\\
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).\\
+Zenodo record: DOI\,10.5281/zenodo.17807433.
+\end{center}
+
+\vspace{0.5em}
+
+\begin{abstract}
+We show how the homogeneous broken phase of a minimal $\mathbb{Z}_2$-symmetric scalar field can reproduce the observed late-time cosmic acceleration. Within the strict PhaseGeometry Z$_2$ framework, the order parameter settling into one of its degenerate minima $\phi = \pm v$ yields a constant vacuum energy $V(v)$. This energy enters the Einstein equations as an effective cosmological constant $\Lambda_{\rm eff} = 8\pi G_0 V(v)$, without any bare $\Lambda$ term in the gravitational action. The mechanism is interpretable as the gravitational cost of selecting one branch of the binary symmetry, measured relative to the symmetric state $\phi = 0$. The derivation is kept deliberately minimal, providing a clean baseline for assessing what a simple binary-phase engine can—and cannot—explain about dark energy.
+\end{abstract}
+
+\section{Homogeneous broken phase and effective cosmological constant}
+
+In this note we work entirely within the strict minimal binary-symmetry
+framework of the PhaseGeometry Z$_2$ ``Technical Passport'' (Ref.~[1]). In that
+framework a single real order-parameter field $\phi$ with a $\mathbb{Z}_2$
+symmetry and quartic potential is coupled minimally to a metric $g_{\mu\nu}$.
+We do not introduce any extra fields, parameters or couplings beyond those
+already fixed in the Technical Passport, and all ingredients needed here are
+recalled explicitly below so that this section can be read independently.
+
+Our primary goal is to make explicit how the homogeneous symmetry-broken phase
+\[
+  \phi(x) \approx \pm v, \qquad \partial_\mu \phi \approx 0,
+\]
+acts as an effective cosmological constant in the Einstein equations. More
+concretely, we derive the relation
+\[
+  \rho_{\rm vac} = V(v), \qquad \Lambda_{\rm eff} = 8\pi G_0\,\rho_{\rm vac},
+\]
+with all steps kept within the passport action $S[g,\phi]$.
+
+Along the way we keep a clear separation between (i) what is a \emph{definition}
+(e.g.\ the choice of reference energy, the definition of $\rho_{\rm vac}$),
+(ii) what is a \emph{derivation} (algebraic consequences of the action and
+field equations), and (iii) what is an \emph{interpretation} (reading
+$\Lambda_{\rm eff}$ as the energetic cost of selecting a branch of the binary
+symmetry). This section is intended to be a self-contained technical piece that
+can be cited independently of the full passport.
+
+\subsection{Setup and assumptions}
+
+We briefly summarize the ingredients we actually use, keeping the presentation
+self-contained.
+
+In the strict Z$_2$ version of PhaseGeometry we interpret the dark sector as
+emerging from a single real scalar \emph{order parameter field} $\phi(x)$ with
+a $\mathbb{Z}_2$-symmetric double-well potential. The mere assumption that the
+Universe carries a global binary ``$+/-$'' structure already means that space
+is filled by a binary medium: even when $\phi(x)$ is spatially homogeneous and
+close to one of the minima $\phi \simeq \pm v$, there is a well-defined field
+configuration present at every point. Large regions with $\phi \approx \pm v$
+then provide an effective vacuum energy density $V(\pm v)$, while kinks,
+domain walls and halo-like profiles correspond to inhomogeneous configurations
+of the same field. In this note we focus on the homogeneous broken phase and
+its effective vacuum energy, treating it as the origin of an effective
+cosmological constant~$\Lambda_{\rm eff}$.
+
+\paragraph{Phase structure.}
+The order parameter is a real scalar field $\phi(x)$ with a $\mathbb{Z}_2$ symmetry
+\[
+  \phi \to -\phi.
+\]
+The effective potential is taken in the minimal quartic form
+\begin{equation}
+  V(\phi) = \alpha \phi^2 + \frac{\beta}{2}\phi^4,
+  \qquad \beta>0.
+\end{equation}
+For $\alpha<0$ this potential has two degenerate minima
+\begin{equation}
+  v = \sqrt{-\alpha/\beta}, 
+  \qquad \phi = \pm v,
+\end{equation}
+with
+\begin{equation}
+  V(v) \equiv V(\phi=\pm v)
+  = \alpha v^2 + \frac{\beta}{2}v^4
+  = -\frac{\alpha^2}{2\beta}.
+\end{equation}
+We keep $V(v)$ symbolic as much as possible; its sign and magnitude are phenomenological.
+
+\paragraph{No explicit bare cosmological constant.}
+The effective gravitational sector is
+\begin{equation}
+  S_{\rm grav} = -\frac{1}{16\pi G_0}\int d^4x\sqrt{-g}\,R,
+\end{equation}
+with a single coupling $G_0$ and no separate $\Lambda_{\rm bare}$ term written in the action.
+Any cosmological-constant-like contribution in the Einstein equations must therefore arise
+from the $\phi$ sector itself.
+
+\paragraph{Stress--energy tensor of $\phi$.}
+The $\phi$ contribution to the action is
+\begin{equation}
+  S_\phi = \int d^4x\sqrt{-g}
+           \left[
+             \frac{1}{2} g^{\mu\nu}\partial_\mu \phi \partial_\nu \phi 
+             - V(\phi)
+           \right].
+\end{equation}
+The stress--energy tensor is defined as
+\begin{equation}
+  T^{(\phi)}_{\mu\nu} 
+  = - \frac{2}{\sqrt{-g}}\,
+    \frac{\delta S_\phi}{\delta g^{\mu\nu}}.
+\end{equation}
+Using standard variational formulae, this gives
+\begin{equation}
+  T^{(\phi)}_{\mu\nu} 
+  = \partial_\mu\phi\,\partial_\nu\phi 
+  - g_{\mu\nu}
+    \left[
+      \frac{1}{2} g^{\alpha\beta}\partial_\alpha \phi \partial_\beta \phi 
+      + V(\phi)
+    \right].
+  \label{eq:Tphi-general}
+\end{equation}
+(Note that for a homogeneous configuration, $\partial_\mu\phi=0$, this reduces to
+$T^{(\phi)}_{\mu\nu} = -V(\phi)\,g_{\mu\nu}$ independently of sign conventions
+for the kinetic term.)
+
+\paragraph{Einstein equations.}
+Variation of the full action $S[g,\phi] = S_{\rm grav}+S_\phi+S_{\rm ordinary}$ with respect
+to $g_{\mu\nu}$ yields
+\begin{equation}
+  G_{\mu\nu} = 8\pi G_0
+  \left(
+    T^{(\phi)}_{\mu\nu} + T^{\text{(ordinary)}}_{\mu\nu}
+  \right),
+  \label{eq:Einstein-passport}
+\end{equation}
+where $T^{\text{(ordinary)}}_{\mu\nu}$ collects all non-$\phi$ matter. In what follows we
+use only Eqs.~\eqref{eq:Tphi-general} and \eqref{eq:Einstein-passport}.
+
+\subsection{Effective cosmological constant from the homogeneous broken phase}
+
+We now specialize to the homogeneous symmetry-broken phase and show how it induces
+an effective cosmological constant.
+
+\subsubsection{Vacuum energy density from the potential}
+
+\paragraph{Definition (homogeneous vacuum configuration).}
+A homogeneous symmetry-broken configuration is defined by
+\begin{equation}
+  \phi(x) = \phi_{\rm vac} = \pm v,
+  \qquad
+  \partial_\mu \phi_{\rm vac} = 0.
+\end{equation}
+
+Substituting this into \eqref{eq:Tphi-general}, we obtain the stress--energy tensor
+of this vacuum configuration:
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}[\phi_{\rm vac}]
+  = - g_{\mu\nu}\,V(\phi_{\rm vac})
+  = - g_{\mu\nu}\,V(v).
+  \label{eq:Tphi-vac}
+\end{equation}
+
+\paragraph{Definition (vacuum energy density).}
+We define the vacuum energy density carried by the homogeneous broken phase as
+\begin{equation}
+  \rho_{\rm vac} 
+  \equiv V(v).
+  \label{eq:rho-vac-def}
+\end{equation}
+Then Eq.~\eqref{eq:Tphi-vac} becomes
+\begin{equation}
+  T^{(\phi)}_{\mu\nu}[\phi_{\rm vac}]
+  = - \rho_{\rm vac}\, g_{\mu\nu}.
+  \label{eq:Tphi-vac-rho}
+\end{equation}
+
+This has the form of a perfect fluid with energy density $\rho_{\rm vac}$ and pressure
+\begin{equation}
+  p_{\rm vac} = - \rho_{\rm vac},
+\end{equation}
+i.e.\ an equation of state $w = p/\rho = -1$.
+
+\subsubsection{Identification of an effective cosmological constant}
+
+In the homogeneous broken phase, the Einstein equations \eqref{eq:Einstein-passport} become
+\begin{equation}
+  G_{\mu\nu}
+  = 8\pi G_0 
+    \left(
+      - \rho_{\rm vac} g_{\mu\nu}
+      + T^{\text{(ordinary)}}_{\mu\nu}
+    \right).
+\end{equation}
+
+Rewriting this by moving the vacuum term to the left-hand side,
+\begin{equation}
+  G_{\mu\nu} + \Lambda_{\rm eff} g_{\mu\nu}
+  = 8\pi G_0\, T^{\text{(ordinary)}}_{\mu\nu},
+  \label{eq:Einstein-with-Lambda}
+\end{equation}
+we \emph{define} the effective cosmological constant as
+\begin{equation}
+  \Lambda_{\rm eff} \equiv 8\pi G_0 \,\rho_{\rm vac}
+  = 8\pi G_0\, V(v).
+  \label{eq:Lambda-eff-general}
+\end{equation}
+
+For the specific quartic potential of the passport we obtain
+\begin{align}
+  v &= \sqrt{-\alpha/\beta}, \\
+  V(v) &= -\frac{\alpha^{2}}{2\beta}, \\
+  \rho_{\rm vac} &= -\frac{\alpha^{2}}{2\beta}, \\
+  \Lambda_{\rm eff} &= 8\pi G_0 \rho_{\rm vac}
+   = -4\pi G_0 \frac{\alpha^{2}}{\beta}.
+  \label{eq:Lambda-eff-alpha-beta}
+\end{align}
+(The negative sign in $\Lambda_{\rm eff}$ follows from $V(v)<0$ for the quartic potential
+defined in Eq.~(1) with $\alpha<0$. A positive cosmological constant compatible with observations
+would require either an additive constant in $V(\phi)$ or a different reference point for the
+vacuum energy; such extensions lie outside the strict Z$_2$ core and will be discussed in
+subsequent phenomenological notes.)
+
+At this point we have:
+\begin{itemize}
+  \item a \emph{definition}: $\rho_{\rm vac} \equiv V(v)$,
+  \item a \emph{derivation}: $\Lambda_{\rm eff} = 8\pi G_0 \rho_{\rm vac}$,
+  \item and, for this particular potential, an explicit expression for $\Lambda_{\rm eff}$ in terms of $(\alpha,\beta)$.
+\end{itemize}
+
+
+\subsection{Interpretation: $\Lambda$ as energy of branch selection}
+
+We now discuss in what sense $\Lambda_{\rm eff}$ can be interpreted as the energetic cost of choosing a branch of the binary symmetry, rather than as a parameter inserted by hand in the gravitational sector.
+
+\subsubsection{Reference state and energy difference}
+
+\paragraph{Definition (reference energy).}
+Within the passport, the special point $\phi = 0$ represents the symmetric state in which no branch ($+$ or $-$) has been chosen. We take this state as a reference configuration and define
+\begin{equation}
+  \rho_{\text{sym}} \equiv V(0).
+\end{equation}
+
+The energy density difference between the symmetry-broken vacuum and the symmetric state is then
+\begin{equation}
+  \Delta \rho 
+  \equiv \rho_{\rm vac} - \rho_{\text{sym}}
+  = V(v) - V(0).
+  \label{eq:Delta-rho-def}
+\end{equation}
+
+For the passport potential, $V(0)=0$, hence
+\begin{equation}
+  \Delta \rho = V(v).
+\end{equation}
+
+\paragraph{Interpretation.}
+$\Delta \rho$ measures the energetic cost (including its sign) of moving the system from the unchosen ``zero'' configuration $\phi=0$ into one of the two macroscopic branches $\phi=\pm v$:
+\begin{itemize}
+  \item If $\Delta \rho >0$, the broken phase is energetically more expensive than the symmetric one; the universe pays an energy density to live in a chosen branch.
+  \item If $\Delta \rho <0$, the broken phase is energetically favourable; the system releases energy when it condenses into one of the branches, and the symmetric state is metastable.
+\end{itemize}
+
+In either case, once a branch is chosen, spacetime carries a uniform energy density shift $\Delta \rho$ relative to the symmetric reference state. The effective cosmological constant $\Lambda_{\rm eff}$ is exactly the gravitational imprint of this shift:
+\begin{equation}
+  \Lambda_{\rm eff} = 8\pi G_0\,\Delta \rho
+\end{equation}
+in the present minimal model with $V(0)=0$.
+
+\subsubsection{Why $\Lambda_{\rm eff}$ is not put in by hand}
+
+The logical structure of the construction is:
+\begin{enumerate}
+  \item \textbf{Input (framework level):}
+    \begin{itemize}
+      \item a binary $\mathbb{Z}_2$ symmetry $\phi\to-\phi$,
+      \item a quartic potential $V(\phi)$ with parameters $(\alpha,\beta)$,
+      \item minimal gravitational coupling \eqref{eq:Einstein-passport} with a single coupling $G_0$ and no explicit cosmological constant term.
+    \end{itemize}
+  \item \textbf{Dynamical fact:}
+    For $\alpha<0$ the dynamics of $\phi$ has two degenerate minima at $\phi=\pm v$.
+  \item \textbf{Choice of phase / branch:}
+    The universe actually occupies one of these minima (up to fluctuations and defects):
+    \[
+      \phi(x)\approx\pm v,\quad \partial_\mu\phi\approx 0.
+    \]
+  \item \textbf{Consequence:}
+    This configuration carries a stress--energy tensor
+    \[
+      T^{(\phi)}_{\mu\nu}[\phi_{\rm vac}] = - V(v) g_{\mu\nu},
+    \]
+    which follows from the action and the choice $\phi=\pm v$.
+  \item \textbf{Gravitational re-interpretation:}
+    Rearranging the Einstein equations, this contribution is equivalent to a cosmological constant
+    \[
+      \Lambda_{\rm eff} = 8\pi G_0 V(v) = 8\pi G_0 \rho_{\rm vac}.
+    \]
+\end{enumerate}
+
+At no point do we independently postulate a free parameter called $\Lambda$ in the gravitational action. Instead, we postulate only the binary symmetry and its potential, and then \emph{derive} $\Lambda_{\rm eff}$ from:
+\begin{itemize}
+  \item the location of the minima $v$,
+  \item the value of the potential at the minima $V(v)$,
+  \item and the gravitational coupling $G_0$.
+\end{itemize}
+
+In this sense, the effective cosmological constant is the gravitational manifestation of having chosen one branch of the binary symmetry, quantified by the uniform energy density difference between the chosen branch and the symmetric reference state.
+
+\subsection{Outlook}
+
+The derivation above is deliberately minimal: it isolates the homogeneous broken phase and its contribution to the Einstein equations. Several natural next steps within the same framework are:
+
+\begin{itemize}
+  \item \textbf{Include fluctuations and renormalization.}  
+  Go beyond the classical potential $V(\phi)$ to a renormalized effective potential $V_{\rm eff}(\phi)$, including quantum fluctuations of $\phi$ and any additional sectors, and re-evaluate $\Lambda_{\rm eff}$ using $V_{\rm eff}(v)$.
+
+  \item \textbf{Relate the sign and magnitude of $\Lambda_{\rm eff}$ to observations.}  
+  Constrain the parameters $(\alpha,\beta,G_0)$, or possible deformations of $V(\phi)$, by requiring a positive and small $\Lambda_{\rm eff}$ consistent with late-time cosmology, and check whether the binary-symmetry structure can naturally accommodate this.
+
+  \item \textbf{Connect to the dark-matter-like inhomogeneous phase.}  
+  Extend the analysis from the homogeneous vacuum to inhomogeneous configurations, where gradients and defects of $\phi$ contribute as a dark-matter-like component. This requires a controlled treatment of domain walls, halos, and their backreaction on the homogeneous background.
+
+  \item \textbf{Embed in the full pre-geometric picture.}  
+  Relate the effective order parameter $\phi$ and its potential $V(\phi)$ to more microscopic configurations of the underlying pre-geometric field(s) $\Phi$, ensuring that the emergence of $\Lambda_{\rm eff}$ from branch selection is compatible with the larger ``Phase Geometry'' program.
+\end{itemize}
+
+\section*{Connection to the PhaseGeometry Z$_2$ series and open challenges}
+
+This derivation establishes the homogeneous broken phase as a viable source of an effective cosmological constant within the strict Z$_2$ framework. The mechanism's simplicity is a key strength of the minimal binary-phase model. However, as noted in the Technical Passport, this minimality also gives rise to structural challenges that will be addressed in subsequent notes of the series.
+
+The ``demons'' mentioned in Foundations I---primarily the cosmological consequences of domain-wall networks, the self-consistency between the $\Lambda$ and dark-matter sectors from a single field, and the observational constraints on the combined parameters---will be confronted quantitatively in Foundations III (dark matter from defects) and the Phenomenology notes. These challenges are not shortcomings of the $\Lambda$-mechanism presented here, but rather stress tests of the unified binary-phase picture that must be passed for the framework to be phenomenologically viable.
+
+\vspace{1em}
+%=========================================================
+\section*{Next steps and Core Package structure}
+%=========================================================
+
+This note is part of the PhaseGeometry Z$_2$ Core Package v2.5 (strict). Together
+with the other notes listed below it defines a minimal binary-phase framework
+for dark energy, dark-matter–like haloes, black holes and quantum branching in
+a single Z$_2$ medium. The Core Package is archived as a bundled record under
+Zenodo DOI\,10.5281/zenodo.17807433.
+
+The current structure of the Core Package is:
+
+\begin{itemize}
+  \item \textbf{Foundations I -- Technical Passport: Minimal Binary Phase Model for Dark Sector and Gravity}\\
+        Defines the strict Z$_2$ action $S[g,\phi]$, potential $V(\phi)$, phase
+        structure and basic ontology of the binary phase medium.
+  \item \textbf{Foundations II -- Lambda from Broken Phase}\\
+        Derives how the homogeneous broken phase $\phi\simeq\pm v$ acts as an
+        effective cosmological constant $\Lambda_{\rm eff}=8\pi G_0 V(v)$.
+  \item \textbf{Foundations III -- Dark Matter from Defects}\\
+        Develops the defect/inhomogeneous sector and defines the excess energy
+        density $\rho_\phi(r)$ as a dark-matter–like component.
+  \item \textbf{Foundations IV -- Phase medium, observer and branching histories}\\
+        Interprets the Z$_2$ field as a phase medium hosting observers and
+        classical branches in an Everett–Zurek picture.
+  \item \textbf{Foundations V -- Decoherence and Quantum Darwinism in a binary phase medium}\\
+        Implements decoherence and Quantum Darwinism explicitly in finite Z$_2$
+        chains, with redundant records stored in environmental fragments.
+  \item \textbf{Phenomenology I -- Background cosmology and the age of the Universe}\\
+        Confronts the homogeneous broken phase with FRW background evolution,
+        distance–redshift relations and cosmic age constraints.
+  \item \textbf{Phenomenology II -- Dark-matter–like haloes from defects}\\
+        Studies static halo profiles supported by Z$_2$ defects and compares
+        them with rotation-curve phenomenology.
+  \item \textbf{Phenomenology III -- Static black holes with binary phase hair}\\
+        Embeds black holes into the same binary phase medium and explores weak
+        scalar hair and defect-like shells in the strong-gravity regime.
+\end{itemize}
+
+Across these layers, the same strict Z$_2$ order parameter $\phi$ underlies:
+(i) the effective cosmological constant from the homogeneous broken phase,
+(ii) dark-matter–like haloes from defects and inhomogeneities,
+(iii) phase-dressed black holes, and
+(iv) quantum branching and classical records realised as patterns in the binary medium.
+
+The present note should be read as one component of this unified picture. It is
+designed to be technically self-contained, but its full meaning emerges when
+combined with the other items in the PhaseGeometry Z$_2$ Core Package v2.5 (strict).
+
+\begin{thebibliography}{9}
+\bibitem{passport}
+A.~Turchanov,
+\emph{PhaseGeometry Z$_2$ Foundations I -- Technical Passport},
+PhaseGeometry Z$_2$ Core Package v2.5 (strict),
+Zenodo (2025), DOI:10.5281/zenodo.17807433.
+\end{thebibliography}
+
+\end{document}
