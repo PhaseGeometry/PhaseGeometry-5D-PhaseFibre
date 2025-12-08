@@ -1,22 +1,34 @@
-# PhaseGeometry Z₂ — Minimal Binary Phase Framework
+# PhaseGeometry 5D PhaseFibre — Phase as a Compact Extra Dimension
 
-This repository hosts the LaTeX sources for the minimal (“strict”) Z₂ version of PhaseGeometry:
-a binary (+/–) phase medium that accounts for effective dark energy, dark-matter-like halos
-and compact objects within standard GR and scalar-field cosmology.
+This repository hosts the LaTeX sources for the **PhaseGeometry 5D PhaseFibre** programme:
+a class of Kaluza–Klein–like models where the physical phase of fields is promoted to a
+compact extra dimension. In the weak-field regime this yields an effective unification
+language for gravity and electromagnetism within classical physics.
 
-The current stable set of assumptions and equations is collected in the  
-**PhaseGeometry Z₂ Core Package v2.5 (strict)** (Zenodo record, CC BY 4.0, DOI: `10.5281/zenodo.17807433`).
+The series is designed to be readable on its own. Knowledge of the Z₂ binary framework
+or the Manifold/Möbius series is helpful but not required.
 
 ## Repository scope
 
-This repository is limited to the Z₂ binary medium:
-- double-well potential and effective Λ\_eff,
-- background cosmology and the age of the Universe,
-- dark-matter-like halos from defects,
-- medium passports and compact-object notes.
+This repository is focused on 5D phase–fibre geometry and its weak-field phenomenology:
 
-Extensions such as **PhaseManifold** (continuous phase manifolds, Möbius structure)
-and **5D phase–fibre geometry** live in separate PhaseGeometry series and repositories.
+- phase as a compact S¹ fibre over 4D spacetime (M₅ = M₄ × S¹);
+- effective 5D metric ansätze and their reduction to 4D GR + Maxwell electrodynamics;
+- phase clocks, redshift and Josephson-type analogies in curved backgrounds;
+- toy models for compact objects and phase–fibre structure around them;
+- possible links to analogue-gravity setups and resonant devices.
+
+Other parts of the PhaseGeometry programme are developed in separate repositories:
+
+- **PhaseGeometry-Z2** — minimal binary (+/–) phase medium, dark energy and halos;
+- **PhaseGeometry-Manifold** — continuous phase manifolds and Möbius-like internal geometry.
+
+## Repository layout
+
+- `foundations/` — core 5D PhaseFibre notes (metrics, reduction, basic equations).
+- `phenomenology/` — weak-field applications, toy models, device-level sketches.
+- `core/` (optional) — overviews, passports and roadmaps for the 5D series.
+- `figures/` — shared plots and diagrams (if used).
 
 ## Licensing
 
