@@ -6,7 +6,7 @@ compact extra dimension. In the weak-field regime this provides an effective uni
 language for gravity and electromagnetism within classical physics.
 
 The series is designed to be readable on its own. Knowledge of the Z₂ binary framework
-or the Manifold/Möbius series is helpful but not required.
+is helpful but not required.
 
 ## Programme focus
 
@@ -27,11 +27,10 @@ in the Z₂ series, while fully relativistic black holes and horizons are reserv
 
 Other parts of the PhaseGeometry programme are developed in separate repositories:
 
-- **PhaseGeometry-Z2** — minimal binary (+/–) phase medium, dark energy and halos.  
-- **PhaseGeometry-Manifold** — continuous phase manifolds and Möbius-like internal geometry.
+- **PhaseGeometry-Z2** — minimal binary (+/–) phase medium, dark energy and halos.
 
 The 5D PhaseFibre line can be read independently, but it also provides a geometric
-bridge between phase-based medium pictures (Z₂, Manifold) and more traditional
+bridge between phase-based medium pictures (Z₂ binary medium) and more traditional
 Kaluza–Klein–type constructions.
 
 ## Repository layout
